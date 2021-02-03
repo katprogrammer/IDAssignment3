@@ -12,6 +12,15 @@ Updated README.md file with neccessary headers and text. Added a animations.js f
 * Added normalize.css
 * Updated README.md
 
+# Commit 0.3
+Added in materials icon CSS link to the index.html and also completed the food API with appropriate testing. The food API will mainly get information about specified foods to be used in the game.
+
+A main async function was also created in the script.js to handle all async API calls and data transferring into the HTML pages.
+
+#### General Summary:
+* Added Materials Icon CSS Link
+* Completed Food API Functions and Tested for calls
+
 ## Features:
 ### TBA:
 
