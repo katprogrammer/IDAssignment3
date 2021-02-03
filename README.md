@@ -12,8 +12,6 @@ Updated README.md file with neccessary headers and text. Added a animations.js f
 * Added normalize.css
 * Updated README.md
 
-# Commit 0.5
-Added a background image and website icon for index.html and created an about us page. Furthermore, using bootstrap to add a navbar for easier navigation. Also linked two google fonts VT323 & Press Start 2P to match our pixel themed game.
 # Commit 0.3
 Added in materials icon CSS link to the index.html and also completed the food API with appropriate testing. The food API will mainly get information about specified foods to be used in the game.
 
@@ -29,6 +27,22 @@ Completed the superhero API and added 5 superheroes, 5 supervillians and 1 final
 #### General Summary:
 * Completed Superhero API
 * 5 Superheroes, 5 Supervillians and 1 Final Boss added
+
+# Commit 0.5
+Added a background image and website icon for index.html and created an about us page. Furthermore, using bootstrap to add a navbar for easier navigation. Also linked two google fonts VT323 & Press Start 2P to match our pixel themed game.
+
+#### General Summary:
+* Navbar completed (Will require improvement)
+* Added Lottie CDN and Animations
+* Using **VT323** as title font and **Press Start 2P** as text font
+* Added background image to index.html page
+
+# Commit 0.6
+Created game.html and info.html files, updated formatting for the pages a bit to make code neater.
+
+#### General Summary:
+* Added game.html, info.html files
+* Updated code formatting for neater look
 
 ## Features:
 ### TBA:
