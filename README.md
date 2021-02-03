@@ -21,6 +21,13 @@ A main async function was also created in the script.js to handle all async API 
 * Added Materials Icon CSS Link
 * Completed Food API Functions and Tested for calls
 
+# Commit 0.4
+Completed the superhero API and added 5 superheroes, 5 supervillians and 1 final boss for the in-game events/games.
+
+#### General Summary:
+* Completed Superhero API
+* 5 Superheroes, 5 Supervillians and 1 Final Boss added
+
 ## Features:
 ### TBA:
 
