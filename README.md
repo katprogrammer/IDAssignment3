@@ -12,6 +12,9 @@ Updated README.md file with neccessary headers and text. Added a animations.js f
 * Added normalize.css
 * Updated README.md
 
+# Commit 0.5
+Added a background image and website icon for index.html and created an about us page. Furthermore, using bootstrap to add a navbar for easier navigation. Also linked two google fonts VT323 & Press Start 2P to match our pixel themed game.
+
 ## Features:
 ### TBA:
 

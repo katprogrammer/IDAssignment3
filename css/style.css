@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.home-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../Images/homepage-bg.gif");
+    background-repeat:no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+}
+a {
+    font-size: 1.5em;
+    font-family: 'VT323', monospace;
+    color: wheat;
+}
+#title{
+    font-family: 'Press Start 2P', cursive;
+    color: wheat;
+}
+#paragraph{
+    font-size: 1.5em;
+    font-family: 'VT323', monospace;
+    color: wheat;
+}
+.logo {
+    width: 5%;
+}
+.about-us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.aboutus-title {
+    padding-top: 5%;
+}
+.aboutus-text {
+    width: 80%;
+}
+
+
+
