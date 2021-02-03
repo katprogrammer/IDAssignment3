@@ -38,11 +38,12 @@ Added a background image and website icon for index.html and created an about us
 * Added background image to index.html page
 
 # Commit 0.6
-Created game.html and info.html files, updated formatting for the pages a bit to make code neater.
+Created game.html and info.html files, updated formatting for the pages a bit to make code neater, and also changed file location for images.
 
 #### General Summary:
 * Added game.html, info.html files
 * Updated code formatting for neater look
+* Changed file location for images
 
 ## Features:
 ### TBA:
