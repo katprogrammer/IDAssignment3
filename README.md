@@ -14,6 +14,21 @@ Updated README.md file with neccessary headers and text. Added a animations.js f
 
 # Commit 0.5
 Added a background image and website icon for index.html and created an about us page. Furthermore, using bootstrap to add a navbar for easier navigation. Also linked two google fonts VT323 & Press Start 2P to match our pixel themed game.
+# Commit 0.3
+Added in materials icon CSS link to the index.html and also completed the food API with appropriate testing. The food API will mainly get information about specified foods to be used in the game.
+
+A main async function was also created in the script.js to handle all async API calls and data transferring into the HTML pages.
+
+#### General Summary:
+* Added Materials Icon CSS Link
+* Completed Food API Functions and Tested for calls
+
+# Commit 0.4
+Completed the superhero API and added 5 superheroes, 5 supervillians and 1 final boss for the in-game events/games.
+
+#### General Summary:
+* Completed Superhero API
+* 5 Superheroes, 5 Supervillians and 1 Final Boss added
 
 ## Features:
 ### TBA:
