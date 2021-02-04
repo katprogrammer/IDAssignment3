@@ -27,19 +27,21 @@
     </head>
     
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fefed3;">
-            <img src="homePageIMG/navbar-logo.gif" class="logo">
-            <a class="navbar-brand" href="#"><h2>Saibaibaru</h2></a>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(0, 0, 0, 0.8);">
+            <div class="container-fluid" id="navContainer">
+                <a class="navbar-brand" href="index.html" id="navbarLogo"><img src="homePageIMG/navbar-logo.gif" class="navLogo"></a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="#">About Us<span class="sr-only"></span></a>
-                    <a class="nav-item nav-link" href="#">Start Game</a>
-                    <a class="nav-item nav-link" href="#">Game Info</a>
+                <h1 id="navbarTitle">Sabaibaru サバイバル</h1>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="px-4 nav-item"><a class="nav-link active" aria-current="page" href="game.html">Start Game</a></li>
+                        <li class="px-4 nav-item"><a class="nav-link" href="info.html">Game Info</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>

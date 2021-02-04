@@ -52,6 +52,15 @@ Revamped the home page to fit our idea better, buttons will lead to game info pa
 * Revamped Home Page
 * Updated Home Page CSS
 
+# Commit 0.8
+Completed Navigation Bar for Game Page and Game Info Page. The colour can still be refined based on the background chosen. Slightly changed the home page buttons as well as the text size and background overlay dim.
+
+Having issues with making the navbar content go the right, will try to fix later. Will do responsiveness for home page by commit 0.9
+
+#### General Summary:
+* Completed Navigation Bar for Game Page and Game Info Page
+* Updated Home Page buttons and Title
+
 ## Features:
 ### TBA:
 
