@@ -45,6 +45,13 @@ Created game.html and info.html files, updated formatting for the pages a bit to
 * Updated code formatting for neater look
 * Changed file location for images
 
+# Commit 0.7
+Revamped the home page to fit our idea better, buttons will lead to game info page and game page which makes the home page cleaner and more intuitive as well. The home page CSS was also updated.
+
+#### General Summary:
+* Revamped Home Page
+* Updated Home Page CSS
+
 ## Features:
 ### TBA:
 

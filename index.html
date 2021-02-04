@@ -27,34 +27,16 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fefed3;">
-            <img src="homePageIMG/navbar-logo.gif" class="logo">
-            <a class="navbar-brand" href="#"><h2>Saibaibaru</h2></a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="#">About Us<span class="sr-only"></span></a>
-                    <a class="nav-item nav-link" href="#">Start Game</a>
-                    <a class="nav-item nav-link" href="#">Game Info</a>
-                </div>
-            </div>
-        </nav>
-
         <div class="home-container">
-            <div class="about-us">
-                <h1 id="title" class="aboutus-title"style="text-align: center;">About Us</h1>
-                <p id="paragraph" class="aboutus-text" style="text-align: center;">
-                    What is Sabaibaru サバイバル? It is a text-based clicking web game where users have to take care of themselves in a daily setting.
-                    Players have control over their jobs, schedule as well as living conditions. 
-                    Players will have to handle their statistics such as Health, Hunger and Energy.
-                </p>
+            <div class="homeTitle">
+                <h1 id="title">Sabaibaru</h1>
+                <h1 id="title">サバイバル</h1>
             </div>
-            
-            <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_x5yfDN.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+
+            <div class="homeButtonContainer">
+                <a href="game.html" id="homeLink"><button id="homeButton" type="button" class="btn btn-warning">Start Game!</button></a>
+                <a href="info.html" id="homeLink"><button id="homeButton" type="button" class="btn btn-warning">Game Info!</button></a>
+            </div>
         </div>
         
         <!-- Javascript -->
