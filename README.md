@@ -61,6 +61,12 @@ Having issues with making the navbar content go the right, will try to fix later
 * Completed Navigation Bar for Game Page and Game Info Page
 * Updated Home Page buttons and Title
 
+# Commit 0.9
+Completed responsiveness for home page and the navbars in the game page and game info page as well.
+
+#### General Summary:
+* Completed responsiveness for Home Page and Navigation Bars for the Game Page and Game Info Page
+
 ## Features:
 ### TBA:
 
