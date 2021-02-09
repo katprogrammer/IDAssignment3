@@ -67,6 +67,12 @@ Completed responsiveness for home page and the navbars in the game page and game
 #### General Summary:
 * Completed responsiveness for Home Page and Navigation Bars for the Game Page and Game Info Page
 
+# Commit 1.0
+Completed game info page, added meaningful text instead of lorum ipsum talking about the features of the game and added fun gif pixel animations/background. Styled the text and pixel gifs to fit each section and made a gif preview for each section. The preview will zoom in when user hovers over the preview.
+
+#### General Summary:
+* Added descriptions for each feature and pixel gif animations 
+
 ## Features:
 ### TBA:
 

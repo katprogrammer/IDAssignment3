@@ -1,0 +1,69 @@
+html {
+    background-color: black;
+}
+#title {
+    font-size: 1.5em;
+}
+#paragraph {
+    padding: 0 8% 0 8%; 
+}
+.infoContainer, .foodContainer, .petContainer, .miniGamesContainer {
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 120vh;
+}
+.animations {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+.icons {
+    width: 16%;
+    height: 16%;
+}
+.infoContainer p {
+    margin: 0;
+}
+.infoContainer {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../game-info-images/info-bg.gif");
+}
+.foodContainer {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../game-info-images/kitchen.gif");
+}
+.foodIMG, .petIMG, .gamesIMG {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.foodIMG, .gamesIMG {
+    padding-left: 5%;
+}
+.petIMG, .infoIMG {
+    padding-right: 5%;
+}
+.foodPreview, .petPreview, .gamesPreview {
+    border-radius: 10%;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+.foodPreview:hover, .petPreview:hover, .gamesPreview:hover {
+    transform: translateY(-10px);
+    transform: scale(1.1);
+}
+.petContainer {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../game-info-images/pet-bg.gif");
+}
+.miniGamesContainer {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../game-info-images/adventures.gif");
+}
+.gamesTitle, .foodTitle, .petTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
