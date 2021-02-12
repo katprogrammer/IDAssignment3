@@ -1,0 +1,12 @@
+.gameContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game {
+    background-color: wheat;
+    width: 1125px;
+    height: 600px;
+}
