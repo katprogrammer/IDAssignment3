@@ -74,11 +74,12 @@ Completed game info page, added meaningful text instead of lorum ipsum talking a
 * Added descriptions for each feature and pixel gif animations 
 
 # Commit 1.1
-Completed the game map tileset and the game map itself with Aseprite and Tiled. Added all tileset and map files into the ID Game folder.
+Completed the game map tileset and the game map itself with Aseprite and Tiled. Added all tileset and map files into the ID Game folder. I also added a game.css for external game page css.
 
 #### General Summary:
 * Finished Game Map tileset and Game Map
 * New ID Game folder added
+* Added game.css file
 
 ## Features:
 ### TBA:
