@@ -1,31 +1,73 @@
 /* Sprite Animation and CSS */
 /* CSS Variables */
 :root {
-    --pixel-size: 2;
+    --pixel-size: 1;
+    --grid-cell: calc(var(--pixel-size) * 16);
 }
 
-.face-left {
-    top: calc(-48px * var(--pixel-size));
+@media (min-width: 700px) {
+    :root {
+        --pixel-size: 2px;
+    }
 }
 
-.face-right {
-    top: calc(-96px * var(--pixel-size));
+@media (min-width: 1000px) {
+    :root {
+        --pixel-size: 4px;
+    }
 }
 
-.face-up {
-    top: calc(-144px * var(--pixel-size));
+/* Game CSS */
+.gameContainer {
+    /* Need to set width and height */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.character {
-    width: calc(32px * var(--pixel-size));
-    height: calc(48px * var(--pixel-size));
-    overflow: hidden;
+/* Multiplier based on character width & height */
+/* 0.75w & 1h = 18px increments */
+/* 1w & 1.5h = 24px increments */
+.character[facing="right"] .character_sprite {
+    background-position-y: calc(var(--pixel-size) * -37);
+}
+
+.character[facing="up"] .character_sprite {
+    background-position-y: calc(var(--pixel-size) * -55);
+}
+
+.character[facing="left"] .character_sprite {
+    background-position-y: calc(var(--pixel-size) * -19);
+}
+
+.character[walking="true"] .character_sprite {
+    animation: moveSprite 0.7s steps(4) infinite;
+}
+
+.map {
+    background-image: url("../ID Game/map.png");
+    width: calc(12 * var(--grid-cell));
+    height: calc(10 * var(--grid-cell));
     position: relative;
 }
 
+.character {
+    width: calc(var(--grid-cell) * 0.75);
+    height: calc(var(--grid-cell) * 1);
+    overflow: hidden;
+    position: absolute;
+}
+
 .character_sprite {
-    width: calc(128px * var(--pixel-size));
-    animation: moveSprite 1s steps(4) infinite;
+    background: url('../ID Game/Character Tileset/luneth_M.png') no-repeat no-repeat;
+    background-size: 100%;
+
+    width: calc(var(--grid-cell) * 3);
+    height: calc( var(--grid-cell)* 8);
+
+    /* background-color: red; */
+    
     position: absolute;
 }
 
@@ -35,16 +77,10 @@
 
 @keyframes moveSprite {
     from {
-        transform: translate3d(0px, 0, 0)
+        transform: translate3d(0%, 0%, 0%)
     }
     to {
-        transform: translate3d(-100%, 0, 0)
+        transform: translate3d(-100%, 0%, 0)
     }
 }
 
-/* Game CSS */
-.gameContainer {
-    display: flex;
-    justify-content: center;
-    background-color: cadetblue;
-}

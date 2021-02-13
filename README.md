@@ -89,6 +89,14 @@ Animated the sprite with a video tutorial on youtube as well as learning a few n
 * Relocated files/folders
 * Added Character Tilesheet folder and files
 
+# Commit 1.3
+Revamped the sprite animation as well as completed sprite movement on the game itself. Completed the base of the game without any object collision code being added yet. Yet to test for responsiveness. All this was learned from a youtube tutorial on top-down view html game development.
+
+#### General Summary:
+* Revamped Sprite animation
+* Completed Sprite movement in game
+* Completed Base of the game
+
 ## Features:
 ### TBA:
 
