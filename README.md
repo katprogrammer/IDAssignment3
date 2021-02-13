@@ -81,6 +81,14 @@ Completed the game map tileset and the game map itself with Aseprite and Tiled. 
 * New ID Game folder added
 * Added game.css file
 
+# Commit 1.2
+Animated the sprite with a video tutorial on youtube as well as learning a few new things such as transform translate3d and image-render pixelrelated. Relocated some files and folders as well and added a new folder inside ID Game witha all the character tileset files, more to be added in the future.
+
+#### General Summary:
+* Animated sprites
+* Relocated files/folders
+* Added Character Tilesheet folder and files
+
 ## Features:
 ### TBA:
 

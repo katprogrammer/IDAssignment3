@@ -1,12 +1,50 @@
-.gameContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Sprite Animation and CSS */
+/* CSS Variables */
+:root {
+    --pixel-size: 2;
 }
 
-.game {
-    background-color: wheat;
-    width: 1125px;
-    height: 600px;
+.face-left {
+    top: calc(-48px * var(--pixel-size));
+}
+
+.face-right {
+    top: calc(-96px * var(--pixel-size));
+}
+
+.face-up {
+    top: calc(-144px * var(--pixel-size));
+}
+
+.character {
+    width: calc(32px * var(--pixel-size));
+    height: calc(48px * var(--pixel-size));
+    overflow: hidden;
+    position: relative;
+}
+
+.character_sprite {
+    width: calc(128px * var(--pixel-size));
+    animation: moveSprite 1s steps(4) infinite;
+    position: absolute;
+}
+
+.pixelart {
+    image-rendering: pixelated;
+}
+
+@keyframes moveSprite {
+    from {
+        transform: translate3d(0px, 0, 0)
+    }
+    to {
+        transform: translate3d(-100%, 0, 0)
+    }
+}
+
+/* Game CSS */
+.gameContainer {
+    display: flex;
+    justify-content: center;
+    background-color: cadetblue;
 }
