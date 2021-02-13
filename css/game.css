@@ -20,8 +20,8 @@
 /* Game CSS */
 .gameContainer {
     /* Need to set width and height */
-
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -47,6 +47,7 @@
 
 .map {
     background-image: url("../ID Game/map.png");
+    background-size: 100%;
     width: calc(12 * var(--grid-cell));
     height: calc(10 * var(--grid-cell));
     position: relative;
@@ -83,4 +84,7 @@
         transform: translate3d(-100%, 0%, 0)
     }
 }
+
+/* Other CSS */
+
 

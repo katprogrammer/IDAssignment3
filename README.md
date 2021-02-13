@@ -97,6 +97,13 @@ Revamped the sprite animation as well as completed sprite movement on the game i
 * Completed Sprite movement in game
 * Completed Base of the game
 
+# Commit 1.4
+Added a few instructions below the game. Some features such as object interaction yet to be added. Updated the map tileset to remove the grass from the map and instead just make the whole floor wood for better viewing experience and less fault when doing the object collision.
+
+#### General Summary:
+* Added game instructions below the game
+* Changed map tileset - Removed grass area from map
+
 ## Features:
 ### TBA:
 

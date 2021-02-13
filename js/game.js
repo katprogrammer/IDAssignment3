@@ -3,11 +3,11 @@ const char = $(".character");
 const map = $(".map");
 
 // Status of sprite
-var x = 0;
-var y = 0;
+var x = 177;
+var y = 30;
 var heldkey_directions = []; // Which arrow keys/keys are being held down
 
-var speed = 0.5; // Movement speed of the sprite in pixels/frame
+var speed = 0.55; // Movement speed of the sprite in pixels/frame
 
 // Character movement function
 const moveCharacter = () => {
