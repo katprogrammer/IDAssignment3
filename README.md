@@ -112,6 +112,18 @@ We totally scrapped our previous idea due to difficulties in resolving some of t
 * Changed game.css code
 * Folder names adjusted
 
+# Commit 1.6
+I completed the home page together with a character selection screen for the user to select 1 out of 6 characters, I also completed a user display name input section where the user will enter his/her character display name.
+
+Similarly, I have added the appropriate Javascript and CSS for these 3 items. Responsiveness for all three items will be completed by the next commit.
+
+#### General Summary:
+* Completed Home page
+* Completed Character Selection function
+* Completed Character Display Name Input function
+* JS and CSS updated
+* Responsiveness by next commit
+
 ## Features:
 ### TBA:
 

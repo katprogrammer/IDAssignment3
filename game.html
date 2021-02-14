@@ -54,8 +54,8 @@
                 </div>
 
                 <div class="gameMenu" aria-hidden="true">
+                    <button class="btns gamebtn" id="home">Home</button>
                     <button class="btns gamebtn" id="saveGame">Save Game</button>
-                    <button class="btns gamebtn" id="loadGame">Load Game</button>
                     <button class="btns gamebtn" id="viewStats">View Stats</button>
                     <button class="btns gamebtn" id="inventory">Inventory</button>
                     <button class="btns gamebtn" id="shop">Shop</button>
@@ -63,9 +63,47 @@
                 </div>
             </div>
 
+            <div class="char">
+                <h1 id="title">Please Pick Your Character</h1>
+                <div class="row d-flex align-items-center justify-content-evenly">
+                    <div class="col">
+                        <img class="charImg" id="bam" src="gamePageIMG/bam.jpg" alt="character image"> <!-- Character 1 -->
+                    </div>
+
+                    <div class="col">
+                        <img class="charImg" id="jinsung" src="gamePageIMG/Jinsung.jpg" alt="character image"> <!-- Character 2 -->
+                    </div>
+
+                    <div class="col">
+                        <img class="charImg" id="khun" src="gamePageIMG/khun.jpg" alt="character image"> <!-- Character 3 -->
+                    </div>
+                </div>
+
+                <div class="row d-flex align-items-center justify-content-evenly">
+                    <div class="col">
+                        <img class="charImg" id="androssi" src="gamePageIMG/androssi.jpg" alt="character image"> <!-- Character 4 -->
+                    </div>
+
+                    <div class="col">
+                        <img class="charImg" id="yuri" src="gamePageIMG/yuri.jpg" alt="character image"> <!-- Character 5 --> 
+                    </div>
+
+                    <div class="col">
+                        <img class="charImg" id="garam" src="gamePageIMG/garam.jpg" alt="character image"> <!-- Character 6 -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="user">
+                <label id="paragraph">Enter Your Display Name:</label>
+                <input type="text" id="dname" name="dname"><br><br>
+                <input type="submit" id="submit" value="Submit">
+            </div>
+
             <div class="game">
                 <div class="home">
-                    
+                    <h1 id="paragraph"></h1>
+                    <img class="charPP" src="" alt="character image">
                 </div>
 
                 <div class="stats">
