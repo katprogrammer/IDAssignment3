@@ -1,71 +1,94 @@
-// Grab game elements
-const char = $(".character");
-const map = $(".map");
+// Default Game Page parameters
+$('.gameMenu').hide();
+$('.home').hide();
+$('.inventory').hide();
+$('.shop').hide();
+$('.fight').hide();
+$('.stats').hide();
+$('.save').hide();
 
-// Status of sprite
-var x = 177;
-var y = 30;
-var heldkey_directions = []; // Which arrow keys/keys are being held down
+// Start game button
+$('#startGame').click(function(e) { 
+    e.preventDefault();
 
-var speed = 0.55; // Movement speed of the sprite in pixels/frame
+    $('.startMenu').hide();
+    $('.gameMenu').show();
+    $('.home').show(); // Show home game page division/menu
+});
 
-// Character movement function
-const moveCharacter = () => {
-    // Retrieve --pixel-size var from css
-    var pixelSize = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--pixel-size'));
+// Load game button
+$('#loadGame').click(function(e) {
+    e.preventDefault();
 
-    const held_direction = heldkey_directions[0];
-    if (held_direction) {
-        if (held_direction === directions.right) {x += speed;}
-        if (held_direction === directions.left) {x -= speed;}
-        if (held_direction === directions.down) {y += speed;}
-        if (held_direction === directions.up) {y -= speed;}
-        char.attr("facing", held_direction);
-    }
-    // If there is no held direction from the player set walking to true or false
-    char.attr("walking", held_direction ? "true" : "false")
-
-    char.css("transform", `translate3d( ${x * pixelSize}px,
-              ${y * pixelSize}px, 0`);
-}
-
-// Creation of game loop
-const step = () => {
-    moveCharacter();
-    window.requestAnimationFrame(() => {
-        step();
-    })
-}
-step(); //Initiate first step
-
-// Key direction function
-const directions = {
-    up: "up",
-    down: "down",
-    left: "left",
-    right: "right",
-}
-
-const keys = {
-    38: directions.up,
-    37: directions.left,
-    39: directions.right,
-    40: directions.down,
-}
-
-document.addEventListener("keydown", (e) => {
-    // directions variable
-    var dir = keys[e.which]; //which returns the keycode/number of the key that has been pressed
-    console.log(dir);
-    if (dir && heldkey_directions.indexOf(dir) === -1) { //-1 if it cannot be found in the array
-        heldkey_directions.unshift(dir); //Adds new items to the start of the held_directions array
-    }
+    // Load game function to be added
 })
 
-document.addEventListener("keyup", (e) => {
-    var dir = keys[e.which];
-    var index = heldkey_directions.indexOf(dir);
-    if (index > -1) {
-        heldkey_directions.splice(index, 1);
-    }
+// Save game button
+$('#saveGame').click(function(e) {
+    e.preventDefault();
+
+    // Save game function to be added
+    $('.home').hide();
+    $('.inventory').hide();
+    $('.shop').hide();
+    $('.fight').hide();
+    $('.stats').hide();
+
+    $('.save').show(); // Show save game division/menu
+})
+
+// View stats button
+$('#viewStats').click(function(e) {
+    e.preventDefault();
+
+    // View Stats function to be added
+    $('.home').hide();
+    $('.inventory').hide();
+    $('.shop').hide();
+    $('.fight').hide();
+    $('.save').hide();
+
+    $('.stats').show(); // Show stats division/menu
+})
+
+// Inventory button
+$('#inventory').click(function(e) {
+    e.preventDefault();
+
+
+    // Inventory function to be added
+    $('.home').hide();
+    $('.shop').hide();
+    $('.fight').hide();
+    $('.stats').hide();
+    $('.save').hide();
+
+    $('.inventory').show(); // Show inventory division/menu
+})
+
+// Shop button
+$('#shop').click(function(e) {
+    e.preventDefault();
+
+    // Shop function to be added
+    $('.home').hide();
+    $('.inventory').hide();
+    $('.fight').hide();
+    $('.stats').hide();
+    $('.save').hide();
+
+    $('.shop').show(); // Show shop division/menu
+})
+
+// Exit Game Button
+$('#exitGame').click(function(e) {
+    e.preventDefault();
+
+    // Exit game function to be added
+    $('.home').hide();
+    $('.inventory').hide();
+    $('.shop').hide();
+    $('.fight').hide();
+    $('.stats').hide();
+    $('.save').hide();
 })

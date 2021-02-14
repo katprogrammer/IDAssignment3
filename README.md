@@ -104,6 +104,14 @@ Added a few instructions below the game. Some features such as object interactio
 * Added game instructions below the game
 * Changed map tileset - Removed grass area from map
 
+# Commit 1.5
+We totally scrapped our previous idea due to difficulties in resolving some of the game functions. However, we are still following our current idea but in a different form. The game will be more of a click based game this time rather than a rpg-based game. Also, I changed the naming convention for a few folders
+
+#### General Summary:
+* Changed game.js code
+* Changed game.css code
+* Folder names adjusted
+
 ## Features:
 ### TBA:
 

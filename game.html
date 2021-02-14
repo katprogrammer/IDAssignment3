@@ -47,17 +47,50 @@
         
         <!-- Game Starts here -->
         <div class="gameContainer">
-            <div class="camera">
-                <div class="map pixelart">
-                    <div class="character" facing="down" walking="false">
-                        <div class="character_sprite pixelart"></div>
-                    </div>
+            <div class="menu" gameStarted="false">
+                <div class="startMenu">
+                    <button class="btns" id="startGame">Start Game</button>
+                    <button class="btns" id="loadGame">Load Game</button>
+                </div>
+
+                <div class="gameMenu" aria-hidden="true">
+                    <button class="btns gamebtn" id="saveGame">Save Game</button>
+                    <button class="btns gamebtn" id="loadGame">Load Game</button>
+                    <button class="btns gamebtn" id="viewStats">View Stats</button>
+                    <button class="btns gamebtn" id="inventory">Inventory</button>
+                    <button class="btns gamebtn" id="shop">Shop</button>
+                    <button class="btns gamebtn" id="exitGame">Exit Game</button>
                 </div>
             </div>
-            <div class="gameHelp">
-                <p class="helpText">Use arrow keys to move!</p>
-                <p class="helpText">Press E to interect!</p>
-                <p class="helpText">Press Esc to open Menu!</p>
+
+            <div class="game">
+                <div class="home">
+                    
+                </div>
+
+                <div class="stats">
+                    
+                </div>
+
+                <div class="inventory">
+                    
+                </div>
+
+                <div class="shop">
+                    
+                </div>
+
+                <div class="fight">
+                    
+                </div>
+
+                <div class="save">
+                    <!-- TBC -->
+                </div>
+
+                <div class="exit">
+                    <!-- TBC -->
+                </div>
             </div>
         </div>
         <!-- Game Ends here -->

@@ -31,10 +31,10 @@ html {
     margin: 0;
 }
 .infoContainer {
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../gamePageIMG/info-bg.gif");
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../gameInfoPageIMG/info-bg.gif");
 }
 .foodContainer {
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../gamePageIMG/kitchen.gif");
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../gameInfoPageIMG/kitchen.gif");
 }
 .foodIMG, .petIMG, .gamesIMG {
     display: flex;
@@ -57,10 +57,10 @@ html {
     transform: scale(1.1);
 }
 .petContainer {
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../gamePageIMG/pet-bg.gif");
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../gameInfoPageIMG/pet-bg.gif");
 }
 .miniGamesContainer {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../gamePageIMG/adventures.gif");
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../gameInfoPageIMG/adventures.gif");
 }
 .gamesTitle, .foodTitle, .petTitle {
     display: flex;
