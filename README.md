@@ -137,6 +137,13 @@ The buttons, I refered to a youtube video where I learned how to create them bas
 * Improved Game Menu buttons for more sleek viewing experience
 * Updated JS and CSS according to HTML Div Changes
 
+# Commit 1.8
+Had to remove the game.js file due to variable complications and shifted everything into the script.js file.
+
+#### General Summary:
+* Removed game.js file
+* Shifted content to script.js file
+
 ## Features:
 ### TBA:
 
