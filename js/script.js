@@ -256,7 +256,10 @@ $('#home').click(function(e) {
 // View stats button
 $('#viewStats').click(function(e) {
     e.preventDefault();
-
+    $('.stats h2').text(`Player: ${dname}`);
+    const stats = document.getElementById('stats');
+    openStats(stats);
+    $('.statsImg').attr('src', charimg);
     // View Stats function to be added
     $('.home').hide();
     $('.inventory').hide();
@@ -266,7 +269,25 @@ $('#viewStats').click(function(e) {
 
     $('.stats').show(); // Show stats division/menu
 })
+const closeStatsButton = document.querySelectorAll('[data-close-button]');
+const overlay = document.getElementById('overlay');
 
+closeStatsButton.forEach(button => {
+    button.addEventListener('click', () => {
+        const stats = document.getElementById('stats');
+        closeStats(stats);
+    })
+})
+function openStats(stats) {
+    if (stats == null) return;
+    stats.classList.add('active');
+    overlay.classList.add('active');
+}
+function closeStats(stats) {
+    if (stats == null) return;
+    stats.classList.remove('active');
+    overlay.classList.remove('active');
+}
 // Inventory button
 $('#inventory').click(function(e) {
     e.preventDefault();
@@ -308,6 +329,99 @@ $('#exitGame').click(function(e) {
     $('.stats').hide();
     $('.save').hide();
 })
+var fills = document.querySelectorAll(".healthbar_fill");
+var hungerFill = document.querySelectorAll(".hungerbar_fill");
+var hydrateFill = document.querySelectorAll(".hydratebar_fill");
+
+var health = 75;
+var maxHp = 100;
+
+var hunger = 75;
+var maxHunger = 100;
+
+var hydrate = 75;
+var maxHydrate = 100;
+
+function renderBar() {
+   
+   var hpPercent = health / maxHp * 100;
+   var foodPercent = hunger / maxHunger * 100;
+   var waterPercent = hydrate / maxHydrate * 100;
+   
+   //Update color
+   document.documentElement.style.setProperty('--healthbar-fill', '#57e705');
+   document.documentElement.style.setProperty('--healthbar-top',  '#6aff03');
+
+   document.documentElement.style.setProperty('--hungerbar-fill', '#57e705');
+   document.documentElement.style.setProperty('--hungerbar-top',  '#6aff03');
+
+   document.documentElement.style.setProperty('--hydratebar-fill', '#57e705');
+   document.documentElement.style.setProperty('--hydratebar-top',  '#6aff03');
+   
+   if (hpPercent <= 50 ) { //yellows
+      document.documentElement.style.setProperty('--healthbar-fill', '#d6ed20');
+      document.documentElement.style.setProperty('--healthbar-top',  '#d8ff48');   
+   }
+   if (hpPercent <= 25) { //reds
+      document.documentElement.style.setProperty('--healthbar-fill', '#ec290a');
+      document.documentElement.style.setProperty('--healthbar-top',  '#ff3818');
+   }
+   if (foodPercent <= 50 ) { //yellows
+      document.documentElement.style.setProperty('--hungerbar-fill', '#d6ed20');
+      document.documentElement.style.setProperty('--hungerbar-top',  '#d8ff48');   
+   }
+   if (foodPercent <= 25) { //reds
+      document.documentElement.style.setProperty('--hungerbar-fill', '#ec290a');
+      document.documentElement.style.setProperty('--hungerbar-top',  '#ff3818');
+   }
+   if (waterPercent <= 50 ) { //yellows
+      document.documentElement.style.setProperty('--hydratebar-fill', '#d6ed20');
+      document.documentElement.style.setProperty('--hydratebar-top',  '#d8ff48');   
+   }
+   if (waterPercent <= 25) { //reds
+      document.documentElement.style.setProperty('--hydratebar-fill', '#ec290a');
+      document.documentElement.style.setProperty('--hydratebar-top',  '#ff3818');
+   }
+
+   fills.forEach(fill => {
+        fill.style.width = hpPercent+"%";
+        console.log(fill);
+   })
+   hungerFill.forEach(fill => {
+        fill.style.width = foodPercent+"%";
+   })
+   hydrateFill.forEach(fill => {
+        fill.style.width = waterPercent+"%";
+   })            
+}
+
+function updateHealth(change) {
+   health += change;
+   health = health > maxHp ? maxHp : health;
+   health = health < 0 ? 0 : health;
+    
+   renderBar();
+}
+function updateHunger(change) {
+    hunger += change;
+    hunger = hunger > maxHunger ? maxHunger : hunger;
+    hunger = hunger < 0 ? 0 : hunger;
+ 
+    renderBar();
+ }
+ function updateHydrate(change) {
+    hydrate += change;
+    hydrate = hydrate > maxHydrate ? maxHydrate : hydrate;
+    hydrate = hydrate < 0 ? 0 : hydrate;
+ 
+    renderBar();
+ }
+
+
+//init
+updateHealth(0)
+updateHunger(0)
+updateHydrate(0)
 
 function checkInventoryItems(inv, currency) {
     if (inv.length === 0) {
