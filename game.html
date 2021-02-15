@@ -128,10 +128,162 @@
                     <h1 id="paragraph"></h1>
                     <img class="charPP" src="" alt="character image">
                 </div>
-
-                <div class="stats">
-                    
+    
+                <div class="stats active" id="stats">
+                    <div class="statsHeader">
+                        <div class="statsTitle">
+                            <h2 id="paragraph"></h2>
+                        </div>
+                        <button data-close-button class="closeButton">&times;</button>
+                    </div>
+                    <div class="statsBody">
+                        <div class="playerImg">
+                            <img class="statsImg" src="" alt="character image">
+                        </div> 
+                        <div class="statsPoints">
+                            <div class="healthBar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 60 60" shape-rendering="crispEdges">
+                                    <metadata>Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj</metadata>
+                                    <path stroke="#000000" d="M10 4h11M39 4h11M9 5h1M21 5h2M37 5h2M50 5h1M8 6h1M23 6h1M36 6h1M51 6h1M7 7h1M24 7h1M35 7h1M52 7h1M6 8h1M25 8h1M34 8h1M53 8h1M5 9h1M26 9h1M33 9h1M54 9h1M5 10h1M27 10h1M32 10h1M54 10h1M4 11h1M28 11h1M31 11h1M55 11h1M4 12h1M29 12h2M55 12h1M3 13h1M56 13h1M3 14h1M56 14h1M3 15h1M56 15h1M3 16h1M56 16h1M3 17h1M56 17h1M3 18h1M56 18h1M3 19h1M56 19h1M3 20h1M56 20h1M3 21h1M56 21h1M4 22h1M55 22h1M4 23h1M55 23h1M4 24h1M55 24h1M5 25h1M54 25h1M5 26h1M54 26h1M6 27h1M53 27h1M6 28h1M53 28h1M7 29h1M52 29h1M8 30h1M51 30h1M9 31h1M50 31h1M10 32h1M49 32h1M11 33h1M48 33h1M12 34h1M47 34h1M13 35h1M46 35h1M14 36h2M44 36h2M16 37h1M43 37h1M17 38h2M41 38h2M19 39h1M40 39h1M20 40h2M38 40h2M22 41h2M36 41h2M24 42h2M34 42h2M26 43h2M32 43h2M27 44h2M30 44h3M29 45h1" />
+                                    <path stroke="#f70d0d" d="M10 5h11M39 5h11M9 6h14M37 6h14M8 7h16M36 7h16M7 8h18M35 8h18M6 9h10M18 9h8M34 9h20M6 10h7M18 10h9M33 10h21M5 11h7M15 11h13M32 11h23M5 12h6M13 12h16M31 12h24M4 13h6M12 13h44M4 14h6M12 14h44M4 15h5M11 15h45M4 16h4M10 16h46M4 17h4M10 17h46M4 18h52M4 19h52M4 20h52M4 21h52M5 22h50M5 23h50M5 24h50M6 25h48M6 26h48M7 27h46M7 28h46M8 29h40M9 30h33M10 31h26M11 32h19M12 33h11M13 34h4" />
+                                    <path stroke="#ffffff" d="M16 9h2M13 10h5M12 11h3M11 12h2M10 13h2M10 14h2M9 15h2M8 16h2M8 17h2" />
+                                    <path stroke="#f60e0e" d="M48 29h2M42 30h1M36 31h1M30 32h1M23 33h2M17 34h2" />
+                                    <path stroke="#f60f0f" d="M50 29h2M44 30h2M38 31h2M32 32h1M26 33h1M19 34h2M14 35h1" />
+                                    <path stroke="#f60e0f" d="M43 30h1M37 31h1M31 32h1M25 33h1" />
+                                    <path stroke="#f60f10" d="M46 30h1M33 32h1M27 33h1M21 34h1M15 35h1" />
+                                    <path stroke="#f61010" d="M47 30h1M40 31h2M34 32h2M28 33h1M22 34h1M16 35h1" />
+                                    <path stroke="#f51011" d="M48 30h2M42 31h1M36 32h1M29 33h2M23 34h2M17 35h2" />
+                                    <path stroke="#f51112" d="M50 30h1M44 31h2M38 32h2M32 33h1M26 34h1M19 35h2" />
+                                    <path stroke="#f51111" d="M43 31h1M37 32h1M31 33h1M25 34h1" />
+                                    <path stroke="#f51212" d="M46 31h1M33 33h1M27 34h1M21 35h1" />
+                                    <path stroke="#f51213" d="M47 31h2M40 32h3M34 33h2M28 34h2M22 35h2M16 36h2" />
+                                    <path stroke="#f41314" d="M49 31h1M43 32h2M36 33h3M30 34h3M24 35h2M18 36h2" />
+                                    <path stroke="#f41415" d="M45 32h2M39 33h2M33 34h2M26 35h3M20 36h2" />
+                                    <path stroke="#f41416" d="M47 32h1M41 33h1M35 34h1M22 36h1" />
+                                    <path stroke="#f41516" d="M48 32h1M42 33h1M29 35h1M23 36h1M17 37h1" />
+                                    <path stroke="#f31517" d="M43 33h1M37 34h1M31 35h1M25 36h1" />
+                                    <path stroke="#f31617" d="M44 33h2M38 34h2M32 35h1M26 36h1M19 37h2" />
+                                    <path stroke="#f31618" d="M46 33h1M40 34h1M33 35h2M27 36h2M21 37h1" />
+                                    <path stroke="#f31718" d="M47 33h1M41 34h1M35 35h1M22 37h1" />
+                                    <path stroke="#f31516" d="M36 34h1M30 35h1M24 36h1M18 37h1" />
+                                    <path stroke="#f31719" d="M42 34h1M36 35h1M29 36h2M23 37h2" />
+                                    <path stroke="#f21819" d="M43 34h1M37 35h1M31 36h1M25 37h1" />
+                                    <path stroke="#f2181a" d="M44 34h2M38 35h2M32 36h1M26 37h1M19 38h2" />
+                                    <path stroke="#f2191b" d="M46 34h1M40 35h3M34 36h2M28 37h2M22 38h2" />
+                                    <path stroke="#f11a1c" d="M43 35h2M37 36h2M31 37h2M25 38h1" />
+                                    <path stroke="#f11b1d" d="M45 35h1M39 36h2M33 37h2M26 38h3M20 39h2" />
+                                    <path stroke="#f2191a" d="M33 36h1M27 37h1M21 38h1" />
+                                    <path stroke="#f21a1c" d="M36 36h1M30 37h1M24 38h1" />
+                                    <path stroke="#f11b1e" d="M41 36h1M35 37h1M22 39h1" />
+                                    <path stroke="#f11c1e" d="M42 36h1M36 37h1M29 38h2M23 39h2" />
+                                    <path stroke="#f11c1f" d="M43 36h1M37 37h1M31 38h1M25 39h1" />
+                                    <path stroke="#f01d1f" d="M38 37h1M32 38h1M26 39h1" />
+                                    <path stroke="#f01d20" d="M39 37h2M33 38h2M27 39h2" />
+                                    <path stroke="#f01e20" d="M41 37h1M35 38h1M22 40h1" />
+                                    <path stroke="#f01e21" d="M42 37h1M36 38h1M29 39h2M23 40h2" />
+                                    <path stroke="#f01f21" d="M37 38h1M31 39h1M25 40h1" />
+                                    <path stroke="#ef1f22" d="M38 38h2M32 39h2M26 40h2M29 44h1" />
+                                    <path stroke="#ef2023" d="M40 38h1M34 39h2M28 40h2" />
+                                    <path stroke="#ef2124" d="M36 39h3M30 40h2M24 41h2" />
+                                    <path stroke="#ee2225" d="M39 39h1M32 40h3M26 41h3" />
+                                    <path stroke="#ee2226" d="M35 40h1" />
+                                    <path stroke="#ee2326" d="M36 40h1M29 41h2" />
+                                    <path stroke="#ee2327" d="M37 40h1M31 41h1" />
+                                    <path stroke="#ed2427" d="M32 41h1M26 42h1" />
+                                    <path stroke="#ed2428" d="M33 41h2M27 42h2" />
+                                    <path stroke="#ed2528" d="M35 41h1" />
+                                    <path stroke="#ed2529" d="M29 42h2" />
+                                    <path stroke="#ed2629" d="M31 42h1" />
+                                    <path stroke="#ed262a" d="M32 42h1" />
+                                    <path stroke="#ec262b" d="M33 42h1" />
+                                    <path stroke="#ec272b" d="M28 43h1" />
+                                    <path stroke="#ec272c" d="M29 43h1" />
+                                    <path stroke="#ec282c" d="M30 43h2" />
+                                    </svg>
+                                    <svg class="healthbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 38 9" shape-rendering="crispEdges">
+                                        <metadata>Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj</metadata>
+                                        <path stroke="#222034" d="M2 0h34M1 1h1M36 1h1M0 2h1M3 2h32M37 2h1M0 3h1M2 3h1M35 3h1M37 3h1M0 4h1M2 4h1M35 4h1M37 4h1M0 5h1M2 5h1M35 5h1M37 5h1M0 6h1M3 6h32M37 6h1M1 7h1M36 7h1M2 8h34" />
+                                        <path stroke="#ffffff" d="M2 1h34" />
+                                        <path stroke="#f2f2f5" d="M1 2h2M35 2h2M1 3h1M36 3h1M1 4h1M36 4h1M1 5h1M36 5h1M1 6h2M35 6h2M2 7h34" />
+                                        <path stroke="#323c39" d="M3 3h32" />
+                                        <path stroke="#494d4c" d="M3 4h32M3 5h32" />
+                                        <svg x="3" y="2.5" width="32" height="3">
+                                            <rect class="healthbar_fill" height="3" />
+                                            <rect class="healthbar_fill healthbar_fill-top" height="1" />
+                                        </svg>
+                                    </svg>
+                                    <div class="button-container">
+                                        <button class="button" onclick="updateHealth(-15)">
+                                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/HealthDemoDown.png" alt="Less Health" />
+                                        </button>
+                                        <button class="button" onclick="updateHealth(15)">
+                                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/HealthDemoUp.png" alt="More Health" />
+                                        </button>
+                                    </div>
+                            </div>
+                            <div class="hungerBar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 60 60" shape-rendering="crispEdges">
+                                    <metadata>Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj</metadata>
+                                    <path stroke="#000000" d="M27 13h13M26 14h18M25 15h3M29 15h3M39 15h6M24 16h3M30 16h3M43 16h4M23 17h3M31 17h3M44 17h4M23 18h2M32 18h3M46 18h3M22 19h3M33 19h6M47 19h2M21 20h3M34 20h16M21 21h2M38 21h12M20 22h3M48 22h2M19 23h3M47 23h3M18 24h3M47 24h2M17 25h3M47 25h1M17 26h2M46 26h2M16 27h3M45 27h3M15 28h3M45 28h2M14 29h3M45 29h2M13 30h3M44 30h3M13 31h2M44 31h2M12 32h3M43 32h3M12 33h2M43 33h2M11 34h3M43 34h2M11 35h2M43 35h1M11 36h2M20 36h7M43 36h1M11 37h3M19 37h9M42 37h2M12 38h9M26 38h4M41 38h2M13 39h7M26 39h3M41 39h2M17 40h3M26 40h2M40 40h2M16 41h3M25 41h2M39 41h2M15 42h3M24 42h3M38 42h2M14 43h3M23 43h4M37 43h2M13 44h3M22 44h2M26 44h2M35 44h3M12 45h3M21 45h2M27 45h10M11 46h3M21 46h1M29 46h6M7 47h6M20 47h1M6 48h6M19 48h2M4 49h4M19 49h1M3 50h4M18 50h1M2 51h3M17 51h2M2 52h2M17 52h1M2 53h9M17 53h1M3 54h9M16 54h1M10 55h2M15 55h2M10 56h2M15 56h2M10 57h2M14 57h2M10 58h6M11 59h4" />
+                                    <path stroke="#803326" d="M28 15h1M27 16h3M26 17h5M25 18h7M25 19h8M24 20h10M23 21h15M23 22h18M22 23h18M21 24h19M20 25h20M19 26h20M19 27h19M18 28h19M17 29h19M16 30h19M15 31h18M15 32h15M14 33h15M14 34h14M13 35h14M13 36h7M14 37h5" />
+                                    <path stroke="#ac3232" d="M32 15h7M33 16h3M37 16h1M39 16h4M34 17h2M38 17h6M35 18h3M40 18h6M39 19h1M41 19h6" />
+                                    <path stroke="#ffffff" d="M36 16h1M38 16h1M36 17h2M38 18h2M40 19h1M21 38h3M20 39h4M20 40h3M19 41h3M18 42h3M17 43h3M16 44h3M15 45h4M14 46h4M13 47h4M12 48h5M8 49h8M7 50h8M5 51h10M4 52h11M11 53h3M12 54h1M12 55h1" />
+                                    <path stroke="#732214" d="M41 22h7M40 23h7M40 24h7M40 25h7M39 26h7M38 27h7M37 28h8M36 29h9M35 30h9M33 31h11M30 32h13M29 33h14M28 34h15M27 35h16M27 36h16M28 37h14M30 38h11M29 39h12M28 40h12M27 41h12M27 42h11M27 43h10M28 44h7" />
+                                    <path stroke="#847e87" d="M24 38h2M24 39h2M23 40h3M22 41h3M21 42h3M20 43h3M19 44h3M19 45h2M18 46h3M17 47h3M17 48h2M16 49h3M15 50h3M15 51h2M15 52h2M14 53h3M13 54h3M13 55h2M12 56h3M12 57h2" />
+                                </svg>
+                                <svg class="healthbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 38 9" shape-rendering="crispEdges">
+                                    <metadata>Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj</metadata>
+                                    <path stroke="#222034" d="M2 0h34M1 1h1M36 1h1M0 2h1M3 2h32M37 2h1M0 3h1M2 3h1M35 3h1M37 3h1M0 4h1M2 4h1M35 4h1M37 4h1M0 5h1M2 5h1M35 5h1M37 5h1M0 6h1M3 6h32M37 6h1M1 7h1M36 7h1M2 8h34" />
+                                    <path stroke="#ffffff" d="M2 1h34" />
+                                    <path stroke="#f2f2f5" d="M1 2h2M35 2h2M1 3h1M36 3h1M1 4h1M36 4h1M1 5h1M36 5h1M1 6h2M35 6h2M2 7h34" />
+                                    <path stroke="#323c39" d="M3 3h32" />
+                                    <path stroke="#494d4c" d="M3 4h32M3 5h32" />
+                                    <svg x="3" y="2.5" width="32" height="3">
+                                        <rect class="hungerbar_fill" height="3" />
+                                        <rect class="hungerbar_fill hungerbar_fill-top" height="1" />
+                                    </svg>
+                                </svg>
+                                <div class="button-container">
+                                    <button class="button" onclick="updateHunger(-15)">
+                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/HealthDemoDown.png" alt="Less Health" />
+                                    </button>
+                                    <button class="button" onclick="updateHunger(15)">
+                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/HealthDemoUp.png" alt="More Health" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="hydrateBar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 60 60" shape-rendering="crispEdges">
+                                    <metadata>Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj</metadata>
+                                    <path stroke="#000000" d="M29 11h2M28 12h4M28 13h4M27 14h6M27 15h2M31 15h2M27 16h2M31 16h2M26 17h3M31 17h3M26 18h2M32 18h2M26 19h2M32 19h2M25 20h3M32 20h3M25 21h2M33 21h2M24 22h3M33 22h3M24 23h2M34 23h2M23 24h3M34 24h3M23 25h2M35 25h2M22 26h3M35 26h3M21 27h3M36 27h3M21 28h2M37 28h2M20 29h3M37 29h3M19 30h3M38 30h3M18 31h3M39 31h3M17 32h3M40 32h3M16 33h3M41 33h3M16 34h2M42 34h2M15 35h3M42 35h3M15 36h2M43 36h2M15 37h2M43 37h2M14 38h3M43 38h3M14 39h2M44 39h2M14 40h2M44 40h2M14 41h2M44 41h2M14 42h2M44 42h2M14 43h2M44 43h2M14 44h2M44 44h2M14 45h2M44 45h2M14 46h3M43 46h3M15 47h2M43 47h2M15 48h3M42 48h3M16 49h3M41 49h3M17 50h3M40 50h3M18 51h3M39 51h3M19 52h4M37 52h4M20 53h6M34 53h6M22 54h16M25 55h10" />
+                                    <path stroke="#5fcde4" d="M29 15h2M29 16h2M29 17h2M28 18h4M28 19h4M28 20h4M27 21h6M27 22h6M26 23h8M26 24h8M25 25h10M25 26h10M24 27h12M23 28h14M23 29h14M22 30h16M21 31h18M20 32h20M19 33h22M18 34h24M18 35h24M17 36h26M17 37h5M24 37h19M17 38h4M24 38h19M16 39h5M25 39h19M16 40h6M25 40h19M16 41h28M16 42h3M21 42h23M16 43h3M21 43h23M16 44h3M21 44h23M16 45h3M22 45h22M17 46h3M23 46h20M17 47h4M24 47h19M18 48h4M28 48h14M19 49h4M28 49h13M20 50h20M21 51h18M23 52h14M26 53h8" />
+                                    <path stroke="#ffffff" d="M22 37h2M21 38h3M21 39h4M22 40h3M19 42h2M19 43h2M19 44h2M19 45h3M20 46h3M21 47h3M22 48h6M23 49h5" />
+                                </svg>
+                                <svg class="healthbar" xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 38 9" shape-rendering="crispEdges">
+                                    <metadata>Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj</metadata>
+                                    <path stroke="#222034" d="M2 0h34M1 1h1M36 1h1M0 2h1M3 2h32M37 2h1M0 3h1M2 3h1M35 3h1M37 3h1M0 4h1M2 4h1M35 4h1M37 4h1M0 5h1M2 5h1M35 5h1M37 5h1M0 6h1M3 6h32M37 6h1M1 7h1M36 7h1M2 8h34" />
+                                    <path stroke="#ffffff" d="M2 1h34" />
+                                    <path stroke="#f2f2f5" d="M1 2h2M35 2h2M1 3h1M36 3h1M1 4h1M36 4h1M1 5h1M36 5h1M1 6h2M35 6h2M2 7h34" />
+                                    <path stroke="#323c39" d="M3 3h32" />
+                                    <path stroke="#494d4c" d="M3 4h32M3 5h32" />
+                                    <svg x="3" y="2.5" width="32" height="3">
+                                        <rect class="hydratebar_fill" height="3" />
+                                        <rect class="hydratebar_fill hydratebar_fill-top" height="1" />
+                                    </svg>
+                                </svg>
+                                <div class="button-container">
+                                    <button class="button" onclick="updateHydrate(-15)">
+                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/HealthDemoDown.png" alt="Less Health" />
+                                    </button>
+                                    <button class="button" onclick="updateHydrate(15)">
+                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/HealthDemoUp.png" alt="More Health" />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
                 </div>
+                <div id="overlay"></div>
 
                 <div class="inventory">
                     <h1 id="title">Click on the items to use!</h1>

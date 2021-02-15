@@ -155,6 +155,16 @@ For the shop, I made use of cards and also grid-styled CSS that I learned on you
 * JS of buying item to be done
 * Responsiveness only after shop and inventory completition
 
+# Commit 1.9
+ Completed View stats feature, allows players to see their own username and their character statistics e.g. Health Points, Hunger Points & Hydration Points. Created and converted pixel art to svg e.g. the health bar and
+ heart icon. Also did some testing in javascript to update the statistics, smooth animation fron red to yellow to green indicating how high their points are.
+
+ ### Gneneral Summary:
+ * Completed View Stats Feature
+ * Made a pop up screen to show stats
+ * Created and converted pixel art to svg icons
+ * Did testing in javascript to update statistics
+ 
 ## Features:
 ### TBA:
 
