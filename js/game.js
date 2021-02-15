@@ -12,6 +12,7 @@ $('.stats').hide();
 $('.save').hide();
 $('.char').hide();
 $('.user').hide();
+$('.gameContainer').hide();
 
 // Start game button
 $('#startGame').click(function(e) { 
@@ -48,6 +49,7 @@ $('#bam').click(function(e) { // Chose Bam
 
     $('.char').hide();
     $('.menu').show();
+    $('.gameContainer').show();
     $('.gameMenu').show();
     $('.home').show();
 })
@@ -64,6 +66,7 @@ $('#jinsung').click(function(e) { // Chose Jinsung
     $('.char').hide();
     $('.menu').show();
     $('.gameMenu').show();
+    $('.gameContainer').show();
     $('.home').show();
 })
 
@@ -79,6 +82,7 @@ $('#khun').click(function(e) { // Chose Khun
     $('.char').hide();
     $('.menu').show();
     $('.gameMenu').show();
+    $('.gameContainer').show();
     $('.home').show();
 })
 
@@ -94,6 +98,7 @@ $('#androssi').click(function(e) { // Chose Androssi
     $('.char').hide();
     $('.menu').show();
     $('.gameMenu').show();
+    $('.gameContainer').show();
     $('.home').show();
 })
 
@@ -109,6 +114,7 @@ $('#yuri').click(function(e) { // Chose Yuri
     $('.char').hide();
     $('.menu').show();
     $('.gameMenu').show();
+    $('.gameContainer').show();
     $('.home').show();
 })
 
@@ -124,6 +130,7 @@ $('#garam').click(function(e) { // Chose Garam
     $('.char').hide();
     $('.menu').show();
     $('.gameMenu').show();
+    $('.gameContainer').show();
     $('.home').show();
 })
 

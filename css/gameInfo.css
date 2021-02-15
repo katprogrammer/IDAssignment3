@@ -67,3 +67,307 @@ html {
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 1024px) {
+    .infoContainer {
+        padding-top: 10%;
+        padding-bottom: 10%;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    #title {
+        font-size: 35px;
+        margin-bottom: 5%;
+    }
+
+    .infoIMG, .petIMG, .gamesIMG, .foodIMG {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+    }
+
+    .infoIMG img, .petIMG img, .gamesIMG img, .foodIMG img {
+        width: 80%;
+    }
+
+    .foodContainer {
+        flex-direction: column;
+        height: 100%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .foodTitle {
+        margin-top: 8%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .petContainer {
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .petTitle {
+        margin-top: 8%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .petTitle img {
+        width: 60%;
+    }
+
+    .miniGamesContainer {
+        flex-direction: column;
+        height: 100%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .gamesTitle {
+        margin-top: 8%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .gamesTitle img {
+        width: 30%;
+    }
+}
+
+@media (max-width: 768px) {
+    .infoContainer {
+        padding-top: 10%;
+        padding-bottom: 10%;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    #title {
+        font-size: 27px;
+        margin-bottom: 5%;
+    }
+
+    .infoIMG, .petIMG, .gamesIMG, .foodIMG {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+    }
+
+    .infoIMG img, .petIMG img, .gamesIMG img, .foodIMG img {
+        width: 80%;
+    }
+
+    .foodContainer {
+        flex-direction: column;
+        height: 100%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .foodTitle {
+        margin-top: 8%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .petContainer {
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .petTitle {
+        margin-top: 8%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .petTitle img {
+        width: 60%;
+    }
+
+    .miniGamesContainer {
+        flex-direction: column;
+        height: 100%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .gamesTitle {
+        margin-top: 8%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .gamesTitle img {
+        width: 30%;
+    }
+}
+
+@media (max-width: 700px) {
+    .infoContainer {
+        padding-top: 10%;
+        padding-bottom: 10%;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    #title {
+        font-size: 22px;
+        margin-bottom: 5%;
+    }
+
+    .infoIMG, .petIMG, .gamesIMG, .foodIMG {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+    }
+
+    .infoIMG img, .petIMG img, .gamesIMG img, .foodIMG img {
+        width: 80%;
+    }
+
+    .foodContainer {
+        flex-direction: column;
+        height: 100%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .foodTitle {
+        margin-top: 8%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .petContainer {
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .petTitle {
+        margin-top: 8%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .petTitle img {
+        width: 60%;
+    }
+
+    .miniGamesContainer {
+        flex-direction: column;
+        height: 100%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .gamesTitle {
+        margin-top: 8%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .gamesTitle img {
+        width: 30%;
+    }
+}
+
+@media (max-width: 400px) {
+    .infoContainer {
+        padding-top: 10%;
+        padding-bottom: 10%;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    #title {
+        font-size: 22px;
+        margin-bottom: 5%;
+    }
+
+    .infoIMG, .petIMG, .gamesIMG, .foodIMG {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+    }
+
+    .infoIMG img, .petIMG img, .gamesIMG img, .foodIMG img {
+        width: 80%;
+    }
+
+    .foodContainer {
+        flex-direction: column;
+        height: 100%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .foodTitle {
+        margin-top: 8%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .petContainer {
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .petTitle {
+        margin-top: 8%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .petTitle img {
+        width: 60%;
+    }
+
+    .miniGamesContainer {
+        flex-direction: column;
+        height: 100%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .gamesTitle {
+        margin-top: 8%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .gamesTitle img {
+        width: 30%;
+    }
+}

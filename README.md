@@ -124,6 +124,19 @@ Similarly, I have added the appropriate Javascript and CSS for these 3 items. Re
 * JS and CSS updated
 * Responsiveness by next commit
 
+# Commit 1.7
+Completed responsiveness for home page, username input page, game info page as well as the character selection page. I updated some stuff such as the game menu buttons to make them look nicer and more interactive. I also updated some of the code in the Javascript to reflect the division changes in the html, I shifted the menu divisions, char div and user div out of the game container so as to prevent any CSS errors when handling responsiveness.
+
+The buttons, I refered to a youtube video where I learned how to create them based on my own needs and requirements.
+
+#### General Summary:
+* Completed Home Page Responsiveness
+* Completed Username Input Page Responsiveness
+* Completed Game Info Page Responsiveness
+* Completed Character Selection Page Responsiveness
+* Improved Game Menu buttons for more sleek viewing experience
+* Updated JS and CSS according to HTML Div Changes
+
 ## Features:
 ### TBA:
 
