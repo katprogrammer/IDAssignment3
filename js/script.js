@@ -2,6 +2,10 @@
 // Food API
 const food_url = 'https://api.spoonacular.com';
 const food_key = 'apiKey=4ce90f9a40a44ef4b178c092397c7877';
+var food = [];
+var pizzaInfo = '', chilliInfo = '', donutsInfo = '', brkSmoothyInfo = '', proShakeInfo = '';
+var batmanInfo = '', capAmericaInfo = '', thorInfo = '', onePunchInfo = '', grootInfo = '';
+var darthVaderInfo = '', carnageInfo = '', lokiInfo = '', magnetoInfo = '', redHulkInfo = '', thanosInfo = '';
 
 async function GetRecipeInformation(food_url, recipeID, food_key) {
     const response = await fetch(`${food_url}/recipes/${recipeID}/information?${food_key}&includeNutrition=false`, {
@@ -23,6 +27,42 @@ async function GetSuperhero(heroID) {
 
     const json = await response.json();
     return json;
+}
+
+// For the Spoonacular API, its a bit annoying, but there are daily limits to the number of requests that it can make so do take note***
+function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo) {
+    var array = [pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo];
+    var content = '';
+
+    for (i = 0; i < array.length; i++) {
+        content += `
+        <div class="card">
+            <div class="card-image"><img id="shopImg" src="${array[i].image}"></div>
+            <div class="card-text">
+                <h2>${array[i].title}</h2>
+            </div>
+            <div class="card-stats">
+                <div class="stat">
+                    <div class="value">${array[i].healthScore}</div>
+                    <div class="type">Nutrition</div>
+                </div>
+                <div class="stat">
+                    <div class="value">${array[i].cookingMinutes}</div>
+                    <div class="type">HP</div>
+                </div>
+                <div class="stat">
+                    <div class="value">${array[i].readyInMinutes}</div>
+                    <div class="type">Energy</div>
+                </div>
+            </div>
+            <div class="card-buy">
+                <button type="submit" id="buyItem">Buy Now!</button>
+            </div>
+        </div>
+        `
+    }
+
+    $(".shopItems").html(content);
 }
 
 // Main Method
@@ -52,28 +92,30 @@ async function RunAPI() {
     const redHulkID = '547';
 
     // Food Information
-    // const pizzaInfo = await GetRecipeInformation(food_url, pizzaID, food_key).catch(error => console.log(error));
-    // const brkSmoothyInfo = await GetRecipeInformation(food_url, brkSmoothyID, food_key).catch(error => console.log(error));
-    // const chilliInfo = await GetRecipeInformation(food_url, chilliID, food_key).catch(error => console.log(error));
-    // const donutsInfo = await GetRecipeInformation(food_url, donutsD, food_key).catch(error => console.log(error));
-    // const proShakeInfo = await GetRecipeInformation(food_url, proShakeID, food_key).catch(error => console.log(error));
+    pizzaInfo = await GetRecipeInformation(food_url, pizzaID, food_key).catch(error => console.log(error));
+    brkSmoothyInfo = await GetRecipeInformation(food_url, brkSmoothyID, food_key).catch(error => console.log(error));
+    chilliInfo = await GetRecipeInformation(food_url, chilliID, food_key).catch(error => console.log(error));
+    donutsInfo = await GetRecipeInformation(food_url, donutsID, food_key).catch(error => console.log(error));
+    proShakeInfo = await GetRecipeInformation(food_url, proShakeID, food_key).catch(error => console.log(error)); 
+    
+    InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
 
     // SuperHero Information
-    // const batmanInfo = await GetSuperhero(batmanID).catch(error => console.log(error));
-    // const capAmericaInfo = await GetSuperhero(capAmericaID).catch(error => console.log(error));
-    // const thorInfo = await GetSuperhero(thorID).catch(error => console.log(error));
-    // const onePunchInfo = await GetSuperhero(onePunchID).catch(error => console.log(error));
-    // const grootInfo = await GetSuperhero(grootID).catch(error => console.log(error));
+    // batmanInfo = await GetSuperhero(batmanID).catch(error => console.log(error));
+    // capAmericaInfo = await GetSuperhero(capAmericaID).catch(error => console.log(error));
+    // thorInfo = await GetSuperhero(thorID).catch(error => console.log(error));
+    // onePunchInfo = await GetSuperhero(onePunchID).catch(error => console.log(error));
+    // grootInfo = await GetSuperhero(grootID).catch(error => console.log(error));
     
     // SuperVillian Information
-    // const darthVaderInfo = await GetSuperhero(darthVaderID).catch(error => console.log(error));
-    // const carnageInfo = await GetSuperhero(carnageID).catch(error => console.log(error));
-    // const lokiInfo = await GetSuperhero(lokiID).catch(error => console.log(error));
-    // const magnetoInfo = await GetSuperhero(magnetoID).catch(error => console.log(error));
-    // const redHulkInfo = await GetSuperhero(redHulkID).catch(error => console.log(error));
+    // darthVaderInfo = await GetSuperhero(darthVaderID).catch(error => console.log(error));
+    // carnageInfo = await GetSuperhero(carnageID).catch(error => console.log(error));
+    // lokiInfo = await GetSuperhero(lokiID).catch(error => console.log(error));
+    // magnetoInfo = await GetSuperhero(magnetoID).catch(error => console.log(error));
+    // redHulkInfo = await GetSuperhero(redHulkID).catch(error => console.log(error));
 
     // FinalBoss Information
-    // const thanosInfo = await GetSuperhero(thanosID).catch(error => console.log(error));
+    // thanosInfo = await GetSuperhero(thanosID).catch(error => console.log(error));
 }
 
 // Game Javascript
@@ -87,14 +129,14 @@ var currency = 0; // Money variable for shop
 // Default Game Page parameters
 $('.gameMenu').hide();
 $('.home').hide();
-$('.inventory').show();
+$('.inventory').hide();
 $('.shop').hide();
 $('.fight').hide();
 $('.stats').hide();
 $('.save').hide();
 $('.char').hide();
 $('.user').hide();
-$('.gameContainer').show();
+$('.gameContainer').hide();
 
 // Start game button
 $('#startGame').click(function(e) { 
@@ -282,6 +324,7 @@ $('#inventory').click(function(e) {
     $('.inventory').show(); // Show inventory division/menu
 })
 
+// ---------------------------- Shop functions section --------------------------
 // Shop button
 $('#shop').click(function(e) {
     e.preventDefault();
@@ -294,6 +337,13 @@ $('#shop').click(function(e) {
     $('.save').hide();
 
     $('.shop').show(); // Show shop division/menu
+})
+
+// Buy Item button
+$('#buyItem').click(function(e) {
+    e.preventDefault();
+
+    
 })
 
 // Exit Game Button
@@ -309,15 +359,30 @@ $('#exitGame').click(function(e) {
     $('.save').hide();
 })
 
+// Function for when a user purchases an item from the store
+// It will validate if currency is sufficient, it will also
+// add the newly purchased item into the global inv array.
+function purchaseItem(currency) {
+
+}
+
+// Function for when a user selects an item in the inventory for use,
+// it will create a pop-up box for user to select use/not to use and
+// it will also update the statistics of the player accordingly.
+function useItem(inv) { 
+
+}
+
 function checkInventoryItems(inv, currency) {
     if (inv.length === 0) {
         $('.invSpace').innerHTML('<h1>There are currently no items in your inventory.</h1>');
     }
     else {
-        inv.forEach(element => {
-            // $('.invSpace').innerHTML += `<div class="item"><img src="${}" alt="${}"></div>`;
+        inv.forEach(x => {
+            // if (x === )
+            // $('.invSpace').innerHTML += `<div class="item"><img src="${x.img}" alt="${x.name}"></div>`;
         });
     }
 }
 
-RunAPI();
+RunAPI(food);

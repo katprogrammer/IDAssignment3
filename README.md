@@ -144,6 +144,17 @@ Had to remove the game.js file due to variable complications and shifted everyth
 * Removed game.js file
 * Shifted content to script.js file
 
+# Commit 2.0
+Completed main portion of the shop, but sadly reached a API call capacity and was unable to continue further. What's left is to do the eventlistener for the buy button in the shop and update the inventory and currency stats accordingly. Responsiveness is yet to be done, but it will be completed once the shop and inventory is completed.
+
+For the shop, I made use of cards and also grid-styled CSS that I learned on youtube to format and design the cards. For the inventory page, I made use of new previous CSS styling such as box-shadow and transform: scale() to make look better when interacting with it.
+
+#### General Summary:
+* Completed main portion of shop page
+* Completed small portion of inventory page
+* JS of buying item to be done
+* Responsiveness only after shop and inventory completition
+
 ## Features:
 ### TBA:
 
