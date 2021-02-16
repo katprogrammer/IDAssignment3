@@ -193,6 +193,17 @@ Updated Javascript for registration form, to allow players to select a character
 ### General Summary:
 * Updated JS on click function for registration form
 
+# Commit 2.5
+I have completed the store function where the API will send the data and the javascript will render it into the html. When the user clicks on buy item, it will prompt him that the purchase is successful and subtract the currency appropriately. Similarly, I will likely add a currency counter in the store page so that the user will know how much gold he has. Each player will start off with 100 gold as the starting amount.
+
+Similarly, the javascript eventlistener, I had researched online and got useful tips which helped streamline the process of making the store. The inventory will be completed by the next few commits followed by a bit of responsiveness for the different pages.
+
+#### General Summary:
+* Completed Shop page
+* Currency and Inventory array function working
+* Inventory TBC in next few commits
+* Responsiveness TBC in next few commits
+
 ## Features:
 ### TBA:
 

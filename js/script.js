@@ -42,15 +42,15 @@ function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proSh
             </div>
             <div class="card-stats">
                 <div class="stat">
-                    <div class="value">${array[i].pricePerServing}</div>
+                    <div class="value value1">${array[i].pricePerServing}</div>
                     <div class="type">Nutrition</div>
                 </div>
                 <div class="stat">
-                    <div class="value">${array[i].healthScore}</div>
+                    <div class="value value2">${array[i].healthScore}</div>
                     <div class="type">HP</div>
                 </div>
                 <div class="stat">
-                    <div class="value">${array[i].readyInMinutes}</div>
+                    <div class="value value3">${array[i].readyInMinutes}</div>
                     <div class="type">Energy</div>
                 </div>
             </div>
@@ -197,9 +197,6 @@ async function RunGame() {
     // Global Variables
     var charimg = ''; // Chosen character profile picture location
     var dname = ''; // Display name
-
-    var inv = [] // Inventory Array to store items bought and received
-    var currency = 0; // Money variable for shop
 
     // Start game button
     $('#startGame').click(function(e) { 
@@ -432,6 +429,7 @@ async function RunGame() {
 
     // ---------------------------- Inventory functions section --------------------------
     // Inventory button
+    var inv = [] // Inventory Array to store items bought and received
     $('#inventory').click(function(e) {
         e.preventDefault();
 
@@ -460,24 +458,10 @@ async function RunGame() {
 
         $('.shop').show(); // Show shop division/menu
     })
-
+    
+    var currency = 100; // Money variable for shop
     // Buy Item button
-    var addItemToInventory = $('.buyItem');
-    console.log(addItemToInventory);
-
-    for (var i = 0; i < addItemToInventory.length; i++) {
-        var buy = addItemToInventory[i];
-        console.log(buy);
-
-        buy.addEventListener('click', function(e) {
-            var boughtItem = e.target;
-            console.log(boughtItem);
-
-            // console.log(boughtItem.parentElement.parentElement.attr('id'));
-            // inv.push(boughtItem.parentElement.parentElement.attr('id'));
-            // console.log(inv[i]);
-        })
-    }
+    currency = BuyItem(currency, inv);
 
     // ---------------------------- View Stats section --------------------------
     // Exit Game Button
@@ -493,124 +477,154 @@ async function RunGame() {
         $('.save').hide();
         window.location = "https://katprogrammer.github.io/IDAssignment3/";
     })
-
-    var fills = document.querySelectorAll(".healthbar_fill");
-    var hungerFill = document.querySelectorAll(".hungerbar_fill");
-    var hydrateFill = document.querySelectorAll(".hydratebar_fill");
-
-    var health = 75;
-    var maxHp = 100;
-
-    var hunger = 75;
-    var maxHunger = 100;
-
-    var hydrate = 75;
-    var maxHydrate = 100;
-
-    function renderBar() {
-        var hpPercent = health / maxHp * 100;
-        var foodPercent = hunger / maxHunger * 100;
-        var waterPercent = hydrate / maxHydrate * 100;
-        
-        //Update color
-        document.documentElement.style.setProperty('--healthbar-fill', '#57e705');
-        document.documentElement.style.setProperty('--healthbar-top',  '#6aff03');
-
-        document.documentElement.style.setProperty('--hungerbar-fill', '#57e705');
-        document.documentElement.style.setProperty('--hungerbar-top',  '#6aff03');
-
-        document.documentElement.style.setProperty('--hydratebar-fill', '#57e705');
-        document.documentElement.style.setProperty('--hydratebar-top',  '#6aff03');
-        
-        if (hpPercent <= 50 ) { //yellows
-            document.documentElement.style.setProperty('--healthbar-fill', '#d6ed20');
-            document.documentElement.style.setProperty('--healthbar-top',  '#d8ff48');   
-        }
-        if (hpPercent <= 25) { //reds
-            document.documentElement.style.setProperty('--healthbar-fill', '#ec290a');
-            document.documentElement.style.setProperty('--healthbar-top',  '#ff3818');
-        }
-        if (foodPercent <= 50 ) { //yellows
-            document.documentElement.style.setProperty('--hungerbar-fill', '#d6ed20');
-            document.documentElement.style.setProperty('--hungerbar-top',  '#d8ff48');   
-        }
-        if (foodPercent <= 25) { //reds
-            document.documentElement.style.setProperty('--hungerbar-fill', '#ec290a');
-            document.documentElement.style.setProperty('--hungerbar-top',  '#ff3818');
-        }
-        if (waterPercent <= 50 ) { //yellows
-            document.documentElement.style.setProperty('--hydratebar-fill', '#d6ed20');
-            document.documentElement.style.setProperty('--hydratebar-top',  '#d8ff48');   
-        }
-        if (waterPercent <= 25) { //reds
-            document.documentElement.style.setProperty('--hydratebar-fill', '#ec290a');
-            document.documentElement.style.setProperty('--hydratebar-top',  '#ff3818');
-        }
-
-        fills.forEach(fill => {
-                fill.style.width = hpPercent+"%";
-        })
-        hungerFill.forEach(fill => {
-                fill.style.width = foodPercent+"%";
-        })
-        hydrateFill.forEach(fill => {
-                fill.style.width = waterPercent+"%";
-        })            
-    }
-
-    function updateHealth(change) {
-        health += change;
-        health = health > maxHp ? maxHp : health;
-        health = health < 0 ? 0 : health;
-            
-        renderBar();
-    }
-
-    function updateHunger(change) {
-        hunger += change;
-        hunger = hunger > maxHunger ? maxHunger : hunger;
-        hunger = hunger < 0 ? 0 : hunger;
-    
-        renderBar();
-    }
-    function updateHydrate(change) {
-        hydrate += change;
-        hydrate = hydrate > maxHydrate ? maxHydrate : hydrate;
-        hydrate = hydrate < 0 ? 0 : hydrate;
-    
-        renderBar();
-    }
-
-    //init
-    updateHealth(0);
-    updateHunger(0);
-    updateHydrate(0);
-
-    // Function for when a user purchases an item from the store
-    // It will validate if currency is sufficient, it will also
-    // add the newly purchased item into the global inv array.
-    function purchaseItem(currency) {
-
-    }
-
-    // Function for when a user selects an item in the inventory for use,
-    // it will create a pop-up box for user to select use/not to use and
-    // it will also update the statistics of the player accordingly.
-    function useItem(inv) { 
-
-    }
-
-    function checkInventoryItems(inv, currency) {
-        if (inv.length === 0) {
-            $('.invSpace').innerHTML('<h1>There are currently no items in your inventory.</h1>');
-        }
-        else {
-            inv.forEach(x => {
-                // if (x === )
-                // $('.invSpace').innerHTML += `<div class="item"><img src="${x.img}" alt="${x.name}"></div>`;
-            });
-        }
-    }
 }
 
 RunGame();
+
+// Function for when a user purchases an item from the store
+// It will validate if currency is sufficient, it will also
+// add the newly purchased item into the global inv array.
+function BuyItem(currency, inv) {
+    var addItemToInventory = $('.buyItem');
+    console.log(addItemToInventory);
+
+    for (var i = 0; i < addItemToInventory.length; i++) {
+        var buy = addItemToInventory[i];
+
+        buy.addEventListener('click', function(e) {
+            if (currency <= 0) {
+                alert("You have insufficient gold! Go battle some monsters!");
+            }
+            else {
+                var boughtItem = e.target;
+                console.log(boughtItem);
+                inv.push(boughtItem.parentElement.parentElement.getAttribute('num'));
+                
+                // Update currency
+                if (i === 2) {
+                    return currency;
+                }
+                else {
+                    console.log(currency);
+                    currency -= Math.floor(parseInt($(`.value1`).text()) / 4);
+                }
+
+                // Complete purchase
+                alert("Your purchase was successful, enjoy!")
+            }
+        })
+    }
+
+    return currency;
+}
+
+function checkInventoryItems(inv, currency) {
+    if (inv.length === 0) {
+        $('.invSpace').innerHTML('<h1>There are currently no items in your inventory.</h1>');
+    }
+    else {
+        inv.forEach(x => {
+            // if (x === )
+            // $('.invSpace').innerHTML += `<div class="item"><img src="${x.img}" alt="${x.name}"></div>`;
+        });
+    }
+}
+
+// Function for when a user selects an item in the inventory for use,
+// it will create a pop-up box for user to select use/not to use and
+// it will also update the statistics of the player accordingly.
+function useItem(inv) { 
+
+}
+
+var fills = document.querySelectorAll(".healthbar_fill");
+var hungerFill = document.querySelectorAll(".hungerbar_fill");
+var hydrateFill = document.querySelectorAll(".hydratebar_fill");
+
+var health = 75;
+var maxHp = 100;
+
+var hunger = 75;
+var maxHunger = 100;
+
+var hydrate = 75;
+var maxHydrate = 100;
+
+function renderBar() {
+    var hpPercent = health / maxHp * 100;
+    var foodPercent = hunger / maxHunger * 100;
+    var waterPercent = hydrate / maxHydrate * 100;
+    
+    //Update color
+    document.documentElement.style.setProperty('--healthbar-fill', '#57e705');
+    document.documentElement.style.setProperty('--healthbar-top',  '#6aff03');
+
+    document.documentElement.style.setProperty('--hungerbar-fill', '#57e705');
+    document.documentElement.style.setProperty('--hungerbar-top',  '#6aff03');
+
+    document.documentElement.style.setProperty('--hydratebar-fill', '#57e705');
+    document.documentElement.style.setProperty('--hydratebar-top',  '#6aff03');
+    
+    if (hpPercent <= 50 ) { //yellows
+        document.documentElement.style.setProperty('--healthbar-fill', '#d6ed20');
+        document.documentElement.style.setProperty('--healthbar-top',  '#d8ff48');   
+    }
+    if (hpPercent <= 25) { //reds
+        document.documentElement.style.setProperty('--healthbar-fill', '#ec290a');
+        document.documentElement.style.setProperty('--healthbar-top',  '#ff3818');
+    }
+    if (foodPercent <= 50 ) { //yellows
+        document.documentElement.style.setProperty('--hungerbar-fill', '#d6ed20');
+        document.documentElement.style.setProperty('--hungerbar-top',  '#d8ff48');   
+    }
+    if (foodPercent <= 25) { //reds
+        document.documentElement.style.setProperty('--hungerbar-fill', '#ec290a');
+        document.documentElement.style.setProperty('--hungerbar-top',  '#ff3818');
+    }
+    if (waterPercent <= 50 ) { //yellows
+        document.documentElement.style.setProperty('--hydratebar-fill', '#d6ed20');
+        document.documentElement.style.setProperty('--hydratebar-top',  '#d8ff48');   
+    }
+    if (waterPercent <= 25) { //reds
+        document.documentElement.style.setProperty('--hydratebar-fill', '#ec290a');
+        document.documentElement.style.setProperty('--hydratebar-top',  '#ff3818');
+    }
+
+    fills.forEach(fill => {
+            fill.style.width = hpPercent+"%";
+    })
+    hungerFill.forEach(fill => {
+            fill.style.width = foodPercent+"%";
+    })
+    hydrateFill.forEach(fill => {
+            fill.style.width = waterPercent+"%";
+    })            
+}
+
+function updateHealth(change) {
+    health += change;
+    health = health > maxHp ? maxHp : health;
+    health = health < 0 ? 0 : health;
+        
+    renderBar();
+}
+
+function updateHunger(change) {
+    hunger += change;
+    hunger = hunger > maxHunger ? maxHunger : hunger;
+    hunger = hunger < 0 ? 0 : hunger;
+
+    renderBar();
+}
+function updateHydrate(change) {
+    hydrate += change;
+    hydrate = hydrate > maxHydrate ? maxHydrate : hydrate;
+    hydrate = hydrate < 0 ? 0 : hydrate;
+
+    renderBar();
+}
+
+//init
+updateHealth(0);
+updateHunger(0);
+updateHydrate(0);
