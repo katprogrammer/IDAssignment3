@@ -43,11 +43,11 @@ function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proSh
             </div>
             <div class="card-stats">
                 <div class="stat">
-                    <div class="value">${array[i].healthScore}</div>
+                    <div class="value">${array[i].pricePerServing}</div>
                     <div class="type">Nutrition</div>
                 </div>
                 <div class="stat">
-                    <div class="value">${array[i].cookingMinutes}</div>
+                    <div class="value">${array[i].healthScore}</div>
                     <div class="type">HP</div>
                 </div>
                 <div class="stat">
@@ -92,13 +92,13 @@ async function RunAPI() {
     const redHulkID = '547';
 
     // Food Information
-    pizzaInfo = await GetRecipeInformation(food_url, pizzaID, food_key).catch(error => console.log(error));
-    brkSmoothyInfo = await GetRecipeInformation(food_url, brkSmoothyID, food_key).catch(error => console.log(error));
-    chilliInfo = await GetRecipeInformation(food_url, chilliID, food_key).catch(error => console.log(error));
-    donutsInfo = await GetRecipeInformation(food_url, donutsID, food_key).catch(error => console.log(error));
-    proShakeInfo = await GetRecipeInformation(food_url, proShakeID, food_key).catch(error => console.log(error)); 
+    // pizzaInfo = await GetRecipeInformation(food_url, pizzaID, food_key).catch(error => console.log(error));
+    // brkSmoothyInfo = await GetRecipeInformation(food_url, brkSmoothyID, food_key).catch(error => console.log(error));
+    // chilliInfo = await GetRecipeInformation(food_url, chilliID, food_key).catch(error => console.log(error));
+    // donutsInfo = await GetRecipeInformation(food_url, donutsID, food_key).catch(error => console.log(error));
+    // proShakeInfo = await GetRecipeInformation(food_url, proShakeID, food_key).catch(error => console.log(error)); 
     
-    InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
+    // InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
 
     // SuperHero Information
     // batmanInfo = await GetSuperhero(batmanID).catch(error => console.log(error));
@@ -311,6 +311,7 @@ $('#viewStats').click(function(e) {
 
     $('.stats').show(); // Show stats division/menu
 })
+
 const closeStatsButton = document.querySelectorAll('[data-close-button]');
 const overlay = document.getElementById('overlay');
 
@@ -320,16 +321,20 @@ closeStatsButton.forEach(button => {
         closeStats(stats);
     })
 })
+
 function openStats(stats) {
     if (stats == null) return;
     stats.classList.add('active');
     overlay.classList.add('active');
 }
+
 function closeStats(stats) {
     if (stats == null) return;
     stats.classList.remove('active');
     overlay.classList.remove('active');
 }
+
+// ---------------------------- Inventory functions section --------------------------
 // Inventory button
 $('#inventory').click(function(e) {
     e.preventDefault();
@@ -367,18 +372,7 @@ $('#buyItem').click(function(e) {
     
 })
 
-// Exit Game Button
-$('#exitGame').click(function(e) {
-    e.preventDefault();
-
-    // Exit game function to be added
-    $('.home').hide();
-    $('.inventory').hide();
-    $('.shop').hide();
-    $('.fight').hide();
-    $('.stats').hide();
-    $('.save').hide();
-})
+// ---------------------------- View Stats section --------------------------
 var fills = document.querySelectorAll(".healthbar_fill");
 var hungerFill = document.querySelectorAll(".hungerbar_fill");
 var hydrateFill = document.querySelectorAll(".hydratebar_fill");

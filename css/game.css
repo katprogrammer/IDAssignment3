@@ -367,6 +367,7 @@ html, body {
 
 /* Shop CSS */
 .shop {
+    width: 90%;
     margin-top: 30px;
 }
 

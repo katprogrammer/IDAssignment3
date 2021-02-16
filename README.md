@@ -153,7 +153,7 @@ Had to remove the game.js file due to variable complications and shifted everyth
  * Made a pop up screen to show stats
  * Created and converted pixel art to svg icons
  * Did testing in javascript to update statistics
- 
+
 # Commit 2.0
 Completed main portion of the shop, but sadly reached a API call capacity and was unable to continue further. What's left is to do the eventlistener for the buy button in the shop and update the inventory and currency stats accordingly. Responsiveness is yet to be done, but it will be completed once the shop and inventory is completed.
 
@@ -164,7 +164,14 @@ For the shop, I made use of cards and also grid-styled CSS that I learned on you
 * Completed small portion of inventory page
 * JS of buying item to be done
 * Responsiveness only after shop and inventory completition
- 
+
+# Commit 2.1
+Removed Exit Game function from the game as we felt that it was pretty redundant where you can just close the web browser tab to exit. Other web browser games also do not have an exit game function but more of a save game function.
+
+#### General Summary:
+* Removed Exit Game Function
+* 
+
 ## Features:
 ### TBA:
 
