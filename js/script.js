@@ -36,7 +36,7 @@ function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proSh
     for (i = 0; i < array.length; i++) {
         content += `
         <div class="card" id="card${i}" num="${array[i].id}">
-            <div class="card-image"><img id="shopImg" src="${array[i].image}"></div>
+            <div class="card-image"><img id="shopImg" src="${array[i].image}" alt="shop item"></div>
             <div class="card-text">
                 <h2>${array[i].title}</h2>
             </div>
@@ -55,7 +55,7 @@ function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proSh
                 </div>
             </div>
             <div class="card-buy">
-                <button type="submit" id="buyItem">Buy Now!</button>
+                <button type="submit" id="buyItem" class="buyItem">Buy Now!</button>
             </div>
         </div>
         `
@@ -508,64 +508,64 @@ async function RunGame() {
     var maxHydrate = 100;
 
     function renderBar() {
-    
-    var hpPercent = health / maxHp * 100;
-    var foodPercent = hunger / maxHunger * 100;
-    var waterPercent = hydrate / maxHydrate * 100;
-    
-    //Update color
-    document.documentElement.style.setProperty('--healthbar-fill', '#57e705');
-    document.documentElement.style.setProperty('--healthbar-top',  '#6aff03');
+        var hpPercent = health / maxHp * 100;
+        var foodPercent = hunger / maxHunger * 100;
+        var waterPercent = hydrate / maxHydrate * 100;
+        
+        //Update color
+        document.documentElement.style.setProperty('--healthbar-fill', '#57e705');
+        document.documentElement.style.setProperty('--healthbar-top',  '#6aff03');
 
-    document.documentElement.style.setProperty('--hungerbar-fill', '#57e705');
-    document.documentElement.style.setProperty('--hungerbar-top',  '#6aff03');
+        document.documentElement.style.setProperty('--hungerbar-fill', '#57e705');
+        document.documentElement.style.setProperty('--hungerbar-top',  '#6aff03');
 
-    document.documentElement.style.setProperty('--hydratebar-fill', '#57e705');
-    document.documentElement.style.setProperty('--hydratebar-top',  '#6aff03');
-    
-    if (hpPercent <= 50 ) { //yellows
-        document.documentElement.style.setProperty('--healthbar-fill', '#d6ed20');
-        document.documentElement.style.setProperty('--healthbar-top',  '#d8ff48');   
-    }
-    if (hpPercent <= 25) { //reds
-        document.documentElement.style.setProperty('--healthbar-fill', '#ec290a');
-        document.documentElement.style.setProperty('--healthbar-top',  '#ff3818');
-    }
-    if (foodPercent <= 50 ) { //yellows
-        document.documentElement.style.setProperty('--hungerbar-fill', '#d6ed20');
-        document.documentElement.style.setProperty('--hungerbar-top',  '#d8ff48');   
-    }
-    if (foodPercent <= 25) { //reds
-        document.documentElement.style.setProperty('--hungerbar-fill', '#ec290a');
-        document.documentElement.style.setProperty('--hungerbar-top',  '#ff3818');
-    }
-    if (waterPercent <= 50 ) { //yellows
-        document.documentElement.style.setProperty('--hydratebar-fill', '#d6ed20');
-        document.documentElement.style.setProperty('--hydratebar-top',  '#d8ff48');   
-    }
-    if (waterPercent <= 25) { //reds
-        document.documentElement.style.setProperty('--hydratebar-fill', '#ec290a');
-        document.documentElement.style.setProperty('--hydratebar-top',  '#ff3818');
-    }
+        document.documentElement.style.setProperty('--hydratebar-fill', '#57e705');
+        document.documentElement.style.setProperty('--hydratebar-top',  '#6aff03');
+        
+        if (hpPercent <= 50 ) { //yellows
+            document.documentElement.style.setProperty('--healthbar-fill', '#d6ed20');
+            document.documentElement.style.setProperty('--healthbar-top',  '#d8ff48');   
+        }
+        if (hpPercent <= 25) { //reds
+            document.documentElement.style.setProperty('--healthbar-fill', '#ec290a');
+            document.documentElement.style.setProperty('--healthbar-top',  '#ff3818');
+        }
+        if (foodPercent <= 50 ) { //yellows
+            document.documentElement.style.setProperty('--hungerbar-fill', '#d6ed20');
+            document.documentElement.style.setProperty('--hungerbar-top',  '#d8ff48');   
+        }
+        if (foodPercent <= 25) { //reds
+            document.documentElement.style.setProperty('--hungerbar-fill', '#ec290a');
+            document.documentElement.style.setProperty('--hungerbar-top',  '#ff3818');
+        }
+        if (waterPercent <= 50 ) { //yellows
+            document.documentElement.style.setProperty('--hydratebar-fill', '#d6ed20');
+            document.documentElement.style.setProperty('--hydratebar-top',  '#d8ff48');   
+        }
+        if (waterPercent <= 25) { //reds
+            document.documentElement.style.setProperty('--hydratebar-fill', '#ec290a');
+            document.documentElement.style.setProperty('--hydratebar-top',  '#ff3818');
+        }
 
-    fills.forEach(fill => {
-            fill.style.width = hpPercent+"%";
-    })
-    hungerFill.forEach(fill => {
-            fill.style.width = foodPercent+"%";
-    })
-    hydrateFill.forEach(fill => {
-            fill.style.width = waterPercent+"%";
-    })            
+        fills.forEach(fill => {
+                fill.style.width = hpPercent+"%";
+        })
+        hungerFill.forEach(fill => {
+                fill.style.width = foodPercent+"%";
+        })
+        hydrateFill.forEach(fill => {
+                fill.style.width = waterPercent+"%";
+        })            
     }
 
     function updateHealth(change) {
-    health += change;
-    health = health > maxHp ? maxHp : health;
-    health = health < 0 ? 0 : health;
-        
-    renderBar();
+        health += change;
+        health = health > maxHp ? maxHp : health;
+        health = health < 0 ? 0 : health;
+            
+        renderBar();
     }
+
     function updateHunger(change) {
         hunger += change;
         hunger = hunger > maxHunger ? maxHunger : hunger;
@@ -582,9 +582,9 @@ async function RunGame() {
     }
 
     //init
-    updateHealth(0)
-    updateHunger(0)
-    updateHydrate(0)
+    updateHealth(0);
+    updateHunger(0);
+    updateHydrate(0);
 
     // Function for when a user purchases an item from the store
     // It will validate if currency is sufficient, it will also
