@@ -165,6 +165,14 @@ For the shop, I made use of cards and also grid-styled CSS that I learned on you
 * JS of buying item to be done
 * Responsiveness only after shop and inventory completition
  
+# Commit 2.1
+Created a login and register form for new players. Created a database to store player log-in information and connected it to our game site. Updated game html and index html, so when user clicks starts game, it will bring the user to a login page first where new players can register too and redirect both of them to our game homepage.
+
+### General Summary: 
+* Created Login form
+* Created Register form
+* Connected restdb database to our game
+
 ## Features:
 ### TBA:
 
