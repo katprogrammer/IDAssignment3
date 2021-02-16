@@ -187,6 +187,12 @@ Updated the javascript with a await callback function in order to make use of th
 * Updated small parts of log-in/registration page
 * Added 'num' attribute to shop cards for identification
 
+# Commit 2.4
+Updated Javascript for registration form, to allow players to select a character before starting the game.
+
+### General Summary:
+* Updated JS on click function for registration form
+
 ## Features:
 ### TBA:
 

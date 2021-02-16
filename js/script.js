@@ -233,6 +233,20 @@ async function RunGame() {
         $('.gameContainer').show();
         $('.home').show();
     })
+    $('#register').submit(function(e) {
+        e.preventDefault();
+
+        // Get input display name
+        dname = $('#dname').val();
+
+        // Set input display name
+        $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
+        $('.user').hide();
+        $('.startGame').hide();
+        $('.login').hide();
+        $('.startMenu').hide();
+        $('.char').show();
+    })
 
     $('#bam').click(function(e) { // Chose Bam
         e.preventDefault();
