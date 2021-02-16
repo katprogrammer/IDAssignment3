@@ -119,6 +119,66 @@ async function RunAPI() {
 }
 
 // Game Javascript
+
+//Log-In
+
+// GET all player-log-in information
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+    "method": "GET",
+    "headers": {
+        "content-type": "application/json",
+        "x-apikey": "602b72be5ad3610fb5bb60b5",
+        "cache-control": "no-cache"
+    }
+}
+  
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+
+// POST a new document to the player-login collection (add a new player)
+var jsondata = {"field1": "xyz","field2": "abc"};
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+  "method": "POST",
+  "headers": {
+    "content-type": "application/json",
+    "x-apikey": "602b72be5ad3610fb5bb60b5",
+    "cache-control": "no-cache"
+  },
+  "processData": false,
+  "data": JSON.stringify(jsondata)
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+// PUT a updated document to the player-log-in collection (update player login information)
+var jsondata = {"field1": "new value","field2": "xxx"};
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in/(ObjectID)",
+  "method": "PUT",
+  "headers": {
+    "content-type": "application/json",
+    "x-apikey": "602b72be5ad3610fb5bb60b5",
+    "cache-control": "no-cache"
+  },
+  "processData": false,
+  "data": JSON.stringify(jsondata)
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
 // Global Variables
 var charimg = ''; // Chosen character profile picture location
 var dname = ''; // Display name
@@ -128,6 +188,7 @@ var currency = 0; // Money variable for shop
 
 // Default Game Page parameters
 $('.gameMenu').hide();
+$('.login').show();
 $('.home').hide();
 $('.inventory').hide();
 $('.shop').hide();
@@ -147,10 +208,11 @@ $('#startGame').click(function(e) {
     $('.gameMenu').hide();
     $('.char').hide();
     $('.user').show();
+    $('.login').hide();
 });
 
 // ---------------------------- User / Select Character Section --------------------------
-$('#submit').click(function(e) {
+$('.submit').click(function(e) {
     e.preventDefault();
 
     // Get input display name
@@ -159,6 +221,8 @@ $('#submit').click(function(e) {
     // Set input display name
     $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
     $('.user').hide();
+    $('.startGame').hide();
+    $('.login').hide();  
     $('.char').show();
 })
 
@@ -373,6 +437,20 @@ $('#buyItem').click(function(e) {
 })
 
 // ---------------------------- View Stats section --------------------------
+// Exit Game Button
+$('#exitGame').click(function(e) {
+    e.preventDefault();
+
+    // Exit game function to be added
+    $('.home').hide();
+    $('.inventory').hide();
+    $('.shop').hide();
+    $('.fight').hide();
+    $('.stats').hide();
+    $('.save').hide();
+    window.location = "https://katprogrammer.github.io/IDAssignment3/";
+})
+
 var fills = document.querySelectorAll(".healthbar_fill");
 var hungerFill = document.querySelectorAll(".hungerbar_fill");
 var hydrateFill = document.querySelectorAll(".hydratebar_fill");

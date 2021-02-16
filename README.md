@@ -171,6 +171,14 @@ Removed Exit Game function from the game as we felt that it was pretty redundant
 #### General Summary:
 * Removed Exit Game Function
 * 
+ 
+# Commit 2.2
+Created a login and register form for new players. Created a database to store player log-in information and connected it to our game site. Updated game html and index html, so when user clicks starts game, it will bring the user to a login page first where new players can register too and redirect both of them to our game homepage.
+
+### General Summary: 
+* Created Login form
+* Created Register form
+* Connected restdb database to our game
 
 ## Features:
 ### TBA:

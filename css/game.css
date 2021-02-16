@@ -141,7 +141,16 @@ html, body {
 #dname {
     font-size: 20px;
 }
-
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}   
+label {
+    font-size: 1.5em;
+    color: #D4AF37;
+    font-family: 'VT323', monospace;
+}
 #submit {
     font-family: 'VT323', monospace;
     width: 15%;
