@@ -210,6 +210,12 @@ Updated the shop with a currency counter displayed at the top where it will upda
 #### General Summary:
 * Updated Store function with currency
 
+# Commit 2.7
+Completed half of the inventory where if a user buys an item from the shop, it will update the inventory accordingly. The CSS Styling still needs to be updated and further testing required, but it works as of now.
+
+* Completed half of inventory page
+* Inventory updates with shop purchases now
+
 ## Features:
 ### TBA:
 

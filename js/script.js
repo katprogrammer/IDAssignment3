@@ -35,7 +35,7 @@ function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proSh
 
     for (i = 0; i < array.length; i++) {
         content += `
-        <div class="card" id="card${i}" num="${array[i].id}">
+        <div class="card" id="${array[i].id}">
             <div class="card-image"><img id="shopImg" src="${array[i].image}" alt="shop item"></div>
             <div class="card-text">
                 <h2>${array[i].title}</h2>
@@ -215,7 +215,7 @@ async function RunGame() {
         e.preventDefault();
 
         // Get input display name
-        dname = $('#dname').val();
+        dname = $('.dname').val();
 
         // Set input display name
         $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
@@ -433,7 +433,7 @@ async function RunGame() {
     $('#inventory').click(function(e) {
         e.preventDefault();
 
-
+        checkInventoryItems(inv);
         // Inventory function to be added
         $('.home').hide();
         $('.shop').hide();
@@ -445,14 +445,12 @@ async function RunGame() {
     })
 
     // ---------------------------- Shop functions section --------------------------
+    // Shop button
     var currency = 100; // Money variable for shop
     $('.currency').text(`Your currently have: ${currency} gold left.`);
-    
-    // Shop button
+
     $('#shop').click(function(e) {
         e.preventDefault();
-
-        currency = BuyItem(currency, inv);
 
         // Shop function to be added
         $('.home').hide();
@@ -463,6 +461,8 @@ async function RunGame() {
 
         $('.shop').show(); // Show shop division/menu
     })
+
+    currency = BuyItem(currency, inv);
 
     // ---------------------------- View Stats section --------------------------
     // Exit Game Button
@@ -486,22 +486,22 @@ RunGame();
 // It will validate if currency is sufficient, it will also
 // add the newly purchased item into the global inv array.
 function BuyItem(currency, inv) {
-    var addItemToInventory = $('.buyItem');
+    if (currency <= 0) {
+        alert("You have insufficient gold! Go battle some monsters!");
+    }
+    else {
+        var addItemToInventory = $('.buyItem');
 
-    for (var i = 0; i < addItemToInventory.length; i++) {
-        var buy = addItemToInventory[i];
-
-        buy.addEventListener('click', function(e) {
-            if (currency <= 0) {
-                alert("You have insufficient gold! Go battle some monsters!");
-            }
-            else {
+        for (var i = 0; i < addItemToInventory.length; i++) {
+            var buy = addItemToInventory[i];
+            
+            buy.addEventListener('click', function(e) {
                 var boughtItem = e.target;
                 if (currency < Math.floor(parseInt(boughtItem.parentElement.parentElement.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4)) {
                     alert("You do not have enough gold to purchase this!");
                 }
                 else {
-                    inv.push(boughtItem.parentElement.parentElement.getAttribute('num'));
+                    inv.push(boughtItem.parentElement.parentElement.getAttribute('id'));
 
                     currency -= Math.floor(parseInt(boughtItem.parentElement.parentElement.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4);
                     $('.currency').text(`Your currently have: ${currency} gold left.`);
@@ -510,22 +510,41 @@ function BuyItem(currency, inv) {
                     alert("Your purchase was successful, enjoy!")
                     return currency;
                 }
-            }
-        })
+            })
+        }
     }
-
     return currency;
 }
 
 function checkInventoryItems(inv) {
     if (inv.length === 0) {
-        $('.invSpace').innerHTML('<h1>There are currently no items in your inventory.</h1>');
+        $('.invSpace').html('<h1 class="invText">There are currently no items in your inventory.<br>Buy some from the store!</h1>');
     }
     else {
-        inv.forEach(x => {
-            // if (x === )
-            // $('.invSpace').innerHTML += `<div class="item"><img src="${x.img}" alt="${x.name}"></div>`;
-        });
+        var temp = $('.card');
+        console.log(temp);
+        var content1 = '';
+        var content2 = '';
+
+        inv.forEach((x) => {
+            for (var i = 0; i < temp.length; i ++) {
+                if (x === temp[i].getAttribute('id')) {
+                    var img = temp[i].childNodes[1].querySelector('#shopImg').getAttribute('src');
+                    console.log(temp[i]);
+                    console.log(img);
+    
+                    var name = temp[i].childNodes[3].getElementsByTagName('h2')[0].innerHTML;
+                    console.log(temp[i]);
+                    console.log(name);
+    
+                    content1 += `<div class="item" data-id="${x}"><img src="${img}" alt="${name}"></div>`;
+                    // content2 += `<div data-id="${inv[i]}"></div>`;
+                }
+            }
+        })
+
+        console.log(content1);
+        $('.invSpace').html(content1);
     }
 }
 

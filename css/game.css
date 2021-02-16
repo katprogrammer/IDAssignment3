@@ -350,6 +350,8 @@ label {
 .invSpace {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     border: 3px solid goldenrod;
     background-color: rgba(0,0,0, 0.4);
@@ -371,6 +373,12 @@ label {
 
 .item:hover {
     transform: scale(1.1);
+}
+
+.invText {
+    text-align: center;
+    font-family: 'VT323', monospace;
+    color: #fff;
 }
 
 /* Shop CSS */
