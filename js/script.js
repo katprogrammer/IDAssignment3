@@ -46,11 +46,11 @@ function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proSh
                     <div class="type">Nutrition</div>
                 </div>
                 <div class="stat">
-                    <div class="value value2">${array[i].healthScore}</div>
+                    <div class="value">${array[i].healthScore}</div>
                     <div class="type">HP</div>
                 </div>
                 <div class="stat">
-                    <div class="value value3">${array[i].readyInMinutes}</div>
+                    <div class="value">${array[i].readyInMinutes}</div>
                     <div class="type">Energy</div>
                 </div>
             </div>
@@ -445,9 +445,14 @@ async function RunGame() {
     })
 
     // ---------------------------- Shop functions section --------------------------
+    var currency = 100; // Money variable for shop
+    $('.currency').text(`Your currently have: ${currency} gold left.`);
+    
     // Shop button
     $('#shop').click(function(e) {
         e.preventDefault();
+
+        currency = BuyItem(currency, inv);
 
         // Shop function to be added
         $('.home').hide();
@@ -458,10 +463,6 @@ async function RunGame() {
 
         $('.shop').show(); // Show shop division/menu
     })
-    
-    var currency = 100; // Money variable for shop
-    // Buy Item button
-    currency = BuyItem(currency, inv);
 
     // ---------------------------- View Stats section --------------------------
     // Exit Game Button
@@ -486,7 +487,6 @@ RunGame();
 // add the newly purchased item into the global inv array.
 function BuyItem(currency, inv) {
     var addItemToInventory = $('.buyItem');
-    console.log(addItemToInventory);
 
     for (var i = 0; i < addItemToInventory.length; i++) {
         var buy = addItemToInventory[i];
@@ -497,20 +497,19 @@ function BuyItem(currency, inv) {
             }
             else {
                 var boughtItem = e.target;
-                console.log(boughtItem);
-                inv.push(boughtItem.parentElement.parentElement.getAttribute('num'));
-                
-                // Update currency
-                if (i === 2) {
-                    return currency;
+                if (currency < Math.floor(parseInt(boughtItem.parentElement.parentElement.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4)) {
+                    alert("You do not have enough gold to purchase this!");
                 }
                 else {
-                    console.log(currency);
-                    currency -= Math.floor(parseInt($(`.value1`).text()) / 4);
-                }
+                    inv.push(boughtItem.parentElement.parentElement.getAttribute('num'));
 
-                // Complete purchase
-                alert("Your purchase was successful, enjoy!")
+                    currency -= Math.floor(parseInt(boughtItem.parentElement.parentElement.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4);
+                    $('.currency').text(`Your currently have: ${currency} gold left.`);
+
+                    // Complete purchase
+                    alert("Your purchase was successful, enjoy!")
+                    return currency;
+                }
             }
         })
     }
@@ -518,7 +517,7 @@ function BuyItem(currency, inv) {
     return currency;
 }
 
-function checkInventoryItems(inv, currency) {
+function checkInventoryItems(inv) {
     if (inv.length === 0) {
         $('.invSpace').innerHTML('<h1>There are currently no items in your inventory.</h1>');
     }

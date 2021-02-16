@@ -204,6 +204,12 @@ Similarly, the javascript eventlistener, I had researched online and got useful 
 * Inventory TBC in next few commits
 * Responsiveness TBC in next few commits
 
+# Commit 2.6
+Updated the shop with a currency counter displayed at the top where it will update according to how much the player has at that time.
+
+#### General Summary:
+* Updated Store function with currency
+
 ## Features:
 ### TBA:
 

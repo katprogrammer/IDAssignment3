@@ -477,6 +477,13 @@ label {
     border: 2px solid #fff;
 }
 
+.currency {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'VT323', monospace;
+    color: rgb(212,175,55);
+}
+
 /* Ipad Pro */
 @media (max-width: 1024px) {
     body, html {
