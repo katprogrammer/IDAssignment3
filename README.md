@@ -170,7 +170,6 @@ Removed Exit Game function from the game as we felt that it was pretty redundant
 
 #### General Summary:
 * Removed Exit Game Function
-* 
  
 # Commit 2.2
 Created a login and register form for new players. Created a database to store player log-in information and connected it to our game site. Updated game html and index html, so when user clicks starts game, it will bring the user to a login page first where new players can register too and redirect both of them to our game homepage.
@@ -179,6 +178,14 @@ Created a login and register form for new players. Created a database to store p
 * Created Login form
 * Created Register form
 * Connected restdb database to our game
+
+# Commit 2.3
+Updated the javascript with a await callback function in order to make use of the asynchronous loading. If not, data will not render properly. Fixed small portions of the log in page with proper form event listeners such as .submit() and also added a num attribute to the cards so that when a user purchases that item, it can be identitied by the id of the card and be set to the inventory accordingly.
+
+#### General Summary:
+* Updated JS with callback function
+* Updated small parts of log-in/registration page
+* Added 'num' attribute to shop cards for identification
 
 ## Features:
 ### TBA:
