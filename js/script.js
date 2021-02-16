@@ -209,12 +209,12 @@ async function RunGame() {
         $('.startMenu').hide();
         $('.gameMenu').hide();
         $('.char').hide();
-        $('.user').show();
         $('.login').hide();
+        $('.user').show();
     });
 
     // ---------------------------- User / Select Character Section --------------------------
-    $('#login').submit(function(e) {
+    $('#register').submit(function(e) {
         e.preventDefault();
 
         // Get input display name
@@ -222,6 +222,23 @@ async function RunGame() {
 
         // Set input display name
         $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
+
+        $('.startGame').hide();
+        $('.login').hide();
+        $('.startMenu').hide();
+        $('.user').hide();
+        $('.char').show();
+    })
+    
+    $('#login').submit(function(e) {
+        e.preventDefault();
+
+        // Get input display name
+        dname = $('.dname').val();
+
+        // Set input display name
+        $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
+
         $('.user').hide();
         $('.startGame').hide();
         $('.login').hide();
@@ -331,13 +348,6 @@ async function RunGame() {
     })
 
     // ---------------------------- Game functions section --------------------------
-    // Load game button
-    $('#loadGame').click(function(e) {
-        e.preventDefault();
-
-        // Load game function to be added
-    })
-
     // Save game button
     $('#saveGame').click(function(e) {
         e.preventDefault();
@@ -438,7 +448,7 @@ async function RunGame() {
     })
 
     // Buy Item button
-    var addItemToInventory = $('#buyItem');
+    var addItemToInventory = $('.buyItem');
     console.log(addItemToInventory);
 
     for (var i = 0; i < addItemToInventory.length; i++) {
@@ -449,9 +459,9 @@ async function RunGame() {
             var boughtItem = e.target;
             console.log(boughtItem);
 
-            console.log(boughtItem.parentElement.parentElement.attr('id'));
-            inv.push(boughtItem.parentElement.parentElement.attr('id'));
-            console.log(inv[i]);
+            // console.log(boughtItem.parentElement.parentElement.attr('id'));
+            // inv.push(boughtItem.parentElement.parentElement.attr('id'));
+            // console.log(inv[i]);
         })
     }
 

@@ -116,15 +116,15 @@
 
         <div class="user" id="register">
             <label id="paragraph">Enter Your Display Name:</label>
-            <input type="text" id="dname" name="dname"><br><br>
+            <input type="text" class="dname" name="dname"><br><br>
             <label>New Password</label>
             <input type="text" required><br><br>
-            <button type="submit" id="submit" class="submit">Submit</button>
+            <button type="submit" id="registerbutton" class="submit">Submit</button>
         </div>
 
         <form class="login" id="login">
             <label>Username</label>
-            <input type="text" required>
+            <input class="dname" type="text" required>
             <label>Password</label>
             <input type="text" required><br><br>
             <button type="submit" id="loginbutton" class="submit">Submit</button>
@@ -308,7 +308,53 @@
                 <div class="shop">
                     <h1 id="title">Welcome to the store! Shop till you drop!</h1>
                     <div class="shopItems">
+                        <div class="card" id="test" num="test">
+                            <div class="card-image"><img id="shopImg" src="" alt=""></div>
+                            <div class="card-text">
+                                <h2>Test</h2>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat">
+                                    <div class="value">Test</div>
+                                    <div class="type">Nutrition</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="value">Test</div>
+                                    <div class="type">HP</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="value">Test</div>
+                                    <div class="type">Energy</div>
+                                </div>
+                            </div>
+                            <div class="card-buy">
+                                <button type="submit" id="buyItem" class="buyItem">Buy Now!</button>
+                            </div>
+                        </div>
 
+                        <div class="card" id="test2" num="test2">
+                            <div class="card-image"><img id="shopImg" src="" alt=""></div>
+                            <div class="card-text">
+                                <h2>Test2</h2>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat">
+                                    <div class="value">Test2</div>
+                                    <div class="type">Nutrition</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="value">Test2</div>
+                                    <div class="type">HP</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="value">Test2</div>
+                                    <div class="type">Energy</div>
+                                </div>
+                            </div>
+                            <div class="card-buy">
+                                <button type="submit" id="buyItem" class="buyItem">Buy Now!</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
