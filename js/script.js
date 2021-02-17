@@ -154,6 +154,7 @@ async function RunGame() {
     var charimg = ''; // Chosen character profile picture location
     var dname = ''; // Display name
     var password = '';
+    var playerID = '';
 
     // Start game button
     $('#startGame').click(function(e) { 
@@ -170,7 +171,7 @@ async function RunGame() {
     // ---------------------------- User / Select Character Section --------------------------
     $('#register').submit(function(e) {
         e.preventDefault();
-
+        var exist = 0;
         // Get input display name
         dname = $('.dname').val();
         password = $('.password').val();
@@ -185,30 +186,38 @@ async function RunGame() {
                 "cache-control": "no-cache"
             }
         }
-        
         $.ajax(settings).done(function (response) {
             for(i = 0; i< response.length; i++) {
                 if (response[i].username === dname) {
-                    console.log("Username already exists")
+                    exist += 1;
                 }
             }
-        });
-        // Set input display name
-        $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
-
-        $('.startGame').hide();
-        $('.login').hide();
-        $('.startMenu').hide();
-        $('.user').hide();
-        $('.char').show();
-    })
+            if (exist >= 1) {
+                document.getElementById("register").reset();
+                let errMsg = document.getElementById("regErrText");
+                errMsg.innerHTML += "Username already exists please try again";
+                errMsg.style.color = "red";
+                errMsg.style.fontFamily = 'VT323', monospace;
+            }
+            else {
+                 // Set input display name
+                $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
     
+                $('.startGame').hide();
+                $('.login').hide();
+                $('.startMenu').hide();
+                $('.user').hide();
+                $('.char').show();
+            }
+            console.log(response);
+        });
+    })
     $('#login').submit(function(e) {
         e.preventDefault();
         var wrongCount = 0;
         // Get input display name
-        dname = $('.dname').val();
-        password = $('.password').val();
+        dname = $('.loginname').val();
+        password = $('.loginpassword').val();
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -220,35 +229,41 @@ async function RunGame() {
                 "cache-control": "no-cache"
             }
         }
-        
         $.ajax(settings).done(function (response) {
-            console.log(response.length);
             for(i = 0; i< response.length; i++) {
                 if (response[i].username == dname && response[i].password != password || response[i].username != dname && response[i].password != password) {
                     wrongCount += 1;
-                    console.log(wrongCount);
+                }
+                else if (response[i].username == dname && response[i].password == password) {
+                    chosedimg = response[i].character;
                 }
             }
             if (wrongCount === response.length) {
-                console.log("Invalid Username/Password");
+                document.getElementById("login").reset();
+                let errMsg = document.getElementById("logErrText");
+                errMsg.innerHTML = "Invalid Username/Password";
+                errMsg.style.color = "red";
+                errMsg.style.fontFamily = 'VT323', monospace;
             }
             else {
-                console.log("Correct password and username")
+                console.log("Correct password and username");
+                $('.charPP').attr('src', chosedimg);
+                $('.statsImg').attr('src', chosedimg);
+                $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
+
+                $('.user').hide();
+                $('.startGame').hide();
+                $('.login').hide();
+                $('.startMenu').hide();
+                $('.char').hide();
+                
+                $('.menu').show();
+                $('.gameMenu').show();
+                $('.gameContainer').show();
+                $('.home').show();
             }
         });
         // Set input display name
-        $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
-
-        $('.user').hide();
-        $('.startGame').hide();
-        $('.login').hide();
-        $('.startMenu').hide();
-        $('.char').hide();
-        
-        $('.menu').show();
-        $('.gameMenu').show();
-        $('.gameContainer').show();
-        $('.home').show();
     })
 
     $('#bam').click(function(e) { // Chose Bam
@@ -263,12 +278,12 @@ async function RunGame() {
          var jsondata = {
             "username" : dname,
             "password" : password,
-            "character" : charimg,
+            "character" : charimg.attr("id"),
             "health" : health,
             "hunger" : hunger,
             "hydration" : hydrate,
-            "earnings" : 500,
-            "inventory" : 'Banana,Pizza,Protein Shake'
+            "earnings" : currency,
+            "inventory" : inv.toString()
 
         }
         var settings = {
@@ -300,7 +315,6 @@ async function RunGame() {
 
         // Save chosen character
         charimg = $('#jinsung').attr('src');
-
         // Set chosen character
         $('.charPP').attr('src', charimg);
         // POST a new document to the player-login collection (add a new player)
@@ -311,8 +325,8 @@ async function RunGame() {
             "health" : health,
             "hunger" : hunger,
             "hydration" : hydrate,
-            "earnings" : 500,
-            "inventory" : 'Banana,Pizza,Protein Shake'
+            "earnings" : currency,
+            "inventory" : inv.toString()
 
         }
         var settings = {
@@ -355,8 +369,8 @@ async function RunGame() {
             "health" : health,
             "hunger" : hunger,
             "hydration" : hydrate,
-            "earnings" : 500,
-            "inventory" : 'Banana,Pizza,Protein Shake'
+            "earnings" : currency,
+            "inventory" : inv.toString()
 
         }
         var settings = {
@@ -399,8 +413,8 @@ async function RunGame() {
             "health" : health,
             "hunger" : hunger,
             "hydration" : hydrate,
-            "earnings" : 500,
-            "inventory" : 'Banana,Pizza,Protein Shake'
+            "earnings" : currency,
+            "inventory" : inv.toString()
 
         }
         var settings = {
@@ -443,8 +457,8 @@ async function RunGame() {
             "health" : health,
             "hunger" : hunger,
             "hydration" : hydrate,
-            "earnings" : 500,
-            "inventory" : 'Banana,Pizza,Protein Shake'
+            "earnings" : currency,
+            "inventory" : inv.toString()
 
         }
         var settings = {
@@ -484,9 +498,8 @@ async function RunGame() {
             "health" : health,
             "hunger" : hunger,
             "hydration" : hydrate,
-            "earnings" : 500,
-            "inventory" : 'Banana,Pizza,Protein Shake'
-
+            "earnings" : currency,
+            "inventory" : inv.toString()
         }
         var settings = {
             "async": true,
@@ -519,7 +532,55 @@ async function RunGame() {
     // Save game button
     $('#saveGame').click(function(e) {
         e.preventDefault();
-
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+            "method": "GET",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": "602b72be5ad3610fb5bb60b5",
+                "cache-control": "no-cache"
+            }
+        }
+        $.ajax(settings).done(function (response) {
+            for (i = 0; i < response.length; i++) {
+                if (dname === response[i].username) {
+                    playerID = response[i]._id;
+                    charimg = response[i].character;
+                }
+            }
+            // PUT a updated document to the player-log-in collection (update player login information)
+            var jsondata = {
+                "username" : dname,
+                "password" : password,
+                "character" : charimg,
+                "health" : health,
+                "hunger" : hunger,
+                "hydration" : hydrate,
+                "earnings" : currency,
+                "inventory" : inv.toString()
+            }
+            console.log(playerID);
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": `https://sabaibaru-1c32.restdb.io/rest/player-log-in/${playerID}`,
+                "method": "PUT",
+                "headers": {
+                "content-type": "application/json",
+                "x-apikey": "602b72be5ad3610fb5bb60b5",
+                "cache-control": "no-cache"
+                },
+                "processData": false,
+                "data": JSON.stringify(jsondata)
+            }
+            console.log(JSON.stringify(jsondata));
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                alert("Game saved successfully");
+            });
+        });
         // Save game function to be added
         $('.home').hide();
         $('.inventory').hide();
@@ -528,7 +589,7 @@ async function RunGame() {
         $('.stats').hide();
 
         $('.save').show(); // Show save game division/menu
-    })
+    });
 
     // Home button
     $('#home').click(function(e) {
@@ -551,7 +612,6 @@ async function RunGame() {
         $('.stats h2').text(`Player: ${dname}`);
         const stats = document.getElementById('stats');
         openStats(stats);
-        $('.statsImg').attr('src', charimg);
         // View Stats function to be added
         $('.home').hide();
         $('.inventory').hide();
@@ -830,23 +890,3 @@ updateHydrate(0);
 // Game Javascript
     //Log-In
 var item_id = ''; 
-var players = [];
-// // PUT a updated document to the player-log-in collection (update player login information)
-// var jsondata = {"field1": "new value","field2": "xxx"};
-// var settings = {
-//     "async": true,
-//     "crossDomain": true,
-//     "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in/(ObjectID)",
-//     "method": "PUT",
-//     "headers": {
-//     "content-type": "application/json",
-//     "x-apikey": "602b72be5ad3610fb5bb60b5",
-//     "cache-control": "no-cache"
-//     },
-//     "processData": false,
-//     "data": JSON.stringify(jsondata)
-// }
-
-// $.ajax(settings).done(function (response) {
-//     console.log(response);
-// });

@@ -221,6 +221,15 @@ Changed inventory stuff, but still having issues with updating and deletion. Plu
 
 * Inventory and Shop issues
 
+# Commit 2.9
+Validated and completed log-in and registration form. Working on the design of the form now.
+
+# Commit 3.0
+Updated validation for log-in and registration form so it will display an error message as well as completed the save game feature to update the player statistcis, currency and inventory items. Made sure when the player login, their latest saved version appears.
+
+### General Summary:
+* Updated Validation for log-in process
+
 ## Features:
 ### TBA:
 
