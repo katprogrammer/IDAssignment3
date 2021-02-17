@@ -1,7 +1,7 @@
 /* jshint esversion: 8 */
 // Food API
 const food_url = 'https://api.spoonacular.com';
-const food_key = 'apiKey=ffbcd28cbcea4faa937ea6ef3abb403f';
+const food_key = 'apiKey=81823a729453491da8ea65218d07d279';
 var pizzaInfo = '', chilliInfo = '', donutsInfo = '', brkSmoothyInfo = '', proShakeInfo = '';
 var batmanInfo = '', capAmericaInfo = '', thorInfo = '', onePunchInfo = '', grootInfo = '';
 var darthVaderInfo = '', carnageInfo = '', lokiInfo = '', magnetoInfo = '', redHulkInfo = '', thanosInfo = '';
@@ -32,36 +32,55 @@ async function GetSuperhero(heroID) {
 function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo) {
     var array = [pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo];
     var content = '';
+    var storeItems = [];
+    var storeItemsImg = [];
+    var storeItemsName = [];
 
     for (i = 0; i < array.length; i++) {
         content += `
-        <div class="card" id="card${i}" num="${array[i].id}">
+        <div class="card" data-id="${array[i].id}">
             <div class="card-image"><img id="shopImg" src="${array[i].image}" alt="shop item"></div>
+            
             <div class="card-text">
                 <h2>${array[i].title}</h2>
             </div>
+
             <div class="card-stats">
                 <div class="stat">
                     <div class="value value1">${array[i].pricePerServing}</div>
                     <div class="type">Nutrition</div>
                 </div>
+                
                 <div class="stat">
-                    <div class="value value2">${array[i].healthScore}</div>
+                    <div class="value">${array[i].healthScore}</div>
                     <div class="type">HP</div>
                 </div>
+
                 <div class="stat">
-                    <div class="value value3">${array[i].readyInMinutes}</div>
+                    <div class="value">${array[i].readyInMinutes}</div>
                     <div class="type">Energy</div>
                 </div>
             </div>
+
             <div class="card-buy">
                 <button type="submit" id="buyItem" class="buyItem">Buy Now!</button>
             </div>
         </div>
         `
+
+        storeItems.push(array[i].id);
+        storeItemsImg.push(array[i].image);
+        storeItemsName.push(array[i].title);
     }
 
-    $(".shopItems").html(content);
+    var items = {
+        items: storeItems,
+        image: storeItemsImg,
+        name: storeItemsName
+    }
+
+    $('.shopItems').html(content);
+    return items;
 }
 
 // Main Method
@@ -91,13 +110,11 @@ async function loadData() {
     const redHulkID = '547';
 
     // Food Information
-    // pizzaInfo = await GetRecipeInformation(food_url, pizzaID, food_key).catch(error => console.log(error));
-    // brkSmoothyInfo = await GetRecipeInformation(food_url, brkSmoothyID, food_key).catch(error => console.log(error));
-    // chilliInfo = await GetRecipeInformation(food_url, chilliID, food_key).catch(error => console.log(error));
-    // donutsInfo = await GetRecipeInformation(food_url, donutsID, food_key).catch(error => console.log(error));
-    // proShakeInfo = await GetRecipeInformation(food_url, proShakeID, food_key).catch(error => console.log(error)); 
-    
-    // InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
+    pizzaInfo = await GetRecipeInformation(food_url, pizzaID, food_key).catch(error => console.log(error));
+    brkSmoothyInfo = await GetRecipeInformation(food_url, brkSmoothyID, food_key).catch(error => console.log(error));
+    chilliInfo = await GetRecipeInformation(food_url, chilliID, food_key).catch(error => console.log(error));
+    donutsInfo = await GetRecipeInformation(food_url, donutsID, food_key).catch(error => console.log(error));
+    proShakeInfo = await GetRecipeInformation(food_url, proShakeID, food_key).catch(error => console.log(error)); 
 
     // SuperHero Information
     // batmanInfo = await GetSuperhero(batmanID).catch(error => console.log(error));
@@ -570,11 +587,12 @@ async function RunGame() {
     // ---------------------------- Inventory functions section --------------------------
     // Inventory button
     var inv = [] // Inventory Array to store items bought and received
+
     $('#inventory').click(function(e) {
         e.preventDefault();
+        
+        checkInventoryItems(inv, storeItems);
 
-
-        // Inventory function to be added
         $('.home').hide();
         $('.shop').hide();
         $('.fight').hide();
@@ -582,10 +600,56 @@ async function RunGame() {
         $('.save').hide();
 
         $('.inventory').show(); // Show inventory division/menu
+
+        $('.item').click(function(e) {
+            e.preventDefault();
+
+            // Find the item that triggered the event
+            var selItem = e.target.parentElement;
+            var name = selItem.childNodes[0].getAttribute('alt');
+            $('.modal-title').html(name);
+
+            // for when a user selects an item in the inventory for use,
+            // it will create a pop-up box for user to select use/not to use and
+            // it will also update the statistics of the player accordingly.
+            $('#yesSel').click(function(e) {
+                e.preventDefault();
+
+                var tempItemID = selItem.getAttribute("data-id-item");
+                
+                console.log(inv);
+                for (var o = 0; o < inv.length; o++) {
+                    if (inv[o] === tempItemID) {
+                        if (inv.length === 1) {
+                            inv = [];
+                        }
+                        else {
+                            const index = inv.indexOf(tempItemID);
+                            console.log(index);
+                            
+                            if (index > -1) {
+                                inv.splice(index, 1);
+                            }
+                        }
+                        break;
+                    }
+                }
+                console.log(inv);
+
+                selItem.remove();
+
+                // Refresh the data on the page;
+                checkInventoryItems(inv, storeItems);
+            })
+        }) 
     })
 
     // ---------------------------- Shop functions section --------------------------
     // Shop button
+    var currency = 100; // Money variable for shop
+    $('.currency').text(`Your currently have: ${currency} gold left.`);
+    var storeItems = InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
+
     $('#shop').click(function(e) {
         e.preventDefault();
 
@@ -599,8 +663,6 @@ async function RunGame() {
         $('.shop').show(); // Show shop division/menu
     })
     
-    var currency = 100; // Money variable for shop
-    // Buy Item button
     currency = BuyItem(currency, inv);
 
     // ---------------------------- View Stats section --------------------------
@@ -618,62 +680,59 @@ async function RunGame() {
         window.location = "https://katprogrammer.github.io/IDAssignment3/";
     })
 }
-
 RunGame();
 // Function for when a user purchases an item from the store
 // It will validate if currency is sufficient, it will also
 // add the newly purchased item into the global inv array.
 function BuyItem(currency, inv) {
-    var addItemToInventory = $('.buyItem');
-    console.log(addItemToInventory);
+    if (currency <= 0) {
+        alert("You have insufficient gold! Go battle some monsters!");
+    }
+    else {
+        var addItemToInventory = $('.buyItem');
 
-    for (var i = 0; i < addItemToInventory.length; i++) {
-        var buy = addItemToInventory[i];
-
-        buy.addEventListener('click', function(e) {
-            if (currency <= 0) {
-                alert("You have insufficient gold! Go battle some monsters!");
-            }
-            else {
+        for (var i = 0; i < addItemToInventory.length; i++) {
+            var buy = addItemToInventory[i];
+            
+            buy.addEventListener('click', function(e) {
                 var boughtItem = e.target;
-                console.log(boughtItem);
-                inv.push(boughtItem.parentElement.parentElement.getAttribute('num'));
-                
-                // Update currency
-                if (i === 2) {
-                    return currency;
+
+                if (currency < Math.floor(parseInt(boughtItem.parentElement.parentElement.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4)) {
+                    alert("You do not have enough gold to purchase this!");
                 }
                 else {
-                    console.log(currency);
-                    currency -= Math.floor(parseInt($(`.value1`).text()) / 4);
+                    inv.push(boughtItem.parentElement.parentElement.getAttribute('data-id'));
+
+                    currency -= Math.floor(parseInt(boughtItem.parentElement.parentElement.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4);
+                    $('.currency').text(`Your currently have: ${currency} gold left.`);
+
+                    // Complete purchase
+                    alert("Your purchase was successful, enjoy!")
+                    return currency;
                 }
-
-                // Complete purchase
-                alert("Your purchase was successful, enjoy!")
-            }
-        })
+            })
+        }
     }
-
     return currency;
 }
 
-function checkInventoryItems(inv, currency) {
+function checkInventoryItems(inv, storeItems) {
     if (inv.length === 0) {
-        $('.invSpace').innerHTML('<h1>There are currently no items in your inventory.</h1>');
+        $('.invSpace').html('<h1 class="invText">There are currently no items in your inventory.<br>Buy some from the store!</h1>');
     }
     else {
-        inv.forEach(x => {
-            // if (x === )
-            // $('.invSpace').innerHTML += `<div class="item"><img src="${x.img}" alt="${x.name}"></div>`;
+        var content = ''
+
+        inv.forEach((x) => {
+            for (var i = 0; i < storeItems.items.length; i++) {
+                if (x == storeItems.items[i]) {
+                    content += `<div class="item" data-id-item="${storeItems.items[i]}" data-bs-toggle="modal" data-bs-target="#myModal"><img src="${storeItems.image[i]}" alt="${storeItems.name[i]}"></div>`;
+                }
+            }
         });
+
+        $('.invSpace').html(content);
     }
-}
-
-// Function for when a user selects an item in the inventory for use,
-// it will create a pop-up box for user to select use/not to use and
-// it will also update the statistics of the player accordingly.
-function useItem(inv) { 
-
 }
 
 var fills = document.querySelectorAll(".healthbar_fill");

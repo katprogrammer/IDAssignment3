@@ -204,6 +204,23 @@ Similarly, the javascript eventlistener, I had researched online and got useful 
 * Inventory TBC in next few commits
 * Responsiveness TBC in next few commits
 
+# Commit 2.6
+Updated the shop with a currency counter displayed at the top where it will update according to how much the player has at that time.
+
+#### General Summary:
+* Updated Store function with currency
+
+# Commit 2.7
+Completed half of the inventory where if a user buys an item from the shop, it will update the inventory accordingly. The CSS Styling still needs to be updated and further testing required, but it works as of now.
+
+* Completed half of inventory page
+* Inventory updates with shop purchases now
+
+# Commit 2.8
+Changed inventory stuff, but still having issues with updating and deletion. Plus shop purchases cause error for the inventory.
+
+* Inventory and Shop issues
+
 ## Features:
 ### TBA:
 
