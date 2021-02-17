@@ -375,6 +375,12 @@ label {
     transform: scale(1.1);
 }
 
+.item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+}
+
 .invText {
     text-align: center;
     font-family: 'VT323', monospace;

@@ -297,65 +297,37 @@
                 <div class="inventory">
                     <h1 id="title">Click on the items to use!</h1>
                     <div class="invSpace">
-
+                        
                     </div>
                     
                     <div class="itemInteract">
-                            
+                        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                        <img src="" alt="">
+                                    </div>
+
+                                    <div class="modal-body">
+                                        Would you like to use this item? You can only use it once, choose wisely!
+                                    </div>
+
+                                    <div class="modal-footer d-flex justify-content-center">
+                                        <button type="button" id="yesSel" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+                                        <button type="button" id="noSel" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
+                
                 <div class="shop">
                     <h1 id="title">Welcome to the store! Shop till you drop!</h1>
                     <p class="currency"></p>
                     <div class="shopItems">
-                        <div class="card" id="test">
-                            <div class="card-image"><img id="shopImg" src="Test" alt=""></div>
-                            <div class="card-text">
-                                <h2>Test</h2>
-                            </div>
-                            <div class="card-stats">
-                                <div class="stat">
-                                    <div class="value1">200</div>
-                                    <div class="type">Nutrition</div>
-                                </div>
-                                <div class="stat">
-                                    <div class="value">Test</div>
-                                    <div class="type">HP</div>
-                                </div>
-                                <div class="stat">
-                                    <div class="value">Test</div>
-                                    <div class="type">Energy</div>
-                                </div>
-                            </div>
-                            <div class="card-buy">
-                                <button type="submit" id="buyItem" class="buyItem">Buy Now!</button>
-                            </div>
-                        </div>
 
-                        <div class="card" id="test2">
-                            <div class="card-image"><img id="shopImg" src="Test2" alt=""></div>
-                            <div class="card-text">
-                                <h2>Test2</h2>
-                            </div>
-                            <div class="card-stats">
-                                <div class="stat">
-                                    <div class="value1">200</div>
-                                    <div class="type">Nutrition</div>
-                                </div>
-                                <div class="stat">
-                                    <div class="value">Test2</div>
-                                    <div class="type">HP</div>
-                                </div>
-                                <div class="stat">
-                                    <div class="value">Test2</div>
-                                    <div class="type">Energy</div>
-                                </div>
-                            </div>
-                            <div class="card-buy">
-                                <button type="submit" id="buyItem" class="buyItem">Buy Now!</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
