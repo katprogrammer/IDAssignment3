@@ -216,6 +216,11 @@ Completed half of the inventory where if a user buys an item from the shop, it w
 * Completed half of inventory page
 * Inventory updates with shop purchases now
 
+# Commit 2.8
+Changed inventory stuff, but still having issues with updating and deletion. Plus shop purchases cause error for the inventory.
+
+* Inventory and Shop issues
+
 ## Features:
 ### TBA:
 
