@@ -133,70 +133,10 @@ async function RunGame() {
 
     await loadData(); // Load data for function use later on
 
-    // Game Javascript
-    //Log-In
-    var item_id = '';
-
-    // // GET all player-log-in information
-    // var settings = {
-    //     "async": true,
-    //     "crossDomain": true,
-    //     "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
-    //     "method": "GET",
-    //     "headers": {
-    //         "content-type": "application/json",
-    //         "x-apikey": "602b72be5ad3610fb5bb60b5",
-    //         "cache-control": "no-cache"
-    //     }
-    // }
-    
-    // $.ajax(settings).done(function (response) {
-    //     console.log(response);
-    // });
-
-    // // POST a new document to the player-login collection (add a new player)
-    // var jsondata = {"field1": "xyz","field2": "abc"};
-    // var settings = {
-    //   "async": true,
-    //   "crossDomain": true,
-    //   "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
-    //   "method": "POST",
-    //   "headers": {
-    //     "content-type": "application/json",
-    //     "x-apikey": "602b72be5ad3610fb5bb60b5",
-    //     "cache-control": "no-cache"
-    //   },
-    //   "processData": false,
-    //   "data": JSON.stringify(jsondata)
-    // }
-
-    // $.ajax(settings).done(function (response) {
-    //   console.log(response);
-    // });
-
-    // // PUT a updated document to the player-log-in collection (update player login information)
-    // var jsondata = {"field1": "new value","field2": "xxx"};
-    // var settings = {
-    //   "async": true,
-    //   "crossDomain": true,
-    //   "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in/(ObjectID)",
-    //   "method": "PUT",
-    //   "headers": {
-    //     "content-type": "application/json",
-    //     "x-apikey": "602b72be5ad3610fb5bb60b5",
-    //     "cache-control": "no-cache"
-    //   },
-    //   "processData": false,
-    //   "data": JSON.stringify(jsondata)
-    // }
-
-    // $.ajax(settings).done(function (response) {
-    //   console.log(response);
-    // });
-
     // Global Variables
     var charimg = ''; // Chosen character profile picture location
     var dname = ''; // Display name
+    var password = '';
 
     // Start game button
     $('#startGame').click(function(e) { 
@@ -215,8 +155,27 @@ async function RunGame() {
         e.preventDefault();
 
         // Get input display name
-        dname = $('#dname').val();
-
+        dname = $('.dname').val();
+        password = $('.password').val();
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+            "method": "GET",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": "602b72be5ad3610fb5bb60b5",
+                "cache-control": "no-cache"
+            }
+        }
+        
+        $.ajax(settings).done(function (response) {
+            for(i = 0; i< response.length; i++) {
+                if (response[i].username === dname) {
+                    console.log("Username already exists")
+                }
+            }
+        });
         // Set input display name
         $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
 
@@ -229,10 +188,37 @@ async function RunGame() {
     
     $('#login').submit(function(e) {
         e.preventDefault();
-
+        var wrongCount = 0;
         // Get input display name
         dname = $('.dname').val();
-
+        password = $('.password').val();
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+            "method": "GET",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": "602b72be5ad3610fb5bb60b5",
+                "cache-control": "no-cache"
+            }
+        }
+        
+        $.ajax(settings).done(function (response) {
+            console.log(response.length);
+            for(i = 0; i< response.length; i++) {
+                if (response[i].username == dname && response[i].password != password || response[i].username != dname && response[i].password != password) {
+                    wrongCount += 1;
+                    console.log(wrongCount);
+                }
+            }
+            if (wrongCount === response.length) {
+                console.log("Invalid Username/Password");
+            }
+            else {
+                console.log("Correct password and username")
+            }
+        });
         // Set input display name
         $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
 
@@ -247,20 +233,6 @@ async function RunGame() {
         $('.gameContainer').show();
         $('.home').show();
     })
-    $('#register').submit(function(e) {
-        e.preventDefault();
-
-        // Get input display name
-        dname = $('#dname').val();
-
-        // Set input display name
-        $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
-        $('.user').hide();
-        $('.startGame').hide();
-        $('.login').hide();
-        $('.startMenu').hide();
-        $('.char').show();
-    })
 
     $('#bam').click(function(e) { // Chose Bam
         e.preventDefault();
@@ -270,7 +242,35 @@ async function RunGame() {
 
         // Set chosen character
         $('.charPP').attr('src', charimg);
+         // POST a new document to the player-login collection (add a new player)
+         var jsondata = {
+            "username" : dname,
+            "password" : password,
+            "character" : charimg,
+            "health" : health,
+            "hunger" : hunger,
+            "hydration" : hydrate,
+            "earnings" : 500,
+            "inventory" : 'Banana,Pizza,Protein Shake'
 
+        }
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+            "method": "POST",
+            "headers": {
+            "content-type": "application/json",
+            "x-apikey": "602b72be5ad3610fb5bb60b5",
+            "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
         $('.char').hide();
         $('.menu').show();
         $('.gameContainer').show();
@@ -286,7 +286,35 @@ async function RunGame() {
 
         // Set chosen character
         $('.charPP').attr('src', charimg);
+        // POST a new document to the player-login collection (add a new player)
+        var jsondata = {
+            "username" : dname,
+            "password" : password,
+            "character" : charimg,
+            "health" : health,
+            "hunger" : hunger,
+            "hydration" : hydrate,
+            "earnings" : 500,
+            "inventory" : 'Banana,Pizza,Protein Shake'
 
+        }
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+            "method": "POST",
+            "headers": {
+            "content-type": "application/json",
+            "x-apikey": "602b72be5ad3610fb5bb60b5",
+            "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
         $('.char').hide();
         $('.menu').show();
         $('.gameMenu').show();
@@ -302,7 +330,35 @@ async function RunGame() {
 
         // Set chosen character
         $('.charPP').attr('src', charimg);
+         // POST a new document to the player-login collection (add a new player)
+         var jsondata = {
+            "username" : dname,
+            "password" : password,
+            "character" : charimg,
+            "health" : health,
+            "hunger" : hunger,
+            "hydration" : hydrate,
+            "earnings" : 500,
+            "inventory" : 'Banana,Pizza,Protein Shake'
 
+        }
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+            "method": "POST",
+            "headers": {
+            "content-type": "application/json",
+            "x-apikey": "602b72be5ad3610fb5bb60b5",
+            "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
         $('.char').hide();
         $('.menu').show();
         $('.gameMenu').show();
@@ -318,7 +374,35 @@ async function RunGame() {
 
         // Set chosen character
         $('.charPP').attr('src', charimg);
+         // POST a new document to the player-login collection (add a new player)
+         var jsondata = {
+            "username" : dname,
+            "password" : password,
+            "character" : charimg,
+            "health" : health,
+            "hunger" : hunger,
+            "hydration" : hydrate,
+            "earnings" : 500,
+            "inventory" : 'Banana,Pizza,Protein Shake'
 
+        }
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+            "method": "POST",
+            "headers": {
+            "content-type": "application/json",
+            "x-apikey": "602b72be5ad3610fb5bb60b5",
+            "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
         $('.char').hide();
         $('.menu').show();
         $('.gameMenu').show();
@@ -334,7 +418,35 @@ async function RunGame() {
 
         // Set chosen character
         $('.charPP').attr('src', charimg);
+         // POST a new document to the player-login collection (add a new player)
+         var jsondata = {
+            "username" : dname,
+            "password" : password,
+            "character" : charimg,
+            "health" : health,
+            "hunger" : hunger,
+            "hydration" : hydrate,
+            "earnings" : 500,
+            "inventory" : 'Banana,Pizza,Protein Shake'
 
+        }
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+            "method": "POST",
+            "headers": {
+            "content-type": "application/json",
+            "x-apikey": "602b72be5ad3610fb5bb60b5",
+            "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
         $('.char').hide();
         $('.menu').show();
         $('.gameMenu').show();
@@ -347,7 +459,35 @@ async function RunGame() {
 
         // Save chosen character
         charimg = $('#garam').attr('src');
+         // POST a new document to the player-login collection (add a new player)
+         var jsondata = {
+            "username" : dname,
+            "password" : password,
+            "character" : charimg,
+            "health" : health,
+            "hunger" : hunger,
+            "hydration" : hydrate,
+            "earnings" : 500,
+            "inventory" : 'Banana,Pizza,Protein Shake'
 
+        }
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+            "method": "POST",
+            "headers": {
+            "content-type": "application/json",
+            "x-apikey": "602b72be5ad3610fb5bb60b5",
+            "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
         // Set chosen character
         $('.charPP').attr('src', charimg);
 
@@ -480,7 +620,6 @@ async function RunGame() {
 }
 
 RunGame();
-
 // Function for when a user purchases an item from the store
 // It will validate if currency is sufficient, it will also
 // add the newly purchased item into the global inv array.
@@ -628,3 +767,27 @@ function updateHydrate(change) {
 updateHealth(0);
 updateHunger(0);
 updateHydrate(0);
+
+// Game Javascript
+    //Log-In
+var item_id = ''; 
+var players = [];
+// // PUT a updated document to the player-log-in collection (update player login information)
+// var jsondata = {"field1": "new value","field2": "xxx"};
+// var settings = {
+//     "async": true,
+//     "crossDomain": true,
+//     "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in/(ObjectID)",
+//     "method": "PUT",
+//     "headers": {
+//     "content-type": "application/json",
+//     "x-apikey": "602b72be5ad3610fb5bb60b5",
+//     "cache-control": "no-cache"
+//     },
+//     "processData": false,
+//     "data": JSON.stringify(jsondata)
+// }
+
+// $.ajax(settings).done(function (response) {
+//     console.log(response);
+// });
