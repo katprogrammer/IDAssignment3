@@ -222,15 +222,7 @@
                                             <rect class="healthbar_fill healthbar_fill-top" height="1" />
                                         </svg>
                                     </svg>
-                                    <div class="button-container">
-                                        <button class="button" onclick="updateHealth(-15)">
-                                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/HealthDemoDown.png" alt="Less Health" />
-                                        </button>
-                                        <button class="button" onclick="updateHealth(15)">
-                                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/HealthDemoUp.png" alt="More Health" />
-                                        </button>
-                                    </div>
-                            </div>
+                                </div>
                             <div class="hungerBar">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 60 60" shape-rendering="crispEdges">
                                     <metadata>Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj</metadata>
@@ -253,14 +245,6 @@
                                         <rect class="hungerbar_fill hungerbar_fill-top" height="1" />
                                     </svg>
                                 </svg>
-                                <div class="button-container">
-                                    <button class="button" onclick="updateHunger(-15)">
-                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/HealthDemoDown.png" alt="Less Health" />
-                                    </button>
-                                    <button class="button" onclick="updateHunger(15)">
-                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/HealthDemoUp.png" alt="More Health" />
-                                    </button>
-                                </div>
                             </div>
                             <div class="hydrateBar">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 60 60" shape-rendering="crispEdges">
@@ -281,14 +265,6 @@
                                         <rect class="hydratebar_fill hydratebar_fill-top" height="1" />
                                     </svg>
                                 </svg>
-                                <div class="button-container">
-                                    <button class="button" onclick="updateHydrate(-15)">
-                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/HealthDemoDown.png" alt="Less Health" />
-                                    </button>
-                                    <button class="button" onclick="updateHydrate(15)">
-                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/HealthDemoUp.png" alt="More Health" />
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>  
@@ -296,8 +272,10 @@
                 <div id="overlay"></div>
 
                 <div class="inventory">
-                    <h1 id="title">Click on the items to use!</h1>
-                    <h1 id="title">Click on inventory again to use another item!</h1>
+                    <div class="inventory-header">
+                        <h1 id="title">Click on the items to use!</h1>
+                        <h2 class="smallerHeader">Click on inventory again to use another item!</h2>
+                    </div>
                     <div class="invSpace">
                     </div>
                     

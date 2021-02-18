@@ -258,6 +258,13 @@ Completed save-game, load-game and inventory validation. Made the code more effi
 * Completed inventory validation
 * Increased code efficiency
 
+# Commit 3.4
+Made home-page and game-page responsive for all screen devices except for the shop feature and documented references/credits in README file. Furthermore, updated user stats whenever user uses an item.
+
+### General Summary:
+* Made game responsive for all devices
+* Documented features, future features and testing process
+
 ## Features:
 ### TBA:
 
@@ -280,6 +287,14 @@ Completed save-game, load-game and inventory validation. Made the code more effi
     * Used Adobe XD to create the wireframe and layout for the website
 * [Normalize css](https://necolas.github.io/normalize.css/)
     * Normalize.css was used to render all elements more consistently and in line with modern standards
+* [CodePen](https://cdpn.io/shshaw/debug/XbxvNj)
+    * Used CodePen to convert pixel art to svg code
+* [restdb](https://restdb.io/)
+    * Used restdb to store, update and get player information
+* [Recipoe-Food-Nutrition-API](https://rapidapi.com/spoonacular/api/recipe-food-nutrition)
+    * Made by spoonacular. Used to get information about various food and their nutrional values.
+* [SuperheroAPI](https://superheroapi.com/)
+    * Used Superhero API to get information about different heroes and villains to implement in game.
 
 ## Testing
 
@@ -294,6 +309,42 @@ Completed save-game, load-game and inventory validation. Made the code more effi
 ## Credits:
 ### Content:
 
+### Codes
+- https://www.youtube.com/watch?v=MBaw_6cPmAw&list=LL&index=3&ab_channel=WebDevSimplified (Modal Pop up Tutorial by Web Dev Simplified)
+
+### Fonts
+- Google Fonts used are VT323 & Press Start 2P. Links are below.
+- VT323 (https://fonts.google.com/specimen/VT323?preview.text_type=custom)
+- Press Start 2P (https://fonts.google.com/specimen/Press+Start+2P?preview.text_type=custom)
+
 ### Media:
+- The photos used in this site were obtained from GIPHY, DeviantArt & Gfycat. Links are below
+- GIPHY (https://giphy.com/)
+- DeviantArt (https://www.deviantart.com/)
+- gfycat (https://gfycat.com/)
+
+### Animated Pixel Background GIFs
+- https://www.deviantart.com/isohei/art/Pixel-Waterfall-BG-298403583?q=boost%3Apopular%20meta%3Aall%20max_age%3A8h&qo=2 (Pixel Waterfall BG by iSohei)
+- https://zegeekster.tumblr.com/image/628361687679008768 (Animated pixel forest background GIF by zegeekster on Tumblr)
+- https://pixeljeff.tumblr.com/ (Animated pixel cafe background by pixeljeff on Tumblr)
+- https://gifer.com/en/U9ho (Animated pixel Kitchen GIF on GIPHY)
+- https://gifer.com/en/3or4 (Autumn scenery sunset GIF Uploaded by MageBourne)
+
+### Animal GIFs
+- https://www.pinterest.com/pin/502644008387052078/ (Animated pixel pug heart GIF)
+- https://novocom.top/view/3515bb-kawaii-dogs-gif/ (Animated pixel dogs running GIF)
+- https://1041uuu.tumblr.com/post/172307746313 (Animated pixel koi GIF by 1041uuu on Tumblr)
+- https://scratch.mit.edu/studios/1751058/comments/ (Cat GIF on Scratch)
+- https://shibatown.tumblr.com/post/169673497362/sleepy-shibe (Animated pixel shiba GIF sleeping by shibatown on Tumblr)
+- https://gifer.com/en/5AB5 (Animated pixel dogs GIF uploaded by Mightbearer on GIPHY)
+
+### Food GIFs
+- https://giphy.com/stickers/pizza-l4FGGzDc4iDfgog2A (Animated pixel pizza GIF by Haydiroket (Mert Keskin)
+on GIPHER)
+- https://gfycat.com/stickers/search/pixel+food (Animated Pixel fruits on gfycat)
+
+### Other GIFs
+- https://wifflegif.com/tags/3234-leaves-gifs?page=6 (Leaves GIF)
+- https://giphy.com/stickers/pixelart-angelcervantes-manafinder-pHYexrE0yvhKikX6v8 (Animated pixel sword GIF made by LowResolutionBoy on GIPHY)
 
 ### Acknowledgements:

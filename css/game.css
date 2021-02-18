@@ -33,7 +33,7 @@ html, body {
 
 .gameMenu {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
 }
@@ -113,7 +113,8 @@ html, body {
 
 #title {
     text-align: center;
-    font-size: 35px;
+    font-size: 26px;
+    padding-top: 5%;
 }
 
 #paragraph {
@@ -204,10 +205,10 @@ label {
 .playerImg {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 .statsImg {
     border-radius: 5%;
-    height: 100%;
     width: 50%;
 }
 .stats {
@@ -252,7 +253,6 @@ label {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 .healthBar, .hungerBar, .hydrateBar {
     display: flex;  
@@ -335,7 +335,18 @@ label {
     flex-direction: column;
     align-items: center;
 }
-
+.inventory-header {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0% 4% 0% 4%;
+}
+.smallerHeader {
+    font-size: 30px;
+    font-family: 'VT323', monospace;
+    color: rgb(212,175,55);
+}
 .invSpace {
     display: flex;
     flex-wrap: wrap;
@@ -346,6 +357,7 @@ label {
     background-color: rgba(0,0,0, 0.4);
     border-radius: 25px;
     margin-top: 20px;
+    margin-bottom: 5%;
 }
 
 .item {
@@ -371,6 +383,7 @@ label {
 }
 
 .invText {
+    padding: 2% 2% 2% 2%;
     text-align: center;
     font-family: 'VT323', monospace;
     color: #fff;
@@ -454,11 +467,11 @@ label {
 }
 
 .card-stats .type {
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .card-stats .value {
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .card-buy {
@@ -512,9 +525,18 @@ label {
     #submit {
         font-size: 40px;
     }
-
+    .healthBar, .hungerBar, .hydrateBar {
+        width: 350px;
+        height: 50px;
+    }
+    .invText {
+        font-size: 25px;
+    }
     #title {
-        font-size: 40px;
+        font-size: 25px;
+    }
+    .smallerHeader {
+        font-size: 20px;
     }
 
     .tip {
@@ -524,8 +546,8 @@ label {
     }
 
     .icon span img {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
 }
 
@@ -556,11 +578,25 @@ label {
     }
 
     #title {
-        font-size: 30px;
+        font-size: 20px;
+    }
+    .healthBar, .hungerBar, .hydrateBar {
+        width: 250px;
+        height: 40px;
     }
 
     .menu {
         height: 15%;
+    }
+    .icon span img {
+        width: 45px;
+        height: 45px;
+    }
+    .type {
+        font-size: 50px;
+    }
+    .value1, .value2, .value3 {
+        font-size: 40px;
     }
 }
 
@@ -591,6 +627,11 @@ label {
         font-size: 20px;
     }
 
+    .healthBar, .hungerBar, .hydrateBar {
+        width: 200px;
+        height: 32px;
+    }
+
     .row {
         flex-direction: column;
     }
@@ -602,7 +643,7 @@ label {
 
     .gameMenu {
         flex-direction: row;
-        flex-wrap: wrap;
+        justify-content: space-evenly;
         align-items: center;
         height: 100%;
     }
@@ -642,9 +683,17 @@ label {
     .home h1 {
         margin-top: 5%;
     }
-
     .charPP {
         width: 60%;
+    }
+    .card-text h2 {
+        font-size: 35px;
+    }
+    .card-stats .type {
+        font-size: 30px;
+    }
+    .card-stats .value {
+        font-size: 30px;
     }
 }
 
@@ -667,11 +716,16 @@ label {
     }
 
     #title {
-        font-size: 20px;
+        font-size: 17px;
     }
 
     .row {
         flex-direction: column;
+    }
+
+    .healthBar, .hungerBar, .hydrateBar {
+        width: 150px;
+        height: 20px;
     }
 
     .menu {
@@ -681,7 +735,7 @@ label {
 
     .gameMenu {
         flex-direction: row;
-        flex-wrap: wrap;
+        justify-content: space-evenly;
         align-items: center;
         height: 100%;
     }
@@ -724,5 +778,17 @@ label {
 
     .charPP {
         width: 70%;
+    }
+    .card {
+        width: 80%;
+    }
+    .card-text h2 {
+        font-size: 25px;
+    }
+    .card-stats .type {
+        font-size: 20px;
+    }
+    .card-stats .value {
+        font-size: 20px;
     }
 }
