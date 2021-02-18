@@ -1,7 +1,7 @@
 /* jshint esversion: 8 */
 // Food API
 const food_url = 'https://api.spoonacular.com';
-const food_key = 'apiKey=81823a729453491da8ea65218d07d279';
+const food_key = 'apiKey=a7420d5788d3404194dc2c6c71a973da';
 var pizzaInfo = '', chilliInfo = '', donutsInfo = '', brkSmoothyInfo = '', proShakeInfo = '';
 var batmanInfo = '', capAmericaInfo = '', thorInfo = '', onePunchInfo = '', grootInfo = '';
 var darthVaderInfo = '', carnageInfo = '', lokiInfo = '', magnetoInfo = '', redHulkInfo = '', thanosInfo = '';
@@ -72,9 +72,9 @@ function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proSh
         storeItemsImg.push(array[i].image);
         storeItemsName.push(array[i].title);
     }
-
+    console.log(storeItems);
     var items = {
-        items: storeItems,
+        id: storeItems,
         image: storeItemsImg,
         name: storeItemsName
     }
@@ -155,6 +155,7 @@ async function RunGame() {
     var dname = ''; // Display name
     var password = '';
     var playerID = '';
+    var currency = 1000;
 
     // Start game button
     $('#startGame').click(function(e) { 
@@ -274,11 +275,12 @@ async function RunGame() {
 
         // Set chosen character
         $('.charPP').attr('src', charimg);
+        $('.statsImg').attr('src', charimg);
          // POST a new document to the player-login collection (add a new player)
          var jsondata = {
             "username" : dname,
             "password" : password,
-            "character" : charimg.attr("id"),
+            "character" : charimg,
             "health" : health,
             "hunger" : hunger,
             "hydration" : hydrate,
@@ -317,6 +319,7 @@ async function RunGame() {
         charimg = $('#jinsung').attr('src');
         // Set chosen character
         $('.charPP').attr('src', charimg);
+        $('.statsImg').attr('src', charimg);
         // POST a new document to the player-login collection (add a new player)
         var jsondata = {
             "username" : dname,
@@ -325,7 +328,7 @@ async function RunGame() {
             "health" : health,
             "hunger" : hunger,
             "hydration" : hydrate,
-            "earnings" : currency,
+            "earnings" : 1000,
             "inventory" : inv.toString()
 
         }
@@ -361,6 +364,7 @@ async function RunGame() {
 
         // Set chosen character
         $('.charPP').attr('src', charimg);
+        $('.statsImg').attr('src', charimg);
          // POST a new document to the player-login collection (add a new player)
          var jsondata = {
             "username" : dname,
@@ -405,6 +409,7 @@ async function RunGame() {
 
         // Set chosen character
         $('.charPP').attr('src', charimg);
+        $('.statsImg').attr('src', charimg);
          // POST a new document to the player-login collection (add a new player)
          var jsondata = {
             "username" : dname,
@@ -449,6 +454,7 @@ async function RunGame() {
 
         // Set chosen character
         $('.charPP').attr('src', charimg);
+        $('.statsImg').attr('src', charimg);
          // POST a new document to the player-login collection (add a new player)
          var jsondata = {
             "username" : dname,
@@ -490,6 +496,7 @@ async function RunGame() {
 
         // Save chosen character
         charimg = $('#garam').attr('src');
+        $('.statsImg').attr('src', charimg);
          // POST a new document to the player-login collection (add a new player)
          var jsondata = {
             "username" : dname,
@@ -558,10 +565,10 @@ async function RunGame() {
                 "health" : health,
                 "hunger" : hunger,
                 "hydration" : hydrate,
-                "earnings" : currency,
+                "earnings" : 1000,
                 "inventory" : inv.toString()
             }
-            console.log(playerID);
+            console.log(currency);
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -650,7 +657,25 @@ async function RunGame() {
 
     $('#inventory').click(function(e) {
         e.preventDefault();
+        console.log(storeItems);
+        function checkInventoryItems(inv, storeItems) {
+            if (inv.length === 0) {
+                $('.invSpace').html('<h1 class="invText">There are currently no items in your inventory.<br>Buy some from the store!</h1>');
+            }
+            else {
+                var content = ''
         
+                inv.forEach((x) => {
+                    for (var i = 0; i < storeItems.id.length; i++) {
+                        if (x == storeItems.id[i]) {
+                            content += `<div class="item" data-id-item="${storeItems.id[i]}" data-bs-toggle="modal" data-bs-target="#myModal"><img src="${storeItems.image[i]}" alt="${storeItems.name[i]}"></div>`;
+                        }
+                    }
+                });
+        
+                $('.invSpace').html(content);
+            }
+        }
         checkInventoryItems(inv, storeItems);
 
         $('.home').hide();
@@ -663,50 +688,71 @@ async function RunGame() {
 
         $('.item').click(function(e) {
             e.preventDefault();
-
-            // Find the item that triggered the event
-            var selItem = e.target.parentElement;
-            var name = selItem.childNodes[0].getAttribute('alt');
-            $('.modal-title').html(name);
-
-            // for when a user selects an item in the inventory for use,
-            // it will create a pop-up box for user to select use/not to use and
-            // it will also update the statistics of the player accordingly.
-            $('#yesSel').click(function(e) {
-                e.preventDefault();
-
-                var tempItemID = selItem.getAttribute("data-id-item");
-                
-                console.log(inv);
-                for (var o = 0; o < inv.length; o++) {
-                    if (inv[o] === tempItemID) {
+            var itemDelete = e.target.parentElement.getAttribute('data-id-item');
+            console.log(e.target.parentElement);
+            $('#yesSel').click(function() {
+                for (var i = 0; i < inv.length; i++) {
+                    if (inv[i] === itemDelete) {
                         if (inv.length === 1) {
-                            inv = [];
+                            inv.shift();
                         }
                         else {
-                            const index = inv.indexOf(tempItemID);
+                            const index = inv.indexOf(itemDelete);
                             console.log(index);
                             
                             if (index > -1) {
                                 inv.splice(index, 1);
+                                console.log(inv);
                             }
                         }
                         break;
                     }
                 }
-                console.log(inv);
-
-                selItem.remove();
-
-                // Refresh the data on the page;
-                checkInventoryItems(inv, storeItems);
+                e.target.parentElement.remove();
             })
+            // // Find the item that triggered the event
+            // var selItem = e.target.parentElement;
+            // var name = selItem.childNodes[0].getAttribute('alt');
+            // $('.modal-title').html(name);
+
+            // // for when a user selects an item in the inventory for use,
+            // // it will create a pop-up box for user to select use/not to use and
+            // // it will also update the statistics of the player accordingly.
+            // $('#yesSel').click(function(e) {
+            //     e.preventDefault();
+
+            //     var tempItemID = selItem.getAttribute("data-id-item");
+                
+            //     console.log(inv);
+            //     for (var o = 0; o < inv.length; o++) {
+            //         if (inv[o] === tempItemID) {
+            //             if (inv.length === 1) {
+            //                 inv = [];
+            //             }
+            //             else {
+            //                 const index = inv.indexOf(tempItemID);
+            //                 console.log(index);
+                            
+            //                 if (index > -1) {
+            //                     inv.splice(index, 1);
+            //                 }
+            //             }
+            //             break;
+            //         }
+            //     }
+            //     console.log(inv);
+
+            //     selItem.remove();
+
+            //     // Refresh the data on the page;
+            //     checkInventoryItems(inv, storeItems);
+            // })
         }) 
     })
 
     // ---------------------------- Shop functions section --------------------------
     // Shop button
-    var currency = 100; // Money variable for shop
+    var currency = 1000; // Money variable for shop
     $('.currency').text(`Your currently have: ${currency} gold left.`);
     var storeItems = InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
 
@@ -723,8 +769,59 @@ async function RunGame() {
         $('.shop').show(); // Show shop division/menu
     })
     
+    function BuyItem(currency, inv) {
+        if (currency <= 0) {
+            alert("You have insufficient gold! Go battle some monsters!");
+        }
+        else {
+            $('.buyItem').click(function(e) {
+                var targetButton = e.target;
+                var chosenItem = targetButton.parentElement.parentElement;
+                if (currency < Math.floor(parseInt(chosenItem.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4)) {
+                    alert("You do not have enough gold to purchase this!");
+                }
+                else {
+                    inv.push(chosenItem.getAttribute('data-id'));
+                    console.log(inv);
+                    currency -= Math.floor(parseInt(chosenItem.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4);
+                    $('.currency').text(`Your currently have: ${currency} gold left.`);
+    
+                    // Complete purchase
+                    alert("Your purchase was successful, enjoy!")
+                    return currency;
+                }
+            });
+        }
+        // else {
+        //     var addItemToInventory = $('.buyItem');
+        //     console.log(addItemToInventory);
+    
+        //     for (var i = 0; i < addItemToInventory.length; i++) {
+        //         var buy = addItemToInventory[i];
+                
+        //         buy.addEventListener('click', function(e) {
+        //             var boughtItem = e.target;
+    
+        //             if (currency < Math.floor(parseInt(boughtItem.parentElement.parentElement.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4)) {
+        //                 alert("You do not have enough gold to purchase this!");
+        //             }
+        //             else {
+        //                 inv.push(boughtItem.parentElement.parentElement.getAttribute('data-id'));
+    
+        //                 currency -= Math.floor(parseInt(boughtItem.parentElement.parentElement.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4);
+        //                 $('.currency').text(`Your currently have: ${currency} gold left.`);
+    
+        //                 // Complete purchase
+        //                 alert("Your purchase was successful, enjoy!")
+        //                 return currency;
+        //             }
+        //         })
+        //     }
+        // }
+        // return currency;
+    }
     currency = BuyItem(currency, inv);
-
+    
     // ---------------------------- View Stats section --------------------------
     // Exit Game Button
     $('#exitGame').click(function(e) {
@@ -744,56 +841,7 @@ RunGame();
 // Function for when a user purchases an item from the store
 // It will validate if currency is sufficient, it will also
 // add the newly purchased item into the global inv array.
-function BuyItem(currency, inv) {
-    if (currency <= 0) {
-        alert("You have insufficient gold! Go battle some monsters!");
-    }
-    else {
-        var addItemToInventory = $('.buyItem');
 
-        for (var i = 0; i < addItemToInventory.length; i++) {
-            var buy = addItemToInventory[i];
-            
-            buy.addEventListener('click', function(e) {
-                var boughtItem = e.target;
-
-                if (currency < Math.floor(parseInt(boughtItem.parentElement.parentElement.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4)) {
-                    alert("You do not have enough gold to purchase this!");
-                }
-                else {
-                    inv.push(boughtItem.parentElement.parentElement.getAttribute('data-id'));
-
-                    currency -= Math.floor(parseInt(boughtItem.parentElement.parentElement.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4);
-                    $('.currency').text(`Your currently have: ${currency} gold left.`);
-
-                    // Complete purchase
-                    alert("Your purchase was successful, enjoy!")
-                    return currency;
-                }
-            })
-        }
-    }
-    return currency;
-}
-
-function checkInventoryItems(inv, storeItems) {
-    if (inv.length === 0) {
-        $('.invSpace').html('<h1 class="invText">There are currently no items in your inventory.<br>Buy some from the store!</h1>');
-    }
-    else {
-        var content = ''
-
-        inv.forEach((x) => {
-            for (var i = 0; i < storeItems.items.length; i++) {
-                if (x == storeItems.items[i]) {
-                    content += `<div class="item" data-id-item="${storeItems.items[i]}" data-bs-toggle="modal" data-bs-target="#myModal"><img src="${storeItems.image[i]}" alt="${storeItems.name[i]}"></div>`;
-                }
-            }
-        });
-
-        $('.invSpace').html(content);
-    }
-}
 
 var fills = document.querySelectorAll(".healthbar_fill");
 var hungerFill = document.querySelectorAll(".hungerbar_fill");

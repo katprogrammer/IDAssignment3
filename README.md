@@ -230,6 +230,12 @@ Updated validation for log-in and registration form so it will display an error 
 ### General Summary:
 * Updated Validation for log-in process
 
+# Commit 3.1
+Updated JS functions for shop and inventory features. When user clicks on item in their inventory and clicks yes to use the item, it will successfully remove the item from the user inventory array and update the HTML to remove the item image.
+
+### General Summary:
+* Completed shop and inventory feature
+
 ## Features:
 ### TBA:
 
