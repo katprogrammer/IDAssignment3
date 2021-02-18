@@ -1,7 +1,7 @@
 /* jshint esversion: 8 */
 // Food API
 const food_url = 'https://api.spoonacular.com';
-const food_key = 'apiKey=a7420d5788d3404194dc2c6c71a973da';
+const food_key = 'apiKey=fa8565f284074793987d19338b604340';
 var pizzaInfo = '', chilliInfo = '', donutsInfo = '', brkSmoothyInfo = '', proShakeInfo = '';
 var batmanInfo = '', capAmericaInfo = '', thorInfo = '', onePunchInfo = '', grootInfo = '';
 var darthVaderInfo = '', carnageInfo = '', lokiInfo = '', magnetoInfo = '', redHulkInfo = '', thanosInfo = '';
@@ -138,7 +138,7 @@ async function RunGame() {
     // Game function parameters
     $('.gameMenu').hide();
     $('.login').show();
-    $('.home').hide();
+    $('.homeGame').hide();
     $('.inventory').hide();
     $('.shop').hide();
     $('.fight').hide();
@@ -155,7 +155,45 @@ async function RunGame() {
     var dname = ''; // Display name
     var password = '';
     var playerID = '';
-    var currency = 1000;
+    var inv = [] // Inventory Array to store items bought and received
+    var currency = 1000; // Money variable for shop
+    $('.currency').text(`Your currently have: ${currency} gold left.`);
+    $('.currency').attr('data-currency', `${currency}`);
+    var storeItems = InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
+
+    // Functions
+    function SaveInfo(dname, password, charimg, health, hunger, hydrate) {
+        var currency = $('.currency').attr('data-currency');
+        
+        var jsondata = {
+            "username" : dname,
+            "password" : password,
+            "character" : charimg,
+            "health" : health,
+            "hunger" : hunger,
+            "hydration" : hydrate,
+            "earnings" : currency,
+            "inventory" : inv.toString()
+        }
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+            "method": "POST",
+            "headers": {
+            "content-type": "application/json",
+            "x-apikey": "602b72be5ad3610fb5bb60b5",
+            "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    }
 
     // Start game button
     $('#startGame').click(function(e) { 
@@ -201,9 +239,6 @@ async function RunGame() {
                 errMsg.style.fontFamily = 'VT323', monospace;
             }
             else {
-                 // Set input display name
-                $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
-    
                 $('.startGame').hide();
                 $('.login').hide();
                 $('.startMenu').hide();
@@ -213,6 +248,7 @@ async function RunGame() {
             console.log(response);
         });
     })
+
     $('#login').submit(function(e) {
         e.preventDefault();
         var wrongCount = 0;
@@ -248,9 +284,7 @@ async function RunGame() {
             }
             else {
                 console.log("Correct password and username");
-                $('.charPP').attr('src', chosedimg);
                 $('.statsImg').attr('src', chosedimg);
-                $('.home h1').text(`THIS IS YOUR HOME ${dname.toUpperCase()}!`);
 
                 $('.user').hide();
                 $('.startGame').hide();
@@ -261,184 +295,80 @@ async function RunGame() {
                 $('.menu').show();
                 $('.gameMenu').show();
                 $('.gameContainer').show();
-                $('.home').show();
+                $('.homeGame').show();
             }
         });
         // Set input display name
     })
 
     $('#bam').click(function(e) { // Chose Bam
+        console.log(currency);
         e.preventDefault();
 
         // Save chosen character
         charimg = $('#bam').attr('src');
 
-        // Set chosen character
-        $('.charPP').attr('src', charimg);
         $('.statsImg').attr('src', charimg);
-         // POST a new document to the player-login collection (add a new player)
-         var jsondata = {
-            "username" : dname,
-            "password" : password,
-            "character" : charimg,
-            "health" : health,
-            "hunger" : hunger,
-            "hydration" : hydrate,
-            "earnings" : currency,
-            "inventory" : inv.toString()
 
-        }
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
-            "method": "POST",
-            "headers": {
-            "content-type": "application/json",
-            "x-apikey": "602b72be5ad3610fb5bb60b5",
-            "cache-control": "no-cache"
-            },
-            "processData": false,
-            "data": JSON.stringify(jsondata)
-        }
+        SaveInfo(dname, password, charimg, health, hunger, hydrate, currency, inv);
 
-        $.ajax(settings).done(function (response) {
-            console.log(response);
-        });
         $('.char').hide();
         $('.menu').show();
         $('.gameContainer').show();
         $('.gameMenu').show();
-        $('.home').show();
+        $('.homeGame').show();
     })
 
     $('#jinsung').click(function(e) { // Chose Jinsung
+        console.log(currency);
         e.preventDefault();
 
         // Save chosen character
         charimg = $('#jinsung').attr('src');
+
         // Set chosen character
-        $('.charPP').attr('src', charimg);
         $('.statsImg').attr('src', charimg);
-        // POST a new document to the player-login collection (add a new player)
-        var jsondata = {
-            "username" : dname,
-            "password" : password,
-            "character" : charimg,
-            "health" : health,
-            "hunger" : hunger,
-            "hydration" : hydrate,
-            "earnings" : 1000,
-            "inventory" : inv.toString()
+        
+        SaveInfo(dname, password, charimg, health, hunger, hydrate, currency, inv);
 
-        }
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
-            "method": "POST",
-            "headers": {
-            "content-type": "application/json",
-            "x-apikey": "602b72be5ad3610fb5bb60b5",
-            "cache-control": "no-cache"
-            },
-            "processData": false,
-            "data": JSON.stringify(jsondata)
-        }
-
-        $.ajax(settings).done(function (response) {
-            console.log(response);
-        });
         $('.char').hide();
         $('.menu').show();
         $('.gameMenu').show();
         $('.gameContainer').show();
-        $('.home').show();
+        $('.homeGame').show();
     })
 
     $('#khun').click(function(e) { // Chose Khun
+        console.log(currency);
         e.preventDefault();
 
         // Save chosen character
         charimg = $('#khun').attr('src');
 
         // Set chosen character
-        $('.charPP').attr('src', charimg);
         $('.statsImg').attr('src', charimg);
-         // POST a new document to the player-login collection (add a new player)
-         var jsondata = {
-            "username" : dname,
-            "password" : password,
-            "character" : charimg,
-            "health" : health,
-            "hunger" : hunger,
-            "hydration" : hydrate,
-            "earnings" : currency,
-            "inventory" : inv.toString()
 
-        }
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
-            "method": "POST",
-            "headers": {
-            "content-type": "application/json",
-            "x-apikey": "602b72be5ad3610fb5bb60b5",
-            "cache-control": "no-cache"
-            },
-            "processData": false,
-            "data": JSON.stringify(jsondata)
-        }
+        SaveInfo(dname, password, charimg, health, hunger, hydrate, currency, inv);
 
-        $.ajax(settings).done(function (response) {
-            console.log(response);
-        });
         $('.char').hide();
         $('.menu').show();
         $('.gameMenu').show();
         $('.gameContainer').show();
-        $('.home').show();
+        $('.homeGame').show();
     })
 
     $('#androssi').click(function(e) { // Chose Androssi
+        console.log(currency);
         e.preventDefault();
 
         // Save chosen character
         charimg = $('#androssi').attr('src');
 
         // Set chosen character
-        $('.charPP').attr('src', charimg);
         $('.statsImg').attr('src', charimg);
-         // POST a new document to the player-login collection (add a new player)
-         var jsondata = {
-            "username" : dname,
-            "password" : password,
-            "character" : charimg,
-            "health" : health,
-            "hunger" : hunger,
-            "hydration" : hydrate,
-            "earnings" : currency,
-            "inventory" : inv.toString()
 
-        }
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
-            "method": "POST",
-            "headers": {
-            "content-type": "application/json",
-            "x-apikey": "602b72be5ad3610fb5bb60b5",
-            "cache-control": "no-cache"
-            },
-            "processData": false,
-            "data": JSON.stringify(jsondata)
-        }
-
-        $.ajax(settings).done(function (response) {
-            console.log(response);
-        });
+        SaveInfo(dname, password, charimg, health, hunger, hydrate, currency, inv);
+        
         $('.char').hide();
         $('.menu').show();
         $('.gameMenu').show();
@@ -447,43 +377,17 @@ async function RunGame() {
     })
 
     $('#yuri').click(function(e) { // Chose Yuri
+        console.log(currency);
         e.preventDefault();
 
         // Save chosen character
         charimg = $('#yuri').attr('src');
 
         // Set chosen character
-        $('.charPP').attr('src', charimg);
         $('.statsImg').attr('src', charimg);
-         // POST a new document to the player-login collection (add a new player)
-         var jsondata = {
-            "username" : dname,
-            "password" : password,
-            "character" : charimg,
-            "health" : health,
-            "hunger" : hunger,
-            "hydration" : hydrate,
-            "earnings" : currency,
-            "inventory" : inv.toString()
+         
+        SaveInfo(dname, password, charimg, health, hunger, hydrate, currency, inv);
 
-        }
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
-            "method": "POST",
-            "headers": {
-            "content-type": "application/json",
-            "x-apikey": "602b72be5ad3610fb5bb60b5",
-            "cache-control": "no-cache"
-            },
-            "processData": false,
-            "data": JSON.stringify(jsondata)
-        }
-
-        $.ajax(settings).done(function (response) {
-            console.log(response);
-        });
         $('.char').hide();
         $('.menu').show();
         $('.gameMenu').show();
@@ -492,41 +396,18 @@ async function RunGame() {
     })
 
     $('#garam').click(function(e) { // Chose Garam
+        console.log(currency);
         e.preventDefault();
 
         // Save chosen character
         charimg = $('#garam').attr('src');
-        $('.statsImg').attr('src', charimg);
-         // POST a new document to the player-login collection (add a new player)
-         var jsondata = {
-            "username" : dname,
-            "password" : password,
-            "character" : charimg,
-            "health" : health,
-            "hunger" : hunger,
-            "hydration" : hydrate,
-            "earnings" : currency,
-            "inventory" : inv.toString()
-        }
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
-            "method": "POST",
-            "headers": {
-            "content-type": "application/json",
-            "x-apikey": "602b72be5ad3610fb5bb60b5",
-            "cache-control": "no-cache"
-            },
-            "processData": false,
-            "data": JSON.stringify(jsondata)
-        }
 
-        $.ajax(settings).done(function (response) {
-            console.log(response);
-        });
+        $('.statsImg').attr('src', charimg);
+
+        SaveInfo(dname, password, charimg, health, hunger, hydrate, currency, inv);
+
         // Set chosen character
-        $('.charPP').attr('src', charimg);
+        $('.statsImg').attr('src', charimg);
 
         $('.char').hide();
         $('.menu').show();
@@ -653,8 +534,6 @@ async function RunGame() {
 
     // ---------------------------- Inventory functions section --------------------------
     // Inventory button
-    var inv = [] // Inventory Array to store items bought and received
-
     $('#inventory').click(function(e) {
         e.preventDefault();
         console.log(storeItems);
@@ -710,52 +589,11 @@ async function RunGame() {
                 }
                 e.target.parentElement.remove();
             })
-            // // Find the item that triggered the event
-            // var selItem = e.target.parentElement;
-            // var name = selItem.childNodes[0].getAttribute('alt');
-            // $('.modal-title').html(name);
-
-            // // for when a user selects an item in the inventory for use,
-            // // it will create a pop-up box for user to select use/not to use and
-            // // it will also update the statistics of the player accordingly.
-            // $('#yesSel').click(function(e) {
-            //     e.preventDefault();
-
-            //     var tempItemID = selItem.getAttribute("data-id-item");
-                
-            //     console.log(inv);
-            //     for (var o = 0; o < inv.length; o++) {
-            //         if (inv[o] === tempItemID) {
-            //             if (inv.length === 1) {
-            //                 inv = [];
-            //             }
-            //             else {
-            //                 const index = inv.indexOf(tempItemID);
-            //                 console.log(index);
-                            
-            //                 if (index > -1) {
-            //                     inv.splice(index, 1);
-            //                 }
-            //             }
-            //             break;
-            //         }
-            //     }
-            //     console.log(inv);
-
-            //     selItem.remove();
-
-            //     // Refresh the data on the page;
-            //     checkInventoryItems(inv, storeItems);
-            // })
         }) 
     })
 
     // ---------------------------- Shop functions section --------------------------
     // Shop button
-    var currency = 1000; // Money variable for shop
-    $('.currency').text(`Your currently have: ${currency} gold left.`);
-    var storeItems = InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
-
     $('#shop').click(function(e) {
         e.preventDefault();
 
@@ -792,56 +630,15 @@ async function RunGame() {
                 }
             });
         }
-        // else {
-        //     var addItemToInventory = $('.buyItem');
-        //     console.log(addItemToInventory);
-    
-        //     for (var i = 0; i < addItemToInventory.length; i++) {
-        //         var buy = addItemToInventory[i];
-                
-        //         buy.addEventListener('click', function(e) {
-        //             var boughtItem = e.target;
-    
-        //             if (currency < Math.floor(parseInt(boughtItem.parentElement.parentElement.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4)) {
-        //                 alert("You do not have enough gold to purchase this!");
-        //             }
-        //             else {
-        //                 inv.push(boughtItem.parentElement.parentElement.getAttribute('data-id'));
-    
-        //                 currency -= Math.floor(parseInt(boughtItem.parentElement.parentElement.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4);
-        //                 $('.currency').text(`Your currently have: ${currency} gold left.`);
-    
-        //                 // Complete purchase
-        //                 alert("Your purchase was successful, enjoy!")
-        //                 return currency;
-        //             }
-        //         })
-        //     }
-        // }
-        // return currency;
     }
     currency = BuyItem(currency, inv);
-    
-    // ---------------------------- View Stats section --------------------------
-    // Exit Game Button
-    $('#exitGame').click(function(e) {
-        e.preventDefault();
-
-        // Exit game function to be added
-        $('.home').hide();
-        $('.inventory').hide();
-        $('.shop').hide();
-        $('.fight').hide();
-        $('.stats').hide();
-        $('.save').hide();
-        window.location = "https://katprogrammer.github.io/IDAssignment3/";
-    })
 }
+
 RunGame();
+
 // Function for when a user purchases an item from the store
 // It will validate if currency is sufficient, it will also
 // add the newly purchased item into the global inv array.
-
 
 var fills = document.querySelectorAll(".healthbar_fill");
 var hungerFill = document.querySelectorAll(".hungerbar_fill");
