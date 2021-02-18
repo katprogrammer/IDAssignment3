@@ -1,7 +1,7 @@
 /* jshint esversion: 8 */
 // Food API
 const food_url = 'https://api.spoonacular.com';
-const food_key = 'apiKey=a7420d5788d3404194dc2c6c71a973da';
+const food_key = 'apiKey=c150d8123995488a8268d9d95b6c8f5e';
 var pizzaInfo = '', chilliInfo = '', donutsInfo = '', brkSmoothyInfo = '', proShakeInfo = '';
 var batmanInfo = '', capAmericaInfo = '', thorInfo = '', onePunchInfo = '', grootInfo = '';
 var darthVaderInfo = '', carnageInfo = '', lokiInfo = '', magnetoInfo = '', redHulkInfo = '', thanosInfo = '';
@@ -237,6 +237,10 @@ async function RunGame() {
                 }
                 else if (response[i].username == dname && response[i].password == password) {
                     chosedimg = response[i].character;
+                    health = response[i].health;
+                    hunger = response[i].hunger;
+                    hydrate = response[i].hydration;
+                    renderBar();
                 }
             }
             if (wrongCount === response.length) {
@@ -655,7 +659,7 @@ async function RunGame() {
     // Inventory button
     var inv = [] // Inventory Array to store items bought and received
 
-    $('#inventory').click(function(e) {
+    $('#inventory').unbind('click').click(function(e) {
         e.preventDefault();
         console.log(storeItems);
         function checkInventoryItems(inv, storeItems) {
@@ -683,32 +687,32 @@ async function RunGame() {
         $('.fight').hide();
         $('.stats').hide();
         $('.save').hide();
-
         $('.inventory').show(); // Show inventory division/menu
 
-        $('.item').click(function(e) {
-            e.preventDefault();
+        $('.item').unbind('click').click(function(e) {
             var itemDelete = e.target.parentElement.getAttribute('data-id-item');
             console.log(e.target.parentElement);
-            $('#yesSel').click(function() {
-                for (var i = 0; i < inv.length; i++) {
+            $('#yesSel').unbind('click').click(function() {
+                for (var i = 0; i < inv.length; i++) { 
                     if (inv[i] === itemDelete) {
                         if (inv.length === 1) {
                             inv.shift();
+                            break;
                         }
                         else {
                             const index = inv.indexOf(itemDelete);
                             console.log(index);
-                            
-                            if (index > -1) {
+                            if (index != -1) {
                                 inv.splice(index, 1);
-                                console.log(inv);
+                                break;
                             }
+                            break;
                         }
-                        break;
                     }
                 }
+                console.log(inv);
                 e.target.parentElement.remove();
+                checkInventoryItems(inv, storeItems);
             })
             // // Find the item that triggered the event
             // var selItem = e.target.parentElement;

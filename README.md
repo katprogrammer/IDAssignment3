@@ -236,6 +236,13 @@ Updated JS functions for shop and inventory features. When user clicks on item i
 ### General Summary:
 * Completed shop and inventory feature
 
+# Commit 3.2
+Fixed some bugs with the inventory deleting every duplicate item in the array and updated validation. Also made sure user stats are saved when the user logs-in again. Working on updating the user stats after using an item next.
+
+### General Summary:
+* Fixed some errors with inventory feature
+* Fixed log-in issue not saving user stats
+
 ## Features:
 ### TBA:
 
