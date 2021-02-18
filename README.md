@@ -213,28 +213,50 @@ Updated the shop with a currency counter displayed at the top where it will upda
 # Commit 2.7
 Completed half of the inventory where if a user buys an item from the shop, it will update the inventory accordingly. The CSS Styling still needs to be updated and further testing required, but it works as of now.
 
+#### General Summary:
 * Completed half of inventory page
 * Inventory updates with shop purchases now
 
 # Commit 2.8
 Changed inventory stuff, but still having issues with updating and deletion. Plus shop purchases cause error for the inventory.
 
+#### General Summary:
 * Inventory and Shop issues
 
 # Commit 2.9
 Validated and completed log-in and registration form. Working on the design of the form now.
 
+#### General Summary:
+* Login page, Registration form completed
+* Validation for both done
+
 # Commit 3.0
 Updated validation for log-in and registration form so it will display an error message as well as completed the save game feature to update the player statistcis, currency and inventory items. Made sure when the player login, their latest saved version appears.
 
-### General Summary:
+#### General Summary:
 * Updated Validation for log-in process
 
 # Commit 3.1
 Updated JS functions for shop and inventory features. When user clicks on item in their inventory and clicks yes to use the item, it will successfully remove the item from the user inventory array and update the HTML to remove the item image.
 
-### General Summary:
+#### General Summary:
 * Completed shop and inventory feature
+
+# Commit 3.2
+Fixed some bugs with the inventory deleting every duplicate item in the array and updated validation. Also made sure user stats are saved when the user logs-in again. Working on updating the user stats after using an item next.
+
+#### General Summary:
+* Fixed some errors with inventory feature
+* Fixed log-in issue not saving user stats
+
+# Commit 3.3
+Completed save-game, load-game and inventory validation. Made the code more efficient as well by reducing duplicate lines of code by using functions.
+
+#### General Summary:
+* Completed save-game function
+* Completed load-game function 
+* Completed inventory validation
+* Increased code efficiency
 
 ## Features:
 ### TBA:

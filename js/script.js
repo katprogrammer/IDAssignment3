@@ -1,7 +1,7 @@
 /* jshint esversion: 8 */
 // Food API
 const food_url = 'https://api.spoonacular.com';
-const food_key = 'apiKey=fa8565f284074793987d19338b604340';
+const food_key = 'apiKey=f0eded8196e1494289965bdefb7fc87c';
 var pizzaInfo = '', chilliInfo = '', donutsInfo = '', brkSmoothyInfo = '', proShakeInfo = '';
 var batmanInfo = '', capAmericaInfo = '', thorInfo = '', onePunchInfo = '', grootInfo = '';
 var darthVaderInfo = '', carnageInfo = '', lokiInfo = '', magnetoInfo = '', redHulkInfo = '', thanosInfo = '';
@@ -160,10 +160,24 @@ async function RunGame() {
     $('.currency').text(`Your currently have: ${currency} gold left.`);
     $('.currency').attr('data-currency', `${currency}`);
     var storeItems = InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
+    localStorage.setItem(inventory, []);
 
     // Functions
     function SaveInfo(dname, password, charimg, health, hunger, hydrate) {
-        var currency = $('.currency').attr('data-currency');
+        var currency = parseInt($('.currency').attr('data-currency'));
+        var inv;
+
+        if (localStorage.getItem(inventory) === "") {
+            console.log(localStorage.getItem(inventory));
+            inv = "empty"
+            console.log(inv);
+        }
+        else {
+            inv = localStorage.getItem(inventory);
+        }
+
+        console.log(currency);
+        console.log(inv);
         
         var jsondata = {
             "username" : dname,
@@ -173,7 +187,7 @@ async function RunGame() {
             "hunger" : hunger,
             "hydration" : hydrate,
             "earnings" : currency,
-            "inventory" : inv.toString()
+            "inventory" : inv
         }
 
         var settings = {
@@ -193,6 +207,104 @@ async function RunGame() {
         $.ajax(settings).done(function (response) {
             console.log(response);
         });
+    }
+
+    function SaveGame(dname, password, charimg, health, hunger, hydrate) {
+        var currency = parseInt($('.currency').attr('data-currency'));
+        var inv;
+
+        if (localStorage.getItem(inventory) === "") {
+            console.log(localStorage.getItem(inventory));
+            inv = "empty"
+            console.log(inv);
+        }
+        else {
+            inv = localStorage.getItem(inventory);
+        }
+
+        console.log(inv);
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
+            "method": "GET",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": "602b72be5ad3610fb5bb60b5",
+                "cache-control": "no-cache"
+            }
+        }
+        $.ajax(settings).done(function (response) {
+            for (i = 0; i < response.length; i++) {
+                if (dname === response[i].username) {
+                    playerID = response[i]._id;
+                    charimg = response[i].character;
+                }
+            }
+
+            // PUT a updated document to the player-log-in collection (update player login information)
+            var jsondata = {
+                "username" : dname,
+                "password" : password,
+                "character" : charimg,
+                "health" : health,
+                "hunger" : hunger,
+                "hydration" : hydrate,
+                "earnings" : currency,
+                "inventory" : inv
+            }
+            console.log(currency);
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": `https://sabaibaru-1c32.restdb.io/rest/player-log-in/${playerID}`,
+                "method": "PUT",
+                "headers": {
+                "content-type": "application/json",
+                "x-apikey": "602b72be5ad3610fb5bb60b5",
+                "cache-control": "no-cache"
+                },
+                "processData": false,
+                "data": JSON.stringify(jsondata)
+            }
+            console.log(JSON.stringify(jsondata));
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                alert("Game saved successfully");
+            });
+        });
+    }
+
+    function SetStorage(inv) {
+        console.log(localStorage.getItem(inventory));
+        var tempInv = localStorage.getItem(inventory);
+        
+        if (tempInv != "empty") {
+            var x = tempInv.split(",");
+            console.log(x);
+
+            if (x.length > 1) {
+                x.forEach((item) => {
+                    console.log("Gay");
+                    inv.push(item);
+                    console.log(inv);
+                })
+            }
+            else if (x.length == 1) {
+                console.log("Gayer");
+                inv.push(x[0]);
+                console.log(inv);
+            }
+            else {
+                console.log("Gayest");
+                inv = [];
+            }
+        }
+
+        console.log(inv);
+        alert(inv);
     }
 
     // Start game button
@@ -267,14 +379,25 @@ async function RunGame() {
             }
         }
         $.ajax(settings).done(function (response) {
+            // Set Stats
             for(i = 0; i< response.length; i++) {
                 if (response[i].username == dname && response[i].password != password || response[i].username != dname && response[i].password != password) {
                     wrongCount += 1;
                 }
                 else if (response[i].username == dname && response[i].password == password) {
                     chosedimg = response[i].character;
+                    health = response[i].health;
+                    hunger = response[i].hunger;
+                    hydrate = response[i].hydration;
+                    renderBar();
+                    // Set inventory
+                    console.log(response[i].inventory);
+                    localStorage.setItem(inventory, response[i].inventory)
+                    // Set Storage after log in
+                    SetStorage(inv);
                 }
             }
+
             if (wrongCount === response.length) {
                 document.getElementById("login").reset();
                 let errMsg = document.getElementById("logErrText");
@@ -298,7 +421,6 @@ async function RunGame() {
                 $('.homeGame').show();
             }
         });
-        // Set input display name
     })
 
     $('#bam').click(function(e) { // Chose Bam
@@ -310,7 +432,7 @@ async function RunGame() {
 
         $('.statsImg').attr('src', charimg);
 
-        SaveInfo(dname, password, charimg, health, hunger, hydrate, currency, inv);
+        SaveInfo(dname, password, charimg, health, hunger, hydrate, currency);
 
         $('.char').hide();
         $('.menu').show();
@@ -420,55 +542,9 @@ async function RunGame() {
     // Save game button
     $('#saveGame').click(function(e) {
         e.preventDefault();
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://sabaibaru-1c32.restdb.io/rest/player-log-in",
-            "method": "GET",
-            "headers": {
-                "content-type": "application/json",
-                "x-apikey": "602b72be5ad3610fb5bb60b5",
-                "cache-control": "no-cache"
-            }
-        }
-        $.ajax(settings).done(function (response) {
-            for (i = 0; i < response.length; i++) {
-                if (dname === response[i].username) {
-                    playerID = response[i]._id;
-                    charimg = response[i].character;
-                }
-            }
-            // PUT a updated document to the player-log-in collection (update player login information)
-            var jsondata = {
-                "username" : dname,
-                "password" : password,
-                "character" : charimg,
-                "health" : health,
-                "hunger" : hunger,
-                "hydration" : hydrate,
-                "earnings" : 1000,
-                "inventory" : inv.toString()
-            }
-            console.log(currency);
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": `https://sabaibaru-1c32.restdb.io/rest/player-log-in/${playerID}`,
-                "method": "PUT",
-                "headers": {
-                "content-type": "application/json",
-                "x-apikey": "602b72be5ad3610fb5bb60b5",
-                "cache-control": "no-cache"
-                },
-                "processData": false,
-                "data": JSON.stringify(jsondata)
-            }
-            console.log(JSON.stringify(jsondata));
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-                alert("Game saved successfully");
-            });
-        });
+        
+        SaveGame(dname, password, charimg, health, hunger, hydrate);
+
         // Save game function to be added
         $('.home').hide();
         $('.inventory').hide();
@@ -533,7 +609,6 @@ async function RunGame() {
     }
 
     // ---------------------------- Inventory functions section --------------------------
-    // Inventory button
     $('#inventory').click(function(e) {
         e.preventDefault();
         console.log(storeItems);
@@ -543,7 +618,7 @@ async function RunGame() {
             }
             else {
                 var content = ''
-        
+                
                 inv.forEach((x) => {
                     for (var i = 0; i < storeItems.id.length; i++) {
                         if (x == storeItems.id[i]) {
@@ -562,34 +637,36 @@ async function RunGame() {
         $('.fight').hide();
         $('.stats').hide();
         $('.save').hide();
-
         $('.inventory').show(); // Show inventory division/menu
 
         $('.item').click(function(e) {
-            e.preventDefault();
             var itemDelete = e.target.parentElement.getAttribute('data-id-item');
+
             console.log(e.target.parentElement);
-            $('#yesSel').click(function() {
-                for (var i = 0; i < inv.length; i++) {
+            $('#yesSel').unbind('click').click(function() {
+                for (var i = 0; i < inv.length; i++) { 
                     if (inv[i] === itemDelete) {
                         if (inv.length === 1) {
                             inv.shift();
+                            break;
                         }
                         else {
                             const index = inv.indexOf(itemDelete);
                             console.log(index);
-                            
-                            if (index > -1) {
+                            if (index != -1) {
                                 inv.splice(index, 1);
-                                console.log(inv);
+                                break;
                             }
+                            break;
                         }
-                        break;
                     }
                 }
+                console.log(inv);
                 e.target.parentElement.remove();
+                checkInventoryItems(inv, storeItems);
+                localStorage.setItem(inventory, inv);
             })
-        }) 
+        })
     })
 
     // ---------------------------- Shop functions section --------------------------
@@ -620,7 +697,10 @@ async function RunGame() {
                 }
                 else {
                     inv.push(chosenItem.getAttribute('data-id'));
+                    localStorage.setItem(inventory, inv);
+                    console.log(localStorage);
                     console.log(inv);
+
                     currency -= Math.floor(parseInt(chosenItem.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4);
                     $('.currency').text(`Your currently have: ${currency} gold left.`);
     
