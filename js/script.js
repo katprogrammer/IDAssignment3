@@ -66,7 +66,7 @@ function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proSh
                 <button type="submit" id="buyItem" class="buyItem">Buy Now!</button>
             </div>
         </div>
-        `
+        `;
 
         storeItems.push(array[i].id);
         storeItemsImg.push(array[i].image);
@@ -77,12 +77,12 @@ function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proSh
         id: storeItems,
         image: storeItemsImg,
         name: storeItemsName
-    }
+    };
 
     $('.shopItems').html(content);
     return items;
 }
-
+// Loads SupeheroAPI info to HTML //
 function InputVillianData(thanosInfo) {
     var array = [thanosInfo];
     var villianImage = [];
@@ -107,7 +107,7 @@ function InputVillianData(thanosInfo) {
     var villians = {
         image: villianImage,
         name: villianName
-    }
+    };
 
     return villians;
 }
@@ -120,7 +120,7 @@ function Responsiveness(x) {
         var bool = false;
     }
 
-    return bool
+    return bool;
 }
 
 // Main Method
@@ -169,9 +169,8 @@ async function RunGame() {
     var dname = ''; // Display name
     var password = '';
     var playerID = '';
-    var inv = [] // Inventory Array to store items bought and received
+    var inv = []; // Inventory Array to store items bought and received
     var currency = 200; // Money variable for shop
-    var count = 0;
     $('.currency').text(`Your currently have: ${currency} gold left.`);
     $('.currency').attr('data-currency', currency);
     var storeItems = InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
@@ -183,7 +182,7 @@ async function RunGame() {
         var inv;
 
         if (localStorage.getItem(inventory) === "") {
-            inv = "empty"
+            inv = "empty";
         }
         else {
             inv = localStorage.getItem(inventory);
@@ -198,7 +197,7 @@ async function RunGame() {
             "hydration" : hydrate,
             "earnings" : currency,
             "inventory" : inv
-        }
+        };
 
         var settings = {
             "async": true,
@@ -212,7 +211,7 @@ async function RunGame() {
             },
             "processData": false,
             "data": JSON.stringify(jsondata)
-        }
+        };
 
         $.ajax(settings).done(function (response) {
             console.log(response);
@@ -224,7 +223,7 @@ async function RunGame() {
         var inv;
 
         if (localStorage.getItem(inventory) === "") {
-            inv = "empty"
+            inv = "empty";
         }
         else {
             inv = localStorage.getItem(inventory);
@@ -241,7 +240,7 @@ async function RunGame() {
                 "x-apikey": "602b72be5ad3610fb5bb60b5",
                 "cache-control": "no-cache"
             }
-        }
+        };
         $.ajax(settings).done(function (response) {
             for (i = 0; i < response.length; i++) {
                 if (dname === response[i].username) {
@@ -260,7 +259,7 @@ async function RunGame() {
                 "hydration" : hydrate,
                 "earnings" : currency,
                 "inventory" : inv
-            }
+            };
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -273,7 +272,7 @@ async function RunGame() {
                 },
                 "processData": false,
                 "data": JSON.stringify(jsondata)
-            }
+            };
 
             $.ajax(settings).done(function (response) {
                 alert("Game saved successfully");
@@ -290,7 +289,7 @@ async function RunGame() {
             if (x.length > 1) {
                 x.forEach((item) => {
                     inv.push(item);
-                })
+                });
             }
             else if (x.length == 1) {
                 inv.push(x[0]);
@@ -314,6 +313,8 @@ async function RunGame() {
     });
 
     // ---------------------------- User / Select Character Section --------------------------
+
+    // When user clicks "New Here" Button
     $('#register').submit(function(e) {
         e.preventDefault();
         var exist = 0;
@@ -330,7 +331,7 @@ async function RunGame() {
                 "x-apikey": "602b72be5ad3610fb5bb60b5",
                 "cache-control": "no-cache"
             }
-        }
+        };
         $.ajax(settings).done(function (response) {
             for(i = 0; i< response.length; i++) {
                 if (response[i].username === dname) {
@@ -352,8 +353,8 @@ async function RunGame() {
                 $('.char').show();
             }
         });
-    })
-
+    });
+    // When fills in login form and submits
     $('#login').submit(function(e) {
         e.preventDefault();
         var wrongCount = 0;
@@ -370,7 +371,7 @@ async function RunGame() {
                 "x-apikey": "602b72be5ad3610fb5bb60b5",
                 "cache-control": "no-cache"
             }
-        }
+        };
         $.ajax(settings).done(function (response) {
             // Set Stats
             for(i = 0; i< response.length; i++) {
@@ -385,7 +386,7 @@ async function RunGame() {
                     renderBar();
 
                     // Set inventory
-                    localStorage.setItem(inventory, response[i].inventory)
+                    localStorage.setItem(inventory, response[i].inventory);
 
                     // Set Storage after log in
                     SetStorage(inv);
@@ -419,10 +420,10 @@ async function RunGame() {
 
         var villians = InputVillianData(thanosInfo);
         $('#villianName').html(villians.name[0]);
-        $('#villianCharacterImg').attr('src', `${villians.image[0]}`)
+        $('#villianCharacterImg').attr('src', `${villians.image[0]}`);
         $('#villianCharacterImg').attr('alt', `${villians.name[0]}`);
-        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`)
-    })
+        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`);
+    });
 
     $('#bam').click(function(e) { // Chose Bam
         e.preventDefault();
@@ -444,10 +445,10 @@ async function RunGame() {
 
         var villians = InputVillianData(thanosInfo);
         $('#villianName').html(villians.name[0]);
-        $('#villianCharacterImg').attr('src', `${villians.image[0]}`)
+        $('#villianCharacterImg').attr('src', `${villians.image[0]}`);
         $('#villianCharacterImg').attr('alt', `${villians.name[0]}`);
-        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`)
-    })
+        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`);
+    });
 
     $('#jinsung').click(function(e) { // Chose Jinsung
         e.preventDefault();
@@ -470,10 +471,10 @@ async function RunGame() {
 
         var villians = InputVillianData(thanosInfo);
         $('#villianName').html(villians.name[0]);
-        $('#villianCharacterImg').attr('src', `${villians.image[0]}`)
+        $('#villianCharacterImg').attr('src', `${villians.image[0]}`);
         $('#villianCharacterImg').attr('alt', `${villians.name[0]}`);
-        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`)
-    })
+        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`);
+    });
 
     $('#khun').click(function(e) { // Chose Khun
         e.preventDefault();
@@ -496,10 +497,10 @@ async function RunGame() {
 
         var villians = InputVillianData(thanosInfo);
         $('#villianName').html(villians.name[0]);
-        $('#villianCharacterImg').attr('src', `${villians.image[0]}`)
+        $('#villianCharacterImg').attr('src', `${villians.image[0]}`);
         $('#villianCharacterImg').attr('alt', `${villians.name[0]}`);
-        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`)
-    })
+        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`);
+    });
 
     $('#androssi').click(function(e) { // Chose Androssi
         e.preventDefault();
@@ -522,10 +523,10 @@ async function RunGame() {
 
         var villians = InputVillianData(thanosInfo);
         $('#villianName').html(villians.name[0]);
-        $('#villianCharacterImg').attr('src', `${villians.image[0]}`)
+        $('#villianCharacterImg').attr('src', `${villians.image[0]}`);
         $('#villianCharacterImg').attr('alt', `${villians.name[0]}`);
-        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`)
-    })
+        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`);
+    });
 
     $('#yuri').click(function(e) { // Chose Yuri
         e.preventDefault();
@@ -548,10 +549,10 @@ async function RunGame() {
 
         var villians = InputVillianData(thanosInfo);
         $('#villianName').html(villians.name[0]);
-        $('#villianCharacterImg').attr('src', `${villians.image[0]}`)
+        $('#villianCharacterImg').attr('src', `${villians.image[0]}`);
         $('#villianCharacterImg').attr('alt', `${villians.name[0]}`);
-        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`)
-    })
+        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`);
+    });
 
     $('#garam').click(function(e) { // Chose Garam
         e.preventDefault();
@@ -576,10 +577,10 @@ async function RunGame() {
 
         var villians = InputVillianData(thanosInfo);
         $('#villianName').html(villians.name[0]);
-        $('#villianCharacterImg').attr('src', `${villians.image[0]}`)
+        $('#villianCharacterImg').attr('src', `${villians.image[0]}`);
         $('#villianCharacterImg').attr('alt', `${villians.name[0]}`);
-        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`)
-    })
+        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`);
+    });
 
     // ---------------------------- Game functions section --------------------------
     // Save game button
@@ -610,18 +611,18 @@ async function RunGame() {
         $('.save').hide(); 
         
         $('.homeGame').show(); // Show home division/menu
-    })
+    });
     
     function AddGold() {
         var currency = parseInt($('.currency').attr('data-currency'));
-        currency += 1
+        currency += 1;
         $('.currency').attr('data-currency', currency);
     }
 
     $('#clickAttack').click(function() {
         AddGold();
-        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`)
-    })
+        $('.homeGameGold').html(`Current amount of gold: ${$('.currency').attr('data-currency')}`);
+    });
 
     // View stats button
     $('#viewStats').click(function(e) {
@@ -638,7 +639,7 @@ async function RunGame() {
         $('.save').hide();
 
         $('.stats').show(); // Show stats division/menu
-    })
+    });
 
     const closeStatsButton = document.querySelectorAll('[data-close-button]');
     const overlay = document.getElementById('overlay');
@@ -647,8 +648,8 @@ async function RunGame() {
         button.addEventListener('click', () => {
             const stats = document.getElementById('stats');
             closeStats(stats);
-        })
-    })
+        });
+    });
 
     function openStats(stats) {
         if (stats == null) return;
@@ -671,7 +672,7 @@ async function RunGame() {
                 $('.invSpace').html('<h1 class="invText">There are currently no items in your inventory.<br>Buy some from the store!</h1>');
             }
             else {
-                var content = ''
+                var content = '';
                 
                 inv.forEach((x) => {
                     for (var i = 0; i < storeItems.id.length; i++) {
@@ -705,6 +706,7 @@ async function RunGame() {
                 }        
             }
             document.getElementById("yesSel").onclick = function() {confirmYes()};
+            // Item Deletion Function
             function confirmYes() {
                 for (var i = 0; i < inv.length; i++) { 
                     if (inv[i] === itemDelete) {
@@ -729,8 +731,8 @@ async function RunGame() {
                 checkInventoryItems(inv, storeItems);
                 localStorage.setItem(inventory, inv);
             }
-        })
-    })
+        });
+    });
 
     // ---------------------------- Shop functions section --------------------------
     // Shop button
@@ -747,8 +749,7 @@ async function RunGame() {
 
         $('.shop').show(); // Show shop division/menu
         BuyItem(inv);
-    })
-    
+    });
     function BuyItem(inv) {
         var tempMoney = parseInt($('.currency').attr('data-currency'));
 
@@ -771,7 +772,7 @@ async function RunGame() {
                     $('.currency').attr('data-currency', `${tempMoney}`);
 
                     // Complete purchase
-                    alert("Your purchase was successful, enjoy!")
+                    alert("Your purchase was successful, enjoy!");
                     return tempMoney;
                 }
             });
@@ -780,7 +781,7 @@ async function RunGame() {
 
     $('#exitGame').click(function() {
         window.location = '../index.html';
-    })
+    });
 }
 
 RunGame();
@@ -800,6 +801,7 @@ var hungerAlert0 = false;
 var hydrateAlert50 = false;
 var hydrateAlert0 = false;
 
+// View Stats JS //
 var fills = document.querySelectorAll(".healthbar_fill");
 var hungerFill = document.querySelectorAll(".hungerbar_fill");
 var hydrateFill = document.querySelectorAll(".hydratebar_fill");
@@ -855,13 +857,13 @@ function renderBar() {
 
     fills.forEach(fill => {
             fill.style.width = hpPercent+"%";
-    })
+    });
     hungerFill.forEach(fill => {
             fill.style.width = foodPercent+"%";
-    })
+    });
     hydrateFill.forEach(fill => {
             fill.style.width = waterPercent+"%";
-    })            
+    });            
 }
 
 function updateHealth(change) {
@@ -879,7 +881,7 @@ function updateHunger(change) {
 
     if (hungerAlert50 != true) {
         if (hunger < 50) {
-            alert("You're low on hunger! Go eat!")
+            alert("You're low on hunger! Go eat!");
             hungerAlert50 = true;
         }
         else if (hunger > 50) {
@@ -906,7 +908,7 @@ function updateHydrate(change) {
 
     if (hydrateAlert50 != true) {
         if (hydrate < 50) {
-            alert("You're low on water! Go eat!")
+            alert("You're low on water! Go eat!");
             hydrateAlert50 = true;
         }
         else if (hydrate > 50) {

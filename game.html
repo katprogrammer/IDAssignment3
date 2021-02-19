@@ -28,10 +28,10 @@
     </head>
     
     <body>
+        <!-- Bootstrap Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(0, 0, 0, 0.8);">
             <div class="container-fluid" id="navContainer">
-                <a class="navbar-brand" href="index.html" id="navbarLogo"><img src="homePageIMG/navbar-logo.gif" class="navLogo"><h1 id="navbarTitle">Sabaibaru<br>サバイバル</h1></a>
-
+                <a class="navbar-brand" href="index.html" id="navbarLogo"><img src="homePageIMG/navbar-logo.gif" class="navLogo" alt="nav-logo"><h1 id="navbarTitle">Sabaibaru<br>サバイバル</h1></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -44,76 +44,40 @@
                 </div>
             </div>
         </nav>
-
+        <!-- Main Menu where user can login/register new account -->
         <div class="menu" gameStarted="false">
             <div class="startMenu">
                 <button class="btns" id="startGame">New? Register Here!</button>
             </div>
-
+            <!-- Game Menu -->
             <div class="gameMenu">
                 <div class="icon" id="homeGame">
                     <div class="tip">Game</div>
                     <span><img src="gamePageIMG/home-icon.svg" alt="home icon"></span>
                 </div>
-
                 <div class="icon" id="saveGame">
                     <div class="tip">Save Game</div>
                     <span><img src="gamePageIMG/save-icon.svg" alt="home icon"></span>
                 </div>
-
                 <div class="icon" id="viewStats">
                     <div class="tip">View Stats</div>
                     <span><img src="gamePageIMG/stats-icon.svg" alt="home icon"></span>
                 </div>
-
                 <div class="icon" id="inventory">
                     <div class="tip">Inventory</div>
                     <span><img src="gamePageIMG/backpack-icon.svg" alt="home icon"></span>
                 </div>
-                
                 <div class="icon" id="shop">
                     <div class="tip">Shop</div>
                     <span><img src="gamePageIMG/store-icon.svg" alt="home icon"></span>
                 </div>
-
                 <div class="icon" id="exitGame">
                     <div class="tip">Exit Game</div>
                     <span><img src="gamePageIMG/exit-icon.svg" alt="home icon"></span>
                 </div>
             </div>
         </div>
-
-        <div class="char">
-            <h1 id="title">Please Pick Your Character</h1>
-            <div class="row d-flex align-items-center justify-content-evenly">
-                <div class="col">
-                    <img class="charImg" id="bam" src="gamePageIMG/bam.jpg" alt="character image"> <!-- Character 1 -->
-                </div>
-
-                <div class="col">
-                    <img class="charImg" id="jinsung" src="gamePageIMG/Jinsung.jpg" alt="character image"> <!-- Character 2 -->
-                </div>
-
-                <div class="col">
-                    <img class="charImg" id="khun" src="gamePageIMG/khun.jpg" alt="character image"> <!-- Character 3 -->
-                </div>
-            </div>
-
-            <div class="row d-flex align-items-center justify-content-evenly">
-                <div class="col">
-                    <img class="charImg" id="androssi" src="gamePageIMG/androssi.jpg" alt="character image"> <!-- Character 4 -->
-                </div>
-
-                <div class="col">
-                    <img class="charImg" id="yuri" src="gamePageIMG/yuri.jpg" alt="character image"> <!-- Character 5 --> 
-                </div>
-
-                <div class="col">
-                    <img class="charImg" id="garam" src="gamePageIMG/garam.jpg" alt="character image"> <!-- Character 6 -->
-                </div>
-            </div>
-        </div>
-
+        <!-- Register Form-->
         <form class="user" id="register">
             <label id="paragraph">Enter Your Display Name:</label>
             <input type="text" class="dname"><br><br>
@@ -122,7 +86,7 @@
             <input type="text" class="password" required><br><br>
             <button type="submit" id="registerbutton" class="submit">Submit</button>
         </form>
-
+        <!-- Login Form -->
         <form class="login" id="login">
             <label>Username</label>
             <input class="loginname" type="text" required>
@@ -131,30 +95,54 @@
             <div id="loginError"><p id="logErrText"></p></div>
             <button type="submit" id="loginbutton" class="submit">Submit</button>
         </form>
-
+        <!-- Character Selection -->
+        <div class="char">
+            <h1 id="title">Please Pick Your Character</h1>
+            <div class="row d-flex align-items-center justify-content-evenly">
+                <div class="col">
+                    <img class="charImg" id="bam" src="gamePageIMG/bam.jpg" alt="character image"> <!-- Character 1 -->
+                </div>
+                <div class="col">
+                    <img class="charImg" id="jinsung" src="gamePageIMG/Jinsung.jpg" alt="character image"> <!-- Character 2 -->
+                </div>
+                <div class="col">
+                    <img class="charImg" id="khun" src="gamePageIMG/khun.jpg" alt="character image"> <!-- Character 3 -->
+                </div>
+            </div>
+            <div class="row d-flex align-items-center justify-content-evenly">
+                <div class="col">
+                    <img class="charImg" id="androssi" src="gamePageIMG/androssi.jpg" alt="character image"> <!-- Character 4 -->
+                </div>
+                <div class="col">
+                    <img class="charImg" id="yuri" src="gamePageIMG/yuri.jpg" alt="character image"> <!-- Character 5 --> 
+                </div>
+                <div class="col">
+                    <img class="charImg" id="garam" src="gamePageIMG/garam.jpg" alt="character image"> <!-- Character 6 -->
+                </div>
+            </div>
+        </div>
         <!-- Game Starts here -->
         <div class="gameContainer">
             <div class="game">
+                <!--Mini Game Feature-->
                 <div class="homeGame">
                     <p id="villianName"></p>
                     <div class="heroVsVillian">
                         <div class="hero">
                             <img id="userCharacterImg" src="" alt="char img">
                         </div>
-    
                         <div class="villian">
                             <img id="villianCharacterImg" src="" alt="">
                             <h2 id="villianHP"></h2>
                         </div>
                     </div>
-
                     <div class="homeGameText">
                         <h1 id="paragraph">Attack the All Mighty Thanos to gain coins!</h1>
                         <h1 class="homeGameGold" id="paragraph"></h1>
                         <button id="clickAttack">Attack</button>
                     </div>
                 </div>
-
+                <!-- View Stats Feature (Pop up Modal) -->
                 <div class="stats active" id="stats">
                     <div class="statsHeader">
                         <div class="statsTitle">
@@ -167,6 +155,7 @@
                             <img class="statsImg" src="" alt="character image">
                         </div> 
                         <div class="statsPoints">
+                            <!-- SVG HealthBar image -->
                             <div class="healthBar">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 60 60" shape-rendering="crispEdges">
                                     <metadata>Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj</metadata>
@@ -239,6 +228,7 @@
                                         </svg>
                                     </svg>
                                 </div>
+                            <!-- SVG HungerBar image -->
                             <div class="hungerBar">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 60 60" shape-rendering="crispEdges">
                                     <metadata>Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj</metadata>
@@ -262,6 +252,7 @@
                                     </svg>
                                 </svg>
                             </div>
+                            <!-- SVG HydrateBar image -->
                             <div class="hydrateBar">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 60 60" shape-rendering="crispEdges">
                                     <metadata>Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj</metadata>
@@ -285,16 +276,18 @@
                         </div>
                     </div>  
                 </div>
+                <!-- Background Shadow when Modal Pops up -->
                 <div id="overlay"></div>
-
+                <!-- Inventory Feature-->
                 <div class="inventory">
                     <div class="inventory-header">
                         <h1 id="title">Click on the items to use!</h1>
                         <h2 class="smallerHeader">Click on inventory again to use another item!</h2>
                     </div>
+                    <!-- Where Items are stored-->
                     <div class="invSpace">
                     </div>
-                    
+                    <!--Bootstrap Modal -->
                     <div class="itemInteract">
                         <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -317,10 +310,11 @@
                         </div>
                     </div>
                 </div>
-                
+                <!-- Shop Feature -->
                 <div class="shop">
                     <h1 id="title">Welcome to the store! Shop till you drop!</h1>
                     <p class="currency"></p>
+                    <!-- Where shop products are stored -->
                     <div class="shopItems">
 
                     </div>

@@ -7,6 +7,18 @@ html {
 #paragraph {
     padding: 0 8% 0 8%; 
 }
+/* Styling Animations */
+.animations {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+/* Styling Icons */
+.icons {
+    width: 16%;
+    height: 16%;
+}
+/* Styling sections */
 .infoContainer, .foodContainer, .petContainer, .miniGamesContainer {
     background-repeat:no-repeat;
     background-size: cover;
@@ -18,33 +30,43 @@ html {
     justify-content: center;
     height: 120vh;
 }
-.animations {
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;
-}
-.icons {
-    width: 16%;
-    height: 16%;
-}
+/* Styling the Info Container (Introduction to Game) */
 .infoContainer p {
     margin: 0;
 }
 .infoContainer {
     background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../gameInfoPageIMG/info-bg.gif");
 }
+/* Styling the Food Container (Description of Food Feature) */
 .foodContainer {
     background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../gameInfoPageIMG/kitchen.gif");
 }
+/* Styling the Mini-Games Container (Description of Mini-Game Feature) */
+.miniGamesContainer {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../gameInfoPageIMG/adventures.gif");
+}
+/* Styling the Pet Container (Description of Pet Feature) */
+.petContainer {
+    flex-direction: column;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../gameInfoPageIMG/pet-bg.gif");
+}
+.petHeader {
+    font-size: 30px;
+    padding-bottom: 5%;
+}
+.petBody {
+    display: flex;
+}
+/* Stlying Images */
 .foodIMG, .petIMG, .gamesIMG {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.foodIMG, .gamesIMG {
+.foodIMG, .petIMG {
     padding-left: 5%;
 }
-.petIMG, .infoIMG {
+.gamesIMG, .infoIMG {
     padding-right: 5%;
 }
 .foodPreview, .petPreview, .gamesPreview {
@@ -56,18 +78,12 @@ html {
     transform: translateY(-10px);
     transform: scale(1.1);
 }
-.petContainer {
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../gameInfoPageIMG/pet-bg.gif");
-}
-.miniGamesContainer {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../gameInfoPageIMG/adventures.gif");
-}
 .gamesTitle, .foodTitle, .petTitle {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
+/* Responsiveness CSS for Ipad Pro */
 @media (max-width: 1024px) {
     .infoContainer {
         padding-top: 10%;
@@ -75,37 +91,34 @@ html {
         flex-direction: column;
         height: 100%;
     }
-
     #title {
         font-size: 35px;
         margin-bottom: 5%;
     }
-
+    /* Styling Images */
     .infoIMG, .petIMG, .gamesIMG, .foodIMG {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 0px;
     }
-
     .infoIMG img, .petIMG img, .gamesIMG img, .foodIMG img {
         width: 80%;
     }
-
+    /* Styling the Food Container (Description of Food Feature) */
     .foodContainer {
         flex-direction: column;
         height: 100%;
         padding-top: 5%;
         padding-bottom: 5%;
     }
-
     .foodTitle {
         margin-top: 8%;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-
+    /* Styling the Pet Container (Description of Pet Feature) */
     .petContainer {
         flex-direction: column;
         justify-content: space-evenly;
@@ -113,37 +126,36 @@ html {
         padding-top: 5%;
         padding-bottom: 5%;
     }
-
+    .petBody {
+        display: flex;
+        flex-direction: column;
+    }
     .petTitle {
         margin-top: 8%;
-        display: flex;
         flex-direction: column;
         text-align: center;
     }
-
     .petTitle img {
         width: 60%;
     }
-
+    /* Styling the Mini-Games Container (Description of Mini-Game Feature) */
     .miniGamesContainer {
         flex-direction: column;
         height: 100%;
         padding-top: 5%;
         padding-bottom: 5%;
     }
-
     .gamesTitle {
         margin-top: 8%;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-
     .gamesTitle img {
         width: 30%;
     }
 }
-
+/* Responsiveness CSS for Ipad */
 @media (max-width: 768px) {
     .infoContainer {
         padding-top: 10%;
@@ -151,37 +163,34 @@ html {
         flex-direction: column;
         height: 100%;
     }
-
     #title {
         font-size: 27px;
         margin-bottom: 5%;
     }
-
+    /* Styling Images */
     .infoIMG, .petIMG, .gamesIMG, .foodIMG {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 0px;
     }
-
     .infoIMG img, .petIMG img, .gamesIMG img, .foodIMG img {
         width: 80%;
     }
-
+    /* Styling the Food Container (Description of Food Feature) */
     .foodContainer {
         flex-direction: column;
         height: 100%;
         padding-top: 5%;
         padding-bottom: 5%;
     }
-
     .foodTitle {
         margin-top: 8%;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-
+    /* Styling the Pet Container (Description of Pet Feature) */
     .petContainer {
         flex-direction: column;
         justify-content: space-evenly;
@@ -189,75 +198,69 @@ html {
         padding-top: 5%;
         padding-bottom: 5%;
     }
-
     .petTitle {
         margin-top: 8%;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-
     .petTitle img {
         width: 60%;
     }
-
+    /* Styling the Mini-Games Container (Description of Mini-Game Feature) */
     .miniGamesContainer {
         flex-direction: column;
         height: 100%;
         padding-top: 5%;
         padding-bottom: 5%;
     }
-
     .gamesTitle {
         margin-top: 8%;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-
     .gamesTitle img {
         width: 30%;
     }
 }
-
+/* Responsiveness CSS for Smaller Devices E.g. Phones */
 @media (max-width: 700px) {
+    /* Styling the Info Container (Introduction to Game) */
     .infoContainer {
         padding-top: 10%;
         padding-bottom: 10%;
         flex-direction: column;
         height: 100%;
     }
-
     #title {
         font-size: 22px;
         margin-bottom: 5%;
     }
-
+    /* Styling Images */
     .infoIMG, .petIMG, .gamesIMG, .foodIMG {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 0px;
     }
-
     .infoIMG img, .petIMG img, .gamesIMG img, .foodIMG img {
         width: 80%;
     }
-
+    /* Styling the Food Container (Description of Food Feature) */
     .foodContainer {
         flex-direction: column;
         height: 100%;
         padding-top: 5%;
         padding-bottom: 5%;
     }
-
     .foodTitle {
         margin-top: 8%;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-
+    /* Styling the Pet Container (Description of Pet Feature) */
     .petContainer {
         flex-direction: column;
         justify-content: space-evenly;
@@ -265,75 +268,69 @@ html {
         padding-top: 5%;
         padding-bottom: 5%;
     }
-
     .petTitle {
         margin-top: 8%;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-
     .petTitle img {
         width: 60%;
     }
-
+    /* Styling the Mini-Games Container (Description of Mini-Game Feature) */
     .miniGamesContainer {
         flex-direction: column;
         height: 100%;
         padding-top: 5%;
         padding-bottom: 5%;
     }
-
     .gamesTitle {
         margin-top: 8%;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-
     .gamesTitle img {
         width: 30%;
     }
 }
 
 @media (max-width: 400px) {
+    /* Styling the Info Container (Introduction to Game) */
     .infoContainer {
         padding-top: 10%;
         padding-bottom: 10%;
         flex-direction: column;
         height: 100%;
     }
-
     #title {
         font-size: 22px;
         margin-bottom: 5%;
     }
-
+    /* Styling Images */
     .infoIMG, .petIMG, .gamesIMG, .foodIMG {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 0px;
     }
-
     .infoIMG img, .petIMG img, .gamesIMG img, .foodIMG img {
         width: 80%;
     }
-
+    /* Styling the Food Container (Description of Food Feature) */
     .foodContainer {
         flex-direction: column;
         height: 100%;
         padding-top: 5%;
         padding-bottom: 5%;
     }
-
     .foodTitle {
         margin-top: 8%;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-
+    /* Styling the Pet Container (Description of Pet Feature) */
     .petContainer {
         flex-direction: column;
         justify-content: space-evenly;
@@ -341,32 +338,28 @@ html {
         padding-top: 5%;
         padding-bottom: 5%;
     }
-
     .petTitle {
         margin-top: 8%;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-
     .petTitle img {
         width: 60%;
     }
-
+    /* Styling the Mini-Games Container (Description of Mini-Game Feature) */
     .miniGamesContainer {
         flex-direction: column;
         height: 100%;
         padding-top: 5%;
         padding-bottom: 5%;
     }
-
     .gamesTitle {
         margin-top: 8%;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-
     .gamesTitle img {
         width: 30%;
     }

@@ -293,6 +293,12 @@ Fixed inventory issue where player uses multiple items but the stats only update
 ### General Summary:
 * Code validation & Testing for inventory feature
 
+# Commit 3.9
+Commented on all HTML, CSS & JS files as well as ran the files through online validators
+
+### General Summary
+* Put Meaningful comments in all HTML, CSS & JS Files
+
 ## Features:
 - Log-In/Registration
 This feature allows new players to create a brand new account to play Sabaibaru サバイバル and for existing players to load their previous saved progress to continue playing the game. All the player information is then saved into our database (restdb) after a new player creates an account or an exisiting player clicks save game.
@@ -406,6 +412,13 @@ Similar to the game cookie clicker, each click is an attack and the more you cli
 There were no major bugs except having to deal with the inventory item use/item deletion issues from the inventory array inside the javascript. However, even then everything else works smoothly.
 
 This website has been tested on the browsers listed below and are deemed appropriate and successful for use. No major issues have been found whilst testing on the different browsers.
+
+All HTML Files passed throught the HTML validator with no errors except duplicate ID error. 
+HTML Validator Link: (https://validator.w3.org/)
+All CSS Files passed throught the CSS validator with no error. 
+CSS Validator Link: (https://jigsaw.w3.org/css-validator/)
+Javascript File passed throught the js validator jshint with little error.
+Javascript Validator Link: (https://jshint.com/)
 
 ### Main Web Browsers Tested On:
 * Microsoft Edge

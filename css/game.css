@@ -136,13 +136,12 @@ html, body {
     flex-direction: column;
     align-items: center;
 }
-
 label {
     font-size: 1.5em;
     color: #D4AF37;
     font-family: 'VT323', monospace;
 }
-
+/* Styling Buttons */
 #submit, #loginbutton, #registerbutton, #clickAttack {
     font-family: 'VT323', monospace;
     width: 15%;
@@ -152,13 +151,12 @@ label {
     color: #fff;
     transition: 0.3s ease;
 }
-
 #submit:hover, #loginbutton:hover, #registerbutton:hover, #clickAttack:hover {
     color: #FF10F0;
     background-color: rgba(0,0,0, 0.9);
     border: 3px solid #FF10F0;
 }
-
+/* Character Selection CSS */
 .char {
     display: flex;
     flex-direction: column;
@@ -166,25 +164,20 @@ label {
     align-items: center;
     width: 100%;
 }
-
 .charPP {
     border-radius: 5%;
     width: 25%;
 }
-
 .char h1 {
     padding: 40px;
 }
-
 .row {
     width: 95%;
 }
-
 .col {
     display: flex;
     justify-content: center;
 }
-
 .charImg {
     border-radius: 5%;
     margin-bottom: 12%;
@@ -193,11 +186,9 @@ label {
     cursor: pointer;
     transition: 0.2s ease-in-out;
 }
-
 .charImg:hover {
     border: 4px solid goldenrod;
 }
-
 /* HomeGame CSS */
 .homeGame {
     display: flex;
@@ -208,7 +199,6 @@ label {
     width: 100%;
     margin-bottom: 3%;
 }
-
 .heroVsVillian {
     margin-bottom: 3%;
     display: flex;
@@ -216,13 +206,11 @@ label {
     align-items: center;
     width: 100%;
 }
-
 .villian, .hero {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 #villianName { 
     color: #D4AF37;
     font-family: 'VT323', monospace;
@@ -230,16 +218,13 @@ label {
     text-align: center;
     margin-bottom: 0px;
 }
-
 .homeGameText {
     text-align: center;
 }
-
 #villianCharacterImg, #userCharacterImg {
     width: 100%;
     height: 500px;
 }
-
 /* View Stats CSS */
 #statsText {
     font-size: 20px;
@@ -350,7 +335,6 @@ label {
 .hydratebar_fill-top {
     fill: var(--hydratebar-top);
 }
-
 .button-container {
     display: flex;
     justify-content: space-between;
@@ -366,7 +350,6 @@ label {
 .button:focus {
     border: 1px solid white;
 }
-
 .button img {
     width: calc(9px * var(--pixel-size));
     image-rendering: pixelated;
@@ -403,7 +386,6 @@ label {
     margin-top: 20px;
     margin-bottom: 5%;
 }
-
 .item {
     border-radius: 25px;
     border: 3px solid goldenrod;
@@ -415,30 +397,25 @@ label {
     transition: 0.4s ease;
     cursor: pointer;
 }
-
 .item:hover {
     transform: scale(1.1);
 }
-
 .item img {
     width: 100%;
     height: 100%;
     border-radius: 25px;
 }
-
 .invText {
     padding: 2% 2% 2% 2%;
     text-align: center;
     font-family: 'VT323', monospace;
     color: #fff;
 }
-
 /* Shop CSS */
 .shop {
     width: 90%;
     margin-top: 30px;
 }
-
 .shopItems {
     margin-top: 20px;
     display: flex;
@@ -446,17 +423,14 @@ label {
     justify-content: center;
     align-items: center;
 }
-
 #shopImg {
     width: 30%;
 }
-
 .card {
     display: grid;
     grid-template-columns: 300px;
     grid-template-rows: 210px 210px 80px 80px;
     grid-template-areas: "image" "text" "stats" "buy";
-
     font-family: 'VT323', monospace;
     color: #fff;
     border-radius: 18px;
@@ -466,31 +440,25 @@ label {
     margin: 20px;
     transition: 0.5s ease;
 }
-
 .card:hover {
     transform: scale(1.1);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
 }
-
 .card-image {
     grid-area: image;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
-
 .card-text {
     grid-area: text;
     margin: 25px;
 }
-
 .card-text h2 {
     font-size: 50px;
 }
-
 .card-text p {
     font-size: 20px;
 }
-
 .card-stats {
     grid-area: stats;
     display: grid;
@@ -498,7 +466,6 @@ label {
     grid-template-rows: 1fr;
     background-color: rgba(102, 51, 153, 0.7);
 }
-
 .card-stats .stat {
     display: flex;
     align-items: center;
@@ -509,15 +476,12 @@ label {
     border-left: 1px solid rgba(102, 51, 153, 1);
     border-right: 1px solid rgba(102, 51, 153, 1);
 }
-
 .card-stats .type {
     font-size: 30px;
 }
-
 .card-stats .value {
     font-size: 40px;
 }
-
 .card-buy {
     grid-area: buy;
     display: flex;
@@ -528,7 +492,6 @@ label {
     border-bottom-right-radius: 15px;
     padding: 20px;
 }
-
 #buyItem {
     width: 40%;
     font-size: 20px;
@@ -536,43 +499,38 @@ label {
     background: none;
     border: 2px solid #fff;
 }
-
 .currency {
     text-align: center;
     font-size: 40px;
     font-family: 'VT323', monospace;
     color: rgb(212,175,55);
 }
-
 /* Ipad Pro */
 @media (max-width: 1024px) {
     body, html {
         height: 100%;
     }
-
     .startMenu {
         width: 100%;
     }
-
     .btns {
         font-size: 35px;
     }
-
     #paragraph {
         font-size: 50px;
     }
-
     #dname {
         font-size: 30px;
     }
-
     #submit {
         font-size: 40px;
     }
+    /* View Stats CSS */
     .healthBar, .hungerBar, .hydrateBar {
         width: 350px;
         height: 50px;
     }
+    /* Inventory CSS */
     .invText {
         font-size: 25px;
     }
@@ -582,13 +540,12 @@ label {
     .smallerHeader {
         font-size: 20px;
     }
-
+    /* Icons CSS */
     .tip {
         padding: 0px 10px;
         text-align: center;
         font-size: 25px;
     }
-
     .icon span img {
         width: 50px;
         height: 50px;
@@ -600,42 +557,38 @@ label {
     body, html {
         height: 100%;
     }
-
     .startMenu {
         width: 100%;
     }
-
     .btns {
         font-size: 30px;
     }
-
     #dname {
         font-size: 20px;
     }
-
     #paragraph {
         font-size: 35px;
     }
-
     #submit {
         font-size: 25px;
     }
-
     #title {
         font-size: 20px;
     }
+    /* View Stats CSS */
     .healthBar, .hungerBar, .hydrateBar {
         width: 250px;
         height: 40px;
     }
-
     .menu {
         height: 15%;
     }
+    /* Icons CSS */
     .icon span img {
         width: 45px;
         height: 45px;
     }
+    /* Cards CSS */
     .type {
         font-size: 50px;
     }
@@ -649,104 +602,84 @@ label {
     body, html {
         height: auto;
     }
-
     /* Starting Page CSS */
     #loginbutton, #registerbutton {
         width: 50%;
     }
-
     /* Menu CSS */
     .startMenu {
         margin-top: 10%;
         margin-bottom: 10%;
         width: 100%;
     }
-
     .btns {
         font-size: 20px;
     }
-
     #paragraph {
         font-size: 25px;
     }
-
     #submit {
         width: 40%;
         font-size: 25px;
     }
-
     #title {
         font-size: 20px;
     }
-
     .healthBar, .hungerBar, .hydrateBar {
         width: 200px;
         height: 32px;
     }
-
     .row {
         flex-direction: column;
     }
-
     .menu {
         height: 15%;
         margin-top: 0%;
     }
-
     .gameMenu {
         flex-direction: row;
         justify-content: space-evenly;
         align-items: center;
         height: 16vh;
     }
-
     .tip {
         padding: 0px 10px;
         text-align: center;
         font-size: 15px;
     }
-
     .icon {
         width: 40px;
         height: 40px;
     }
-
     .icon span img {
         width: 40px;
         height: 40px;
     }
-
     .gameContainer {
         height: 70%;
     }
-
     .game {
         height: 100%;
     }
-
     /* homeGame CSS */
     .heroVsVillian {
         justify-content: space-evenly;
         flex-direction: column-reverse;
         height: 100%;
     }
-
     #villianCharacterImg, #userCharacterImg {
         width: 100%;
         height: auto;
         padding: 5%;
     }
-
     #clickAttack {
         margin-top: 2%;
         margin-bottom: 5%;
         width: 50%;
     }
-
     .homeGameText {
         width: 90%;
     }
-
     /* Extra CSS */
     .charPP {
         width: 60%;
@@ -760,18 +693,15 @@ label {
     .card-stats .value {
         font-size: 30px;
     }
-
     /* View Stats CSS */
     .statsBody {
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
-
     .statsImg {
         padding: 5%;
     }
-
     .healthBar, .hungerBar, .hydrateBar {
         justify-content: center;
     }
@@ -780,71 +710,59 @@ label {
 @media (max-width: 400px) {
     body, html {
         height: auto;
-
     }
-
     /* Starting Page CSS */
     #loginbutton, #registerbutton {
         width: 50%;
     }
-
     /* Main Menu CSS */
     .startMenu {
         margin-top: 10%;
         margin-bottom: 10%;
         width: 100%;
     }
-
     #paragraph {
         font-size: 25px;
     }
-
     #submit {
         width: 40%;
         font-size: 25px;
     }
-
     #title {
         font-size: 17px;
     }
-
     .row {
         flex-direction: column;
     }
-
+    /* View Stats CSS */
     .healthBar, .hungerBar, .hydrateBar {
         width: 150px;
         height: 20px;
     }
-
     .menu {
         height: 20%;
         margin-top: 0%;
     }
-
     .gameMenu {
         flex-direction: row;
         justify-content: space-evenly;
         align-items: center;
         height: 16vh;
     }
-
+    /* Icons CSS */
     .tip {
         padding: 0px 10px;
         text-align: center;
         font-size: 15px;
     }
-
     .icon {
         width: 40px;
         height: 40px;
     }
-
     .icon span img {
         width: 40px;
         height: 40px;
     }
-
     .gameContainer {
         height: 70%;
     }
@@ -852,30 +770,25 @@ label {
     .game {
         height: 100%;
     }
-
     /* homeGame CSS */
     .heroVsVillian {
         justify-content: space-evenly;
         flex-direction: column-reverse;
         height: 100%;
     }
-
     #villianCharacterImg, #userCharacterImg {
         width: 100%;
         height: auto;
         padding: 5%;
     }
-
     #clickAttack {
         margin-top: 2%;
         margin-bottom: 5%;
         width: 50%;
     }
-
     .homeGameText {
         width: 90%;
     }
-
     /* Extra CSS */
     .charPP {
         width: 70%;
@@ -892,18 +805,15 @@ label {
     .card-stats .value {
         font-size: 20px;
     }
-    
     /* View Stats CSS */
     .statsBody {
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
-
     .statsImg {
         padding: 5%;
     }
-
     .healthBar, .hungerBar, .hydrateBar {
         justify-content: center;
     }
