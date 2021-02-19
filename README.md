@@ -287,6 +287,12 @@ Updated 95% of the README file, only thing that's left is the inventory use func
 #### General Summary:
 * Updated 95% of README file
 
+# Commit 3.8
+Fixed inventory issue where player uses multiple items but the stats only update once. Removed unnecessary commented code in JS.
+
+### General Summary:
+* Code validation & Testing for inventory feature
+
 ## Features:
 - Log-In/Registration
 This feature allows new players to create a brand new account to play Sabaibaru サバイバル and for existing players to load their previous saved progress to continue playing the game. All the player information is then saved into our database (restdb) after a new player creates an account or an exisiting player clicks save game.

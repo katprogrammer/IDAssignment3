@@ -73,8 +73,6 @@ function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proSh
         storeItemsName.push(array[i].title);
     }
 
-    console.log(storeItems);
-
     var items = {
         id: storeItems,
         image: storeItemsImg,
@@ -148,8 +146,6 @@ async function loadData() {
 
     // SuperVillian Information
     thanosInfo = await GetSuperhero(thanosID).catch(error => console.log(error));
-
-    console.log(thanosInfo);
 }
 
 async function RunGame() {
@@ -175,6 +171,7 @@ async function RunGame() {
     var playerID = '';
     var inv = [] // Inventory Array to store items bought and received
     var currency = 200; // Money variable for shop
+    var count = 0;
     $('.currency').text(`Your currently have: ${currency} gold left.`);
     $('.currency').attr('data-currency', currency);
     var storeItems = InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
@@ -186,16 +183,11 @@ async function RunGame() {
         var inv;
 
         if (localStorage.getItem(inventory) === "") {
-            console.log(localStorage.getItem(inventory));
             inv = "empty"
-            console.log(inv);
         }
         else {
             inv = localStorage.getItem(inventory);
         }
-
-        console.log(currency);
-        console.log(inv);
         
         var jsondata = {
             "username" : dname,
@@ -232,15 +224,12 @@ async function RunGame() {
         var inv;
 
         if (localStorage.getItem(inventory) === "") {
-            console.log(localStorage.getItem(inventory));
             inv = "empty"
-            console.log(inv);
         }
         else {
             inv = localStorage.getItem(inventory);
         }
 
-        console.log(inv);
 
         var settings = {
             "async": true,
@@ -272,7 +261,6 @@ async function RunGame() {
                 "earnings" : currency,
                 "inventory" : inv
             }
-            console.log(currency);
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -286,10 +274,8 @@ async function RunGame() {
                 "processData": false,
                 "data": JSON.stringify(jsondata)
             }
-            console.log(JSON.stringify(jsondata));
 
             $.ajax(settings).done(function (response) {
-                console.log(response);
                 alert("Game saved successfully");
             });
         });
@@ -365,7 +351,6 @@ async function RunGame() {
                 $('.user').hide();
                 $('.char').show();
             }
-            console.log(response);
         });
     })
 
@@ -415,7 +400,6 @@ async function RunGame() {
                 errMsg.style.fontFamily = 'VT323', monospace;
             }
             else {
-                console.log("Correct password and username");
                 $('.statsImg').attr('src', chosedimg);
                 $('.statsImg').attr('alt', 'char img');
                 $('#userCharacterImg').attr('src', chosedimg);
@@ -441,7 +425,6 @@ async function RunGame() {
     })
 
     $('#bam').click(function(e) { // Chose Bam
-        console.log(currency);
         e.preventDefault();
 
         // Save chosen character
@@ -467,7 +450,6 @@ async function RunGame() {
     })
 
     $('#jinsung').click(function(e) { // Chose Jinsung
-        console.log(currency);
         e.preventDefault();
 
         // Save chosen character
@@ -494,7 +476,6 @@ async function RunGame() {
     })
 
     $('#khun').click(function(e) { // Chose Khun
-        console.log(currency);
         e.preventDefault();
 
         // Save chosen character
@@ -521,7 +502,6 @@ async function RunGame() {
     })
 
     $('#androssi').click(function(e) { // Chose Androssi
-        console.log(currency);
         e.preventDefault();
 
         // Save chosen character
@@ -548,7 +528,6 @@ async function RunGame() {
     })
 
     $('#yuri').click(function(e) { // Chose Yuri
-        console.log(currency);
         e.preventDefault();
 
         // Save chosen character
@@ -575,7 +554,6 @@ async function RunGame() {
     })
 
     $('#garam').click(function(e) { // Chose Garam
-        console.log(currency);
         e.preventDefault();
 
         // Save chosen character
@@ -638,7 +616,6 @@ async function RunGame() {
         var currency = parseInt($('.currency').attr('data-currency'));
         currency += 1
         $('.currency').attr('data-currency', currency);
-        console.log($('.currency').attr('data-currency'));
     }
 
     $('#clickAttack').click(function() {
@@ -690,7 +667,7 @@ async function RunGame() {
         e.preventDefault();
 
         function checkInventoryItems(inv, storeItems) {
-            if (inv.length === 0 || inv[0] === "") {
+            if (inv.length === 1 && inv[0] === "" ) {
                 $('.invSpace').html('<h1 class="invText">There are currently no items in your inventory.<br>Buy some from the store!</h1>');
             }
             else {
@@ -718,16 +695,17 @@ async function RunGame() {
         $('.inventory').show(); // Show inventory division/menu
 
         $('.item').click(function(e) {
+            count += 1;
             var itemDelete = e.target.parentElement.getAttribute('data-id-item');
-            if ($('.card').attr('data-id') === itemDelete) {
-                var healthPoints = $('.card').childNodes[6].childNodes[1].querySelector('.value2').innerHTML;
-                var hydrateAndHungerPoints = $('.card').childNodes[6].childNodes[1].querySelector('.value3').innerHTML;
+            var cards = document.getElementsByClassName('card');
+            for (var c = 0; c < cards.length; c++) {
+                if (cards[c].getAttribute('data-id') === itemDelete) {
+                    var healthPoints = cards[c].childNodes[5].childNodes[3].childNodes[1].innerHTML;
+                    var hydrateAndHungerPoints = cards[c].childNodes[5].childNodes[5].childNodes[1].innerHTML;
+                }        
             }
-
-            $('#yesSel').unbind('click').click(function() {
-                updateHealth(healthPoints);
-                updateHunger(hydrateAndHungerPoints);
-                updateHydrate(hydrateAndHungerPoints);
+            document.getElementById("yesSel").onclick = function() {confirmYes()};
+            function confirmYes() {
                 for (var i = 0; i < inv.length; i++) { 
                     if (inv[i] === itemDelete) {
                         if (inv.length === 1) {
@@ -741,15 +719,16 @@ async function RunGame() {
                                 inv.splice(index, 1);
                                 break;
                             }
-                            break;
                         }
                     }
                 }
-
+                updateHealth(healthPoints / 4);
+                updateHunger(hydrateAndHungerPoints / 4);
+                updateHydrate(hydrateAndHungerPoints / 4);
                 e.target.parentElement.remove();
                 checkInventoryItems(inv, storeItems);
                 localStorage.setItem(inventory, inv);
-            })
+            }
         })
     })
 
