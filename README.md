@@ -307,6 +307,13 @@ Finished validation for all CSS, Javascript and HTML files with the use of W3Sch
 * Added Lottie Animation for Login Pre-Loading
 * Added Lottie Animation for Save Game Loading
 
+# Commit 4.1
+Updated a few inventory bugs and removed some stuff from README.
+
+#### General Summary
+* Updated Inventory
+* Removed some lines from README
+
 ## Features:
 - Log-In/Registration
 This feature allows new players to create a brand new account to play Sabaibaru サバイバル and for existing players to load their previous saved progress to continue playing the game. All the player information is then saved into our database (restdb) after a new player creates an account or an exisiting player clicks save game.
@@ -319,9 +326,6 @@ This feature allows players to store items that they have bought from the shop a
 
 - Shop
 This feature uses a food API that gets information about various foods and recipes. This allows players to learn about the nutrional values of each food and choose from many different options. Players will use an in-game currency "gold" where they will be given an initial sum of 200 gold to give new players a feel of the experience. 
-
-- Mini-Game
-This feature allows players to earn in-game gold by playing...
 
 - Save Game
 This feature allows playes to save their in-game progress such as their health points, hunger levels, gold and inventory space. Using our database again (restdb) to store and retrieve the information once the player logins again.
