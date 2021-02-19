@@ -1,7 +1,7 @@
 /* jshint esversion: 8 */
 // Food API
 const food_url = 'https://api.spoonacular.com';
-const food_key = 'apiKey=6a11acf850704beba03bc8a1ad354c91';
+const food_key = 'apiKey=cc7e99136a574acab302540ea45c383d';
 var pizzaInfo = '', chilliInfo = '', donutsInfo = '', brkSmoothyInfo = '', proShakeInfo = '';
 var batmanInfo = '', capAmericaInfo = '', thorInfo = '', onePunchInfo = '', grootInfo = '';
 var darthVaderInfo = '', carnageInfo = '', lokiInfo = '', magnetoInfo = '', redHulkInfo = '', thanosInfo = '';
@@ -299,6 +299,10 @@ async function RunGame() {
                 inv = [];
             }
         }
+    }
+
+    function UseItem() {
+        
     }
 
     // Start game button
