@@ -5,7 +5,7 @@ What is **Sabaibaru サバイバル**? It is a text-based clicking web game wher
 This game aims to promote self-care as well as encourage independency with use of APIs such as a Food API to let players know what food is good and what food is bad. The game will also make use of a Superhero API to get data of Villians to defeat. This project will be heavily based on Javascript/JQuery and CSS instead of focusing on the HTML side of things, and making use of Lottie animations as a loading notifier, etc.
 
 - [Link to Github Website Deployment](https://katprogrammer.github.io/IDAssignment3/)
-
+- [Link to Pitch](https://drive.google.com/file/d/1BxYL-BQd2dVVjQna4JahZPqgnyu2q3MP/view?usp=sharing)
 # Commit 0.2
 Updated README.md file with neccessary headers and text. Added a animations.js file and also placed all files into their respective folders. Added Normalize.css as well.
 
