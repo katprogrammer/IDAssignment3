@@ -52,12 +52,12 @@ function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proSh
                 </div>
                 
                 <div class="stat">
-                    <div class="value">${array[i].healthScore}</div>
+                    <div class="value value2">${array[i].healthScore}</div>
                     <div class="type">HP</div>
                 </div>
 
                 <div class="stat">
-                    <div class="value">${array[i].readyInMinutes}</div>
+                    <div class="value value3">${array[i].readyInMinutes}</div>
                     <div class="type">Energy</div>
                 </div>
             </div>
@@ -690,7 +690,7 @@ async function RunGame() {
         e.preventDefault();
 
         function checkInventoryItems(inv, storeItems) {
-            if (inv.length === 0) {
+            if (inv.length === 0 || inv[0] === "") {
                 $('.invSpace').html('<h1 class="invText">There are currently no items in your inventory.<br>Buy some from the store!</h1>');
             }
             else {
@@ -719,8 +719,15 @@ async function RunGame() {
 
         $('.item').click(function(e) {
             var itemDelete = e.target.parentElement.getAttribute('data-id-item');
+            if ($('.card').attr('data-id') === itemDelete) {
+                var healthPoints = $('.card').childNodes[6].childNodes[1].querySelector('.value2').innerHTML;
+                var hydrateAndHungerPoints = $('.card').childNodes[6].childNodes[1].querySelector('.value3').innerHTML;
+            }
 
             $('#yesSel').unbind('click').click(function() {
+                updateHealth(healthPoints);
+                updateHunger(hydrateAndHungerPoints);
+                updateHydrate(hydrateAndHungerPoints);
                 for (var i = 0; i < inv.length; i++) { 
                     if (inv[i] === itemDelete) {
                         if (inv.length === 1) {
