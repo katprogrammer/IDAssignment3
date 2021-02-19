@@ -300,10 +300,6 @@ async function RunGame() {
         }
     }
 
-    function UseItem() {
-        
-    }
-
     // Start game button
     $('#startGame').click(function(e) { 
         e.preventDefault();
