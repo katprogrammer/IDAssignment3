@@ -1,7 +1,7 @@
 /* jshint esversion: 8 */
 // Food API
 const food_url = 'https://api.spoonacular.com';
-const food_key = 'apiKey=5ed9b3f464144e7283a0c8b698a1af88';
+const food_key = 'apiKey=b831dff1298f44eaaecba9d01ab213e1';
 var pizzaInfo = '', chilliInfo = '', donutsInfo = '', brkSmoothyInfo = '', proShakeInfo = '';
 var batmanInfo = '', capAmericaInfo = '', thorInfo = '', onePunchInfo = '', grootInfo = '';
 var darthVaderInfo = '', carnageInfo = '', lokiInfo = '', magnetoInfo = '', redHulkInfo = '', thanosInfo = '';
@@ -157,6 +157,7 @@ async function RunGame() {
     var playerID = '';
     var inv = [] // Inventory Array to store items bought and received
     var currency = 1000; // Money variable for shop
+    var count = 0;
     $('.currency').text(`Your currently have: ${currency} gold left.`);
     $('.currency').attr('data-currency', `${currency}`);
     var storeItems = InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
@@ -613,7 +614,7 @@ async function RunGame() {
         e.preventDefault();
         console.log(storeItems);
         function checkInventoryItems(inv, storeItems) {
-            if (inv.length === 0 || inv[0] === "") {
+            if (inv.length === 1 && inv[0] === "" ) {
                 $('.invSpace').html('<h1 class="invText">There are currently no items in your inventory.<br>Buy some from the store!</h1>');
             }
             else {
@@ -640,16 +641,24 @@ async function RunGame() {
         $('.inventory').show(); // Show inventory division/menu
 
         $('.item').click(function(e) {
+            count += 1;
             var itemDelete = e.target.parentElement.getAttribute('data-id-item');
-            if ($('.card').attr('data-id') === itemDelete) {
-                var healthPoints = $('.card').childNodes[6].childNodes[1].querySelector('.value2').innerHTML;
-                var hydrateAndHungerPoints = $('.card').childNodes[6].childNodes[1].querySelector('.value3').innerHTML;
+            console.log(itemDelete);
+            var cards = document.getElementsByClassName('card');
+            console.log(cards);
+            for (var c = 0; c < cards.length; c++) {
+                console.log(cards[c].getAttribute('data-id'));
+                if (cards[c].getAttribute('data-id') === itemDelete) {
+                    console.log(cards[c].childNodes[4]);
+                    var healthPoints = cards[c].childNodes[4].childNodes[1].querySelector('.value2').innerHTML;
+                    var hydrateAndHungerPoints = cards[c].childNodes[4].childNodes[1].querySelector('.value3').innerHTML;
+                    console.log(healthPoints);
+                    console.log(hydrateAndHungerPoints);
+                }        
             }
             console.log(e.target.parentElement);
-            $('#yesSel').unbind('click').click(function() {
-                updateHealth(healthPoints);
-                updateHunger(hydrateAndHungerPoints);
-                updateHydrate(hydrateAndHungerPoints);
+            document.getElementById("yesSel").onclick = function() {confirmYes()};
+            function confirmYes() {
                 for (var i = 0; i < inv.length; i++) { 
                     if (inv[i] === itemDelete) {
                         if (inv.length === 1) {
@@ -663,15 +672,44 @@ async function RunGame() {
                                 inv.splice(index, 1);
                                 break;
                             }
-                            break;
                         }
                     }
                 }
+                console.log(count);
+                updateHealth(healthPoints);
+                updateHunger(hydrateAndHungerPoints);
+                updateHydrate(hydrateAndHungerPoints);
                 console.log(inv);
                 e.target.parentElement.remove();
                 checkInventoryItems(inv, storeItems);
                 localStorage.setItem(inventory, inv);
-            })
+            }
+            // $('#yesSel').on('click', function() {
+            //     for (var i = 0; i < inv.length; i++) { 
+            //         if (inv[i] === itemDelete) {
+            //             if (inv.length === 1) {
+            //                 inv.shift();
+            //                 break;
+            //             }
+            //             else {
+            //                 const index = inv.indexOf(itemDelete);
+            //                 console.log(index);
+            //                 if (index != -1) {
+            //                     inv.splice(index, 1);
+            //                     break;
+            //                 }
+            //             }
+            //         }
+            //     }
+            //     console.log(count);
+            //     updateHealth(healthPoints);
+            //     updateHunger(hydrateAndHungerPoints);
+            //     updateHydrate(hydrateAndHungerPoints);
+            //     console.log(inv);
+            //     e.target.parentElement.remove();
+            //     checkInventoryItems(inv, storeItems);
+            //     localStorage.setItem(inventory, inv);
+            // })
         })
     })
 
