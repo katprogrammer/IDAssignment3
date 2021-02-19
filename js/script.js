@@ -1,7 +1,7 @@
 /* jshint esversion: 8 */
 // Food API
 const food_url = 'https://api.spoonacular.com';
-const food_key = 'apiKey=cc7e99136a574acab302540ea45c383d';
+const food_key = 'apiKey=2a2479ad81624ce7a2c75cbc46fbc127';
 var pizzaInfo = '', chilliInfo = '', donutsInfo = '', brkSmoothyInfo = '', proShakeInfo = '';
 var batmanInfo = '', capAmericaInfo = '', thorInfo = '', onePunchInfo = '', grootInfo = '';
 var darthVaderInfo = '', carnageInfo = '', lokiInfo = '', magnetoInfo = '', redHulkInfo = '', thanosInfo = '';
