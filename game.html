@@ -51,8 +51,8 @@
             </div>
 
             <div class="gameMenu">
-                <div class="icon" id="home">
-                    <div class="tip">Home</div>
+                <div class="icon" id="homeGame">
+                    <div class="tip">Game</div>
                     <span><img src="gamePageIMG/home-icon.svg" alt="home icon"></span>
                 </div>
 
@@ -136,9 +136,25 @@
         <div class="gameContainer">
             <div class="game">
                 <div class="homeGame">
-
-                </div>
+                    <p id="villianName"></p>
+                    <div class="heroVsVillian">
+                        <div class="hero">
+                            <img id="userCharacterImg" src="" alt="char img">
+                        </div>
     
+                        <div class="villian">
+                            <img id="villianCharacterImg" src="" alt="">
+                            <h2 id="villianHP"></h2>
+                        </div>
+                    </div>
+
+                    <div class="homeGameText">
+                        <h1 id="paragraph">Attack the All Mighty Thanos to gain coins!</h1>
+                        <h1 class="homeGameGold" id="paragraph"></h1>
+                        <button id="clickAttack">Attack</button>
+                    </div>
+                </div>
+
                 <div class="stats active" id="stats">
                     <div class="statsHeader">
                         <div class="statsTitle">
