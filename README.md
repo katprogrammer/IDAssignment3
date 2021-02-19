@@ -290,14 +290,22 @@ Updated 95% of the README file, only thing that's left is the inventory use func
 # Commit 3.8
 Fixed inventory issue where player uses multiple items but the stats only update once. Removed unnecessary commented code in JS.
 
-### General Summary:
+#### General Summary:
 * Code validation & Testing for inventory feature
 
 # Commit 3.9
 Commented on all HTML, CSS & JS files as well as ran the files through online validators
 
-### General Summary
+#### General Summary
 * Put Meaningful comments in all HTML, CSS & JS Files
+
+# Commit 4.0
+Finished validation for all CSS, Javascript and HTML files with the use of W3Schools HTML and CSS Checker as well as JSHint for Javascript. All important validation is completed. I also added some lottie animations for the login pre-load as well as the save game loading time.
+
+#### General Summary
+* Finished overall code validation
+* Added Lottie Animation for Login Pre-Loading
+* Added Lottie Animation for Save Game Loading
 
 ## Features:
 - Log-In/Registration

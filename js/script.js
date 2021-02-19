@@ -1,10 +1,10 @@
 /* jshint esversion: 8 */
+/* globals $:false */
 // Food API
 const food_url = 'https://api.spoonacular.com';
-const food_key = 'apiKey=2a2479ad81624ce7a2c75cbc46fbc127';
+const food_key = 'apiKey=61fd0c212d564cd7bd10bbefae7cce17';
 var pizzaInfo = '', chilliInfo = '', donutsInfo = '', brkSmoothyInfo = '', proShakeInfo = '';
-var batmanInfo = '', capAmericaInfo = '', thorInfo = '', onePunchInfo = '', grootInfo = '';
-var darthVaderInfo = '', carnageInfo = '', lokiInfo = '', magnetoInfo = '', redHulkInfo = '', thanosInfo = '';
+var thanosInfo = '';
 
 async function GetRecipeInformation(food_url, recipeID, food_key) {
     const response = await fetch(`${food_url}/recipes/${recipeID}/information?${food_key}&includeNutrition=false`, {
@@ -36,7 +36,7 @@ function InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proSh
     var storeItemsImg = [];
     var storeItemsName = [];
 
-    for (i = 0; i < array.length; i++) {
+    for (var i = 0; i < array.length; i++) {
         content += `
         <div class="card" data-id="${array[i].id}">
             <div class="card-image"><img id="shopImg" src="${array[i].image}" alt="shop item"></div>
@@ -98,9 +98,9 @@ function InputVillianData(thanosInfo) {
         }
     }
     else {
-        for (var i = 0; i < array.length; i++) {
-            villianImage.push(array[i].images.md);
-            villianName.push(array[i].name);
+        for (var q = 0; q < array.length; q++) {
+            villianImage.push(array[q].images.md);
+            villianName.push(array[q].name);
         }
     }
 
@@ -113,11 +113,13 @@ function InputVillianData(thanosInfo) {
 }
 
 function Responsiveness(x) {
+  	var bool;
+  
     if (x.matches) { // If media query matches
-        var bool = true;
+        bool = true;
     } 
     else {
-        var bool = false;
+        bool = false;
     }
 
     return bool;
@@ -134,8 +136,6 @@ async function loadData() {
 
     // Villian IDs
     const thanosID = '655';
-    const darthVaderID = '208';
-    const magnetoID = '423';
 
     // Food Information
     pizzaInfo = await GetRecipeInformation(food_url, pizzaID, food_key).catch(error => console.log(error));
@@ -161,8 +161,17 @@ async function RunGame() {
     $('.char').hide();
     $('.user').hide();
     $('.gameContainer').hide();
+    $('.menu').hide();
+    $('#login').hide();
+    $('.saveGame').hide();
 
     await loadData(); // Load data for function use later on
+
+    setTimeout(function() {
+        $('.menu').show();
+        $('#login').show();
+        $('.loadingAn1').hide();
+    }, 3000);
 
     // Global Variables
     var charimg = ''; // Chosen character profile picture location
@@ -174,18 +183,18 @@ async function RunGame() {
     $('.currency').text(`Your currently have: ${currency} gold left.`);
     $('.currency').attr('data-currency', currency);
     var storeItems = InputStoreData(pizzaInfo, brkSmoothyInfo, chilliInfo, donutsInfo, proShakeInfo);
-    localStorage.setItem(inventory, []);
+    localStorage.setItem('inventory', []);
 
     // Functions
     function SaveInfo(dname, password, charimg, health, hunger, hydrate) {
         var currency = parseInt($('.currency').attr('data-currency'));
         var inv;
 
-        if (localStorage.getItem(inventory) === "") {
+        if (localStorage.getItem('inventory') === "") {
             inv = "empty";
         }
         else {
-            inv = localStorage.getItem(inventory);
+            inv = localStorage.getItem('inventory');
         }
         
         var jsondata = {
@@ -222,11 +231,11 @@ async function RunGame() {
         var currency = parseInt($('.currency').attr('data-currency'));
         var inv;
 
-        if (localStorage.getItem(inventory) === "") {
+        if (localStorage.getItem('inventory') === "") {
             inv = "empty";
         }
         else {
-            inv = localStorage.getItem(inventory);
+            inv = localStorage.getItem('inventory');
         }
 
 
@@ -242,7 +251,7 @@ async function RunGame() {
             }
         };
         $.ajax(settings).done(function (response) {
-            for (i = 0; i < response.length; i++) {
+            for (var i = 0; i < response.length; i++) {
                 if (dname === response[i].username) {
                     playerID = response[i]._id;
                     charimg = response[i].character;
@@ -281,7 +290,7 @@ async function RunGame() {
     }
 
     function SetStorage(inv) {
-        var tempInv = localStorage.getItem(inventory);
+        var tempInv = localStorage.getItem('inventory');
         
         if (tempInv != "empty") {
             var x = tempInv.split(",");
@@ -333,7 +342,7 @@ async function RunGame() {
             }
         };
         $.ajax(settings).done(function (response) {
-            for(i = 0; i< response.length; i++) {
+            for(var i = 0; i< response.length; i++) {
                 if (response[i].username === dname) {
                     exist += 1;
                 }
@@ -343,7 +352,7 @@ async function RunGame() {
                 let errMsg = document.getElementById("regErrText");
                 errMsg.innerHTML += "Username already exists please try again";
                 errMsg.style.color = "red";
-                errMsg.style.fontFamily = 'VT323', monospace;
+                errMsg.style.fontFamily = 'VT323, monospace';
             }
             else {
                 $('.startGame').hide();
@@ -374,7 +383,9 @@ async function RunGame() {
         };
         $.ajax(settings).done(function (response) {
             // Set Stats
-            for(i = 0; i< response.length; i++) {
+          	var chosedimg;
+          
+            for(var i = 0; i< response.length; i++) {
                 if (response[i].username == dname && response[i].password != password || response[i].username != dname && response[i].password != password) {
                     wrongCount += 1;
                 }
@@ -386,7 +397,7 @@ async function RunGame() {
                     renderBar();
 
                     // Set inventory
-                    localStorage.setItem(inventory, response[i].inventory);
+                    localStorage.setItem('inventory', response[i].inventory);
 
                     // Set Storage after log in
                     SetStorage(inv);
@@ -398,7 +409,7 @@ async function RunGame() {
                 let errMsg = document.getElementById("logErrText");
                 errMsg.innerHTML = "Invalid Username/Password";
                 errMsg.style.color = "red";
-                errMsg.style.fontFamily = 'VT323', monospace;
+                errMsg.style.fontFamily = 'VT323, monospace';
             }
             else {
                 $('.statsImg').attr('src', chosedimg);
@@ -596,7 +607,11 @@ async function RunGame() {
         $('.fight').hide();
         $('.stats').hide();
 
-        $('.save').show(); // Show save game division/menu
+        $('.saveGame').show(); // Show save game division/menu
+
+        setTimeout(function() {
+            $('.saveGame').hide();
+        }, 4000)
     });
 
     // Home button
@@ -696,7 +711,6 @@ async function RunGame() {
         $('.inventory').show(); // Show inventory division/menu
 
         $('.item').click(function(e) {
-            count += 1;
             var itemDelete = e.target.parentElement.getAttribute('data-id-item');
             var cards = document.getElementsByClassName('card');
             for (var c = 0; c < cards.length; c++) {
@@ -705,7 +719,7 @@ async function RunGame() {
                     var hydrateAndHungerPoints = cards[c].childNodes[5].childNodes[5].childNodes[1].innerHTML;
                 }        
             }
-            document.getElementById("yesSel").onclick = function() {confirmYes()};
+            document.getElementById("yesSel").onclick = function() {confirmYes();};
             // Item Deletion Function
             function confirmYes() {
                 for (var i = 0; i < inv.length; i++) { 
@@ -729,7 +743,7 @@ async function RunGame() {
                 updateHydrate(hydrateAndHungerPoints / 4);
                 e.target.parentElement.remove();
                 checkInventoryItems(inv, storeItems);
-                localStorage.setItem(inventory, inv);
+                localStorage.setItem('inventory', inv);
             }
         });
     });
@@ -765,7 +779,7 @@ async function RunGame() {
                 }
                 else {
                     inv.push(chosenItem.getAttribute('data-id'));
-                    localStorage.setItem(inventory, inv);
+                    localStorage.setItem('inventory', inv);
                     
                     tempMoney -= Math.floor(parseInt(chosenItem.childNodes[5].childNodes[1].querySelector('.value1').innerHTML) / 4);
                     $('.currency').text(`Your currently have: ${tempMoney} gold left.`);
@@ -870,6 +884,25 @@ function updateHealth(change) {
     health += change;
     health = health > maxHp ? maxHp : health;
     health = health < 0 ? 0 : health;
+      
+    if (healthAlert50 != true) {
+        if (health < 50) {
+            alert("You're low on health! Go eat!");
+            healthAlert50 = true;
+        }
+        else if (health > 50) {
+            healthAlert50 = false;
+        }
+    }
+    else if (healthAlert0 != true) {
+        if (health == 0) {
+            alert("You are very low on health! Eat something!");
+            healthAlert0 = true;
+        }
+        else if (health > 50) {
+            healthAlert0 = false;
+        }
+    }
     
     renderBar();
 }

@@ -111,13 +111,13 @@ html, body {
     width: 100%;
 }
 
-#title {
+.title {
     text-align: center;
     font-size: 26px;
     padding-top: 5%;
 }
 
-#paragraph {
+.paragraph {
     font-size: 50px;
 }
 
@@ -505,6 +505,16 @@ label {
     font-family: 'VT323', monospace;
     color: rgb(212,175,55);
 }
+
+/* Extra CSS */
+.loadingAn1, .loadingAn2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
 /* Ipad Pro */
 @media (max-width: 1024px) {
     body, html {
@@ -516,7 +526,7 @@ label {
     .btns {
         font-size: 35px;
     }
-    #paragraph {
+    .paragraph {
         font-size: 50px;
     }
     #dname {
@@ -534,7 +544,7 @@ label {
     .invText {
         font-size: 25px;
     }
-    #title {
+    .title {
         font-size: 25px;
     }
     .smallerHeader {
@@ -566,13 +576,13 @@ label {
     #dname {
         font-size: 20px;
     }
-    #paragraph {
+    .paragraph {
         font-size: 35px;
     }
     #submit {
         font-size: 25px;
     }
-    #title {
+    .title {
         font-size: 20px;
     }
     /* View Stats CSS */
@@ -615,14 +625,14 @@ label {
     .btns {
         font-size: 20px;
     }
-    #paragraph {
+    .paragraph {
         font-size: 25px;
     }
     #submit {
         width: 40%;
         font-size: 25px;
     }
-    #title {
+    .title {
         font-size: 20px;
     }
     .healthBar, .hungerBar, .hydrateBar {
@@ -721,14 +731,14 @@ label {
         margin-bottom: 10%;
         width: 100%;
     }
-    #paragraph {
+    .paragraph {
         font-size: 25px;
     }
     #submit {
         width: 40%;
         font-size: 25px;
     }
-    #title {
+    .title {
         font-size: 17px;
     }
     .row {

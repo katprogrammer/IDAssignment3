@@ -3,13 +3,13 @@
     padding: 0;
 }
 
-#title{
+.title{
     font-family: 'Press Start 2P', cursive;
     color: rgb(212,175,55);
     font-size: 70px;
 }
 
-#paragraph{
+.paragraph{
     font-size: 1.5em;
     font-family: 'VT323', monospace;
     color: rgb(212,175,55);
@@ -80,7 +80,7 @@
     height: 40%;
 }
 
-#homeLink {
+.homeLink {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,12 +89,12 @@
     font-family: 'VT323', monospace;
 }
 
-#homeButton {
-    font-size: 30px;
+.homeButton {
     color: #fff;
 }
 
 .btn {
+    font-size: 25px !important;
     width: 30vh;
     height: 10vh;
 }
@@ -111,11 +111,11 @@
     }
 
     /* Home Page CSS */
-    #title {
+    .title {
         font-size: 60px;
     }
 
-    #homeButton {
+    .homeButton {
         font-size: 25px;
     }
 }
@@ -137,11 +137,11 @@
     }
     
     /* Home Page CSS */
-    #title {
+    .title {
         font-size: 50px;
     }
 
-    #homeButton {
+    .homeButton {
         font-size: 25px;
     }
 }
@@ -186,11 +186,11 @@
     }
 
     /* Home Page CSS */
-    #title {
+    .title {
         font-size: 35px;
     }
 
-    #homeButton {
+    .homeButton {
         font-size: 25px;
     }
 }
@@ -211,11 +211,11 @@
     }
 
     /* Home Page CSS */
-    #title {
+    .title {
         font-size: 25px;
     }
 
-    #homeButton {
+    .homeButton {
         font-size: 20px;
     }
 }
