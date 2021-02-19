@@ -2,7 +2,7 @@
 /* globals $:false */
 // Food API
 const food_url = 'https://api.spoonacular.com';
-const food_key = 'apiKey=88022d3d36624c3da678d00e688c6dcb';
+const food_key = 'apiKey=a3e2f7716f004a6b803e8866e5536203';
 var pizzaInfo = '', chilliInfo = '', donutsInfo = '', brkSmoothyInfo = '', proShakeInfo = '';
 var thanosInfo = '';
 
@@ -232,12 +232,11 @@ async function RunGame() {
         var inv;
 
         if (localStorage.getItem('inventory') === "") {
-            inv = "";
+            inv = "empty";
         }
         else {
             inv = localStorage.getItem('inventory');
         }
-
 
         var settings = {
             "async": true,
@@ -682,6 +681,26 @@ async function RunGame() {
     $('#inventory').click(function(e) {
         e.preventDefault();
 
+        function checkInventoryItems(inv, storeItems) {
+            console.log(inv);
+            if (inv.length === 1 && inv[0] === "" || inv.length === 0 || inv[0] == "empty") {
+                $('.invSpace').html('<h1 class="invText">There are currently no items in your inventory.<br>Buy some from the store!</h1>');
+            }
+            else {
+                var content = '';
+                
+                inv.forEach((x) => {
+                    for (var i = 0; i < storeItems.id.length; i++) {
+                        if (x == storeItems.id[i]) {
+                            content += `<div class="item" data-id-item="${storeItems.id[i]}" data-bs-toggle="modal" data-bs-target="#myModal"><img src="${storeItems.image[i]}" alt="${storeItems.name[i]}"></div>`;
+                        }
+                    }
+                });
+        
+                $('.invSpace').html(content);
+            }
+        }
+
         checkInventoryItems(inv, storeItems);
 
         $('.homeGame').hide();
@@ -705,8 +724,6 @@ async function RunGame() {
             document.getElementById("yesSel").onclick = function() {confirmYes();};
             // Item Deletion Function
             function confirmYes() {
-                var inv = localStorage.getItem('inventory');
-
                 for (var i = 0; i < inv.length; i++) { 
                     if (inv[i] === itemDelete) {
                         if (inv.length === 1) {
@@ -725,8 +742,8 @@ async function RunGame() {
                 }
 
                 updateHealth(healthPoints / 4);
-                updateHunger(hydrateAndHungerPoints / 4);
-                updateHydrate(hydrateAndHungerPoints / 4);
+                updateHunger(hydrateAndHungerPoints / 2);
+                updateHydrate(hydrateAndHungerPoints / 2);
                 e.target.parentElement.remove();
                 localStorage.setItem('inventory', inv);
             }
@@ -749,6 +766,7 @@ async function RunGame() {
         $('.shop').show(); // Show shop division/menu
         BuyItem(inv);
     });
+
     function BuyItem(inv) {
         var tempMoney = parseInt($('.currency').attr('data-currency'));
 
@@ -781,26 +799,6 @@ async function RunGame() {
     $('#exitGame').click(function() {
         window.location = '../index.html';
     });
-}
-
-function checkInventoryItems(inv, storeItems) {
-    console.log(inv);
-    if (inv.length === 1 && inv[0] === "" || inv.length === 0) {
-        $('.invSpace').html('<h1 class="invText">There are currently no items in your inventory.<br>Buy some from the store!</h1>');
-    }
-    else {
-        var content = '';
-        
-        inv.forEach((x) => {
-            for (var i = 0; i < storeItems.id.length; i++) {
-                if (x == storeItems.id[i]) {
-                    content += `<div class="item" data-id-item="${storeItems.id[i]}" data-bs-toggle="modal" data-bs-target="#myModal"><img src="${storeItems.image[i]}" alt="${storeItems.name[i]}"></div>`;
-                }
-            }
-        });
-
-        $('.invSpace').html(content);
-    }
 }
 
 RunGame();
