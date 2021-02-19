@@ -279,6 +279,12 @@ Completed homeGame page with a small clicker game to earn gold against the boss 
 * homeGame Page and small clicker game completed
 * README website details updated further
 
+# Commit 3.7
+Updated 95% of the README file, only thing that's left is the inventory use function which is having a slight issue right now
+
+#### General Summary:
+* Updated 95% of README file
+
 ## Features:
 - Log-In/Registration
 This feature allows new players to create a brand new account to play Sabaibaru サバイバル and for existing players to load their previous saved progress to continue playing the game. All the player information is then saved into our database (restdb) after a new player creates an account or an exisiting player clicks save game.
@@ -401,29 +407,50 @@ This website has been tested on the browsers listed below and are deemed appropr
 
 ## Credits:
 ### Content:
-
-### Codes
+#### Codes
 - [Modal Pop up Tutorial by Web Dev Simplified](https://www.youtube.com/watch?v=MBaw_6cPmAw&list=LL&index=3&ab_channel=WebDevSimplified)
+- [GameMenu Button Styling](https://www.youtube.com/watch?v=ETvRZgrcFj8&ab_channel=CodingNepal)
+- [Shop Cards Design](https://www.youtube.com/watch?v=cwC1qdPWBKo&ab_channel=RedStapler)
+- [Shopping Cart Tutorial](https://www.youtube.com/watch?v=YeFzkC2awTM&ab_channel=WebDevSimplified)
+- [Learning how to remove specific array items](https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array)
+- [Learning how to use JQuery to find "data-*"](https://stackoverflow.com/questions/19866509/jquery-get-an-element-by-its-data-id)
 
-### Fonts
+#### Fonts
 - Google Fonts used are VT323 & Press Start 2P. Links are below.
 - [VT323](https://fonts.google.com/specimen/VT323?preview.text_type=custom)
 - [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P?preview.text_type=custom)
 
-### Media:
+#### Media:
 - The photos used in this site were obtained from GIPHY, DeviantArt & Gfycat. Links are below
 - [GIPHY](https://giphy.com/)
 - [DeviantArt](https://www.deviantart.com/)
 - [gfycat](https://gfycat.com/)
 
-### Animated Pixel Background GIFs
+#### Icons:
+- These are the icons used for the game menu
+- [Material Designs](https://material.io/resources/icons/?icon=battery_full&style=baseline)
+
+#### Background Images:
+- [Game Background](https://www.deviantart.com/rafaelrodriz08/art/Game-background-535191518)
+
+#### Character Images:
+- Images used for the character selection
+- [Yuri Jahad](https://www.pinterest.com/pin/647251777688571725/)
+- [Khun Aegnis](https://www.zerochan.net/3013941)
+- [Garam Jahad](https://twitter.com/pengpeng_TOG/status/1173594214342348800)
+- [Jinsung Ha](https://twitter.com/god_of_honeycom/status/1303026859395883011)
+- [Bam - Jyu Viole Grace](https://www.pinterest.com/pin/49961877102856140/)
+- [Androssi Jahad](https://www.pinterest.com/pin/88031367706813940/)
+
+#### Animated Pixel Background GIFs
 - [Pixel Waterfall BG by iSohei](https://www.deviantart.com/isohei/art/Pixel-Waterfall-BG-298403583?q=boost%3Apopular%20meta%3Aall%20max_age%3A8h&qo=2)
 - [Animated pixel forest background GIF by zegeekster on Tumblr](https://zegeekster.tumblr.com/image/628361687679008768)
 - [Animated pixel cafe background by pixeljeff on Tumblr](https://pixeljeff.tumblr.com/)
 - [Animated pixel Kitchen GIF on GIPHY](https://gifer.com/en/U9ho)
 - [Autumn scenery sunset GIF Uploaded by MageBourne](https://gifer.com/en/3or4)
 
-### Animal GIFs
+#### Animal GIFs
+- [Animated Shiba Inu GIF](https://gfycat.com/plaintiveseparatebarebirdbat)
 - [Animated pixel pug heart GIF](https://www.pinterest.com/pin/502644008387052078/) 
 - [Animated pixel dogs running](GIFhttps://novocom.top/view/3515bb-kawaii-dogs-gif/)
 - [Animated pixel koi GIF by 1041uuu on Tumblr](https://1041uuu.tumblr.com/post/172307746313)
@@ -431,12 +458,17 @@ This website has been tested on the browsers listed below and are deemed appropr
 - [Animated pixel shiba GIF sleeping by shibatown on Tumblr](https://shibatown.tumblr.com/post/169673497362/sleepy-shibe)
 - [Animated pixel dogs GIF uploaded by Mightbearer on GIPHY](https://gifer.com/en/5AB5)
 
-### Food GIFs
+#### Food GIFs
 - [Animated pixel pizza GIF by Haydiroket (Mert Keskin) on GIPHER](https://giphy.com/stickers/pizza-l4FGGzDc4iDfgog2A)
 - [Animated Pixel fruits on gfycat](https://gfycat.com/stickers/search/pixel+food)
 
-### Other GIFs
+#### Other GIFs
 - [Leaves GIF](https://wifflegif.com/tags/3234-leaves-gifs?page=6)
 - [Animated pixel sword GIF made by LowResolutionBoy on GIPHY](https://giphy.com/stickers/pixelart-angelcervantes-manafinder-pHYexrE0yvhKikX6v8)
 
 ### Acknowledgements:
+- These are the website highly used for our reference as we research and learn more about javascript through these mediums
+- [Youtube](https://www.youtube.com/)
+- [W3Schools](https://www.w3schools.com/)
+- [CodePen](https://cdpn.io/shshaw/debug/XbxvNj)
+- [Google](https://www.google.com/)
