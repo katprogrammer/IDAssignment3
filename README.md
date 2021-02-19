@@ -338,6 +338,12 @@ Added public shareable link of pitch to README File
 ### General Summary:
 * Added public link to pitch inside README File
 
+# Commit 4.6
+Added new API Key as Spoonacular API has a daily limit request which may result in errors if user refreshes the page too many times.
+
+### General Summary:
+* Added new API Key
+
 ## Features:
 - Log-In/Registration
 This feature allows new players to create a brand new account to play Sabaibaru サバイバル and for existing players to load their previous saved progress to continue playing the game. All the player information is then saved into our database (restdb) after a new player creates an account or an exisiting player clicks save game.
