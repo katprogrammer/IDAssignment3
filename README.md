@@ -1,6 +1,6 @@
 # Sabaibaru サバイバル
 ## About this project
-What is **Sabaibaru サバイバル**? It is a text-based clicking web game where users have to take care of themselves in a daily setting. Players have control over their jobs, schedule as well as living conditions. Players will have to handle their statistics such as Health, Hunger and Energy. Similarly, this webpage game aims to resemble a real world setting as much as possible, allowing players to also play *Games inside a game* where they can handle in-game statistics such as Health, Defense and Power.
+What is **Sabaibaru サバイバル**? It is a text-based clicking web game where users have to take care of themselves in a daily setting. Players have control over their jobs, schedule as well as living conditions. Players will have to handle their statistics such as Health, Hunger and Hydration. Similarly, this webpage game aims to resemble a real world setting as much as possible, allowing players to also play *Games inside a game* where they can handle in-game statistics such as Health, Defense and Power.
 
 This game aims to promote self-care as well as encourage independency with use of APIs such as a Food API to let players know what food is good and what food is bad. The game will also make use of a Superhero API to get data of Villians to defeat. This project will be heavily based on Javascript/JQuery and CSS instead of focusing on the HTML side of things, and making use of Lottie animations as a loading notifier, etc.
 
@@ -319,6 +319,12 @@ Website is more or less completed with a slight bug left to be completed
 
 #### General Summary:
 * Website complete with 1 bug left
+
+# Commit 4.3 
+Finished recording pitch and final touches to README file
+
+### General Summary:
+* Done recording pitch
 
 ## Features:
 - Log-In/Registration
