@@ -265,10 +265,38 @@ Made home-page and game-page responsive for all screen devices except for the sh
 * Made game responsive for all devices
 * Documented features, future features and testing process
 
+# Commit 3.5
+Updated README file and documented all the features, exisiting ones and future ones to be implemented as well as documented the code validation. Will work on documenting the errors/problems that occured.
+
+### General Summary:
+* Updated README File
+
 ## Features:
-### TBA:
 
 ### Existing:
+- Log-In/Registration
+This feature allows new players to create a brand new account to play Sabaibaru サバイバル and for existing players to load their previous saved progress to continue playing the game. All the player information is then saved into our database (restdb) after a new player creates an account or an exisiting player clicks save game.
+
+- View Stats
+This feature allows players to check on their health points, hunger and hydration levels regularly. Overtime, the points and levels decrease if the user does not take care of himself by buying food from the shop and eating it. Thus giving a sense of urgency to check their points and levels regularly.
+
+- Inventory
+This feature allows players to store items that they have bought from the shop as well as use those items to regain health points, hunger levels and etc. However, it only allows players to use one item at a time before having to click the inventory, this is to prevent players from using/eating too much food.
+
+- Shop
+This feature uses a food API that gets information about various foods and recipes. This allows players to learn about the nutrional values of each food and choose from many different options. Players will use an in-game currency "gold" where they will be given an initial sum of 200 gold to give new players a feel of the experience. 
+
+- Mini-Game
+This feature allows players to earn in-game gold by playing...
+
+- Save Game
+This feature allows playes to save their in-game progress such as their health points, hunger levels, gold and inventory space. Using our database again (restdb) to store and retrieve the information once the player logins again.
+
+- Exit Game
+This feature allows players to exit the game and return back to the homepage of Sabaibaru サバイバル
+
+### TBA:
+- Mini-Game
 
 ## Technologies Used:
 * [HTML](https://www.w3schools.com/html/)
@@ -299,6 +327,53 @@ Made home-page and game-page responsive for all screen devices except for the sh
 ## Testing
 
 ### Code Validation:
+1. Login form:
+    1. Click Login button in homepage.
+    2. Try to submit the empty form with no username/password and verify that an error message "Please fill out this field" red text appears
+    3. Try to submit the form with an invalid username/password and verify that an error message "Invalid username/password" red text appears
+    4. Try to submit the form with correct matching username and password and starts the game for players.
+
+2. Register form:
+    1. Click New Here button in game-page.
+    2. Try to submit the empty form with no username/password and verify that an error message "Please fill out this field" red text appears
+    3. Try to submit the form with an invalid username/password and verify that an error message "Invalid username/password" red text appears
+    4. Try to submit an existing username and verify that an error message "Username already exists" red text appears.
+    5. Try to submit the form with correct matching username and password and starts the game for players.
+
+3. View Stats:
+    1. Click Stats icon in game-page.
+    2. Try to stay in-game for 1 hour, click the stats icon regularly and verify the health points, hunger points and hydration points slowly decrease overtime.
+    3. Try to use an item and verify the health points, hunger points and hydration points increese and the bar increases too accordingly.
+    4. Try to set all the points below 25 and verify the bars turns red
+    5. Try to set all the points above 25 and below 50 and verify the bars turns yellow
+    6. Try to set all the points above 50 and below 100 and verify the bars turns green
+    7. Try to continue eating and verify the health points, hunger points and hydration points are maxed out at 100, the bar is full and green. 
+
+4. Inventory:
+    1. Click Bag icon in game-page.
+    2. Try to use two different items one after another and verify you can only use one item at a time before clicking the inventory again.
+    3. Try to fill up the page with a lot of items.
+
+5. Shop:
+    1. Click Shopping-cart icon in game-page.
+    2. Try to buy all the items until no more money left to spend and verify if player clicks buy again, an error message appears "You do not have enough gold to purchase this!".
+    3. Try to buy one item and verify a success messsage "Your purchase was successful, enjoy!" appears
+    4. Try to buy duplicates of one item and verify it shows the correct amount of items in inventory
+
+6. Save Game:
+    1. Click Bookmark icon in game-page.
+    2. Try to save game with an empty inventory
+    3. Try to save game with modified health points, hunger points and hydration points and verify the restdb database updates the specific player information and display a success message "Saved Successfully".
+    4. Try to save game with no money left
+    5. Try to save game with 20+ items in inventory
+
+7. Exit Game:
+    1. Click Power-Off icon in game-page.
+    2. Try to clcik the Power-off icon and verify it brings player back to homepage,(index.html).
+
+In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+
+You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
 
 ### Main Web Browsers Tested On:
 * Microsoft Edge
