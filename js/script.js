@@ -2,7 +2,7 @@
 /* globals $:false */
 // Food API
 const food_url = 'https://api.spoonacular.com';
-const food_key = 'apiKey=a3e2f7716f004a6b803e8866e5536203';
+const food_key = 'apiKey=66577d1224a044c2ab051f50770175ee';
 var pizzaInfo = '', chilliInfo = '', donutsInfo = '', brkSmoothyInfo = '', proShakeInfo = '';
 var thanosInfo = '';
 
@@ -797,7 +797,7 @@ async function RunGame() {
     }
 
     $('#exitGame').click(function() {
-        window.location = '../index.html';
+        window.location = 'https://katprogrammer.github.io/IDAssignment3/';
     });
 }
 

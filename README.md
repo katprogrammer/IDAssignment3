@@ -326,6 +326,12 @@ Finished recording pitch and final touches to README file
 ### General Summary:
 * Done recording pitch
 
+# Commit 4.4
+Fix exit game button for github version so the path leads to the github page link and not local file index html which will cause an error. The file in the network drive will be the version with the path that leads to the local file index.html
+
+### General Summary:
+* Debugging and fixing exit game feature
+
 ## Features:
 - Log-In/Registration
 This feature allows new players to create a brand new account to play Sabaibaru サバイバル and for existing players to load their previous saved progress to continue playing the game. All the player information is then saved into our database (restdb) after a new player creates an account or an exisiting player clicks save game.
