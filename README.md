@@ -261,19 +261,25 @@ Completed save-game, load-game and inventory validation. Made the code more effi
 # Commit 3.4
 Made home-page and game-page responsive for all screen devices except for the shop feature and documented references/credits in README file. Furthermore, updated user stats whenever user uses an item.
 
-### General Summary:
+#### General Summary:
 * Made game responsive for all devices
 * Documented features, future features and testing process
 
 # Commit 3.5
 Updated README file and documented all the features, exisiting ones and future ones to be implemented as well as documented the code validation. Will work on documenting the errors/problems that occured.
 
-### General Summary:
+#### General Summary:
 * Updated README File
 
-## Features:
+# Commit 3.6
+Completed homeGame page with a small clicker game to earn gold against the boss Thanos! Responsiveness has been completed for all pages as well. The README has been updated with further details about the website as well.
 
-### Existing:
+#### General Summary:
+* Responsiveness for all pages completed
+* homeGame Page and small clicker game completed
+* README website details updated further
+
+## Features:
 - Log-In/Registration
 This feature allows new players to create a brand new account to play Sabaibaru サバイバル and for existing players to load their previous saved progress to continue playing the game. All the player information is then saved into our database (restdb) after a new player creates an account or an exisiting player clicks save game.
 
@@ -295,8 +301,9 @@ This feature allows playes to save their in-game progress such as their health p
 - Exit Game
 This feature allows players to exit the game and return back to the homepage of Sabaibaru サバイバル
 
-### TBA:
 - Mini-Game
+This feature allows the player to earn gold to be used in the store for item purchases. It uses the Superhero API to retrieve the ultimate boss! Thanos!
+Similar to the game cookie clicker, each click is an attack and the more you click, the more gold you earn!
 
 ## Technologies Used:
 * [HTML](https://www.w3schools.com/html/)
@@ -313,13 +320,13 @@ This feature allows players to exit the game and return back to the homepage of 
     * IDE used to code HTML, CSS and JS for the project
 * [Adobe XD](https://www.adobe.com/sea/products/xd.html)
     * Used Adobe XD to create the wireframe and layout for the website
-* [Normalize css](https://necolas.github.io/normalize.css/)
+* [Normalize CSS](https://necolas.github.io/normalize.css/)
     * Normalize.css was used to render all elements more consistently and in line with modern standards
 * [CodePen](https://cdpn.io/shshaw/debug/XbxvNj)
     * Used CodePen to convert pixel art to svg code
-* [restdb](https://restdb.io/)
+* [RestDB](https://restdb.io/)
     * Used restdb to store, update and get player information
-* [Recipoe-Food-Nutrition-API](https://rapidapi.com/spoonacular/api/recipe-food-nutrition)
+* [Recipe-Food-Nutrition-API](https://rapidapi.com/spoonacular/api/recipe-food-nutrition)
     * Made by spoonacular. Used to get information about various food and their nutrional values.
 * [SuperheroAPI](https://superheroapi.com/)
     * Used Superhero API to get information about different heroes and villains to implement in game.
@@ -332,6 +339,7 @@ This feature allows players to exit the game and return back to the homepage of 
     2. Try to submit the empty form with no username/password and verify that an error message "Please fill out this field" red text appears
     3. Try to submit the form with an invalid username/password and verify that an error message "Invalid username/password" red text appears
     4. Try to submit the form with correct matching username and password and starts the game for players.
+    5. On smaller sizes, it looks fine just in column view
 
 2. Register form:
     1. Click New Here button in game-page.
@@ -339,6 +347,7 @@ This feature allows players to exit the game and return back to the homepage of 
     3. Try to submit the form with an invalid username/password and verify that an error message "Invalid username/password" red text appears
     4. Try to submit an existing username and verify that an error message "Username already exists" red text appears.
     5. Try to submit the form with correct matching username and password and starts the game for players.
+    6. On smaller sizes, it looks fine just in column view
 
 3. View Stats:
     1. Click Stats icon in game-page.
@@ -347,18 +356,21 @@ This feature allows players to exit the game and return back to the homepage of 
     4. Try to set all the points below 25 and verify the bars turns red
     5. Try to set all the points above 25 and below 50 and verify the bars turns yellow
     6. Try to set all the points above 50 and below 100 and verify the bars turns green
-    7. Try to continue eating and verify the health points, hunger points and hydration points are maxed out at 100, the bar is full and green. 
+    7. Try to continue eating and verify the health points, hunger points and hydration points are maxed out at 100, the bar is full and green.
+    8. On smaller sizes, it looks fine just in column view
 
 4. Inventory:
     1. Click Bag icon in game-page.
     2. Try to use two different items one after another and verify you can only use one item at a time before clicking the inventory again.
     3. Try to fill up the page with a lot of items.
+    4. On smaller sizes, it looks fine just in column view
 
 5. Shop:
     1. Click Shopping-cart icon in game-page.
     2. Try to buy all the items until no more money left to spend and verify if player clicks buy again, an error message appears "You do not have enough gold to purchase this!".
     3. Try to buy one item and verify a success messsage "Your purchase was successful, enjoy!" appears
     4. Try to buy duplicates of one item and verify it shows the correct amount of items in inventory
+    5. On smaller sizes, it looks fine just in column view
 
 6. Save Game:
     1. Click Bookmark icon in game-page.
@@ -369,11 +381,17 @@ This feature allows players to exit the game and return back to the homepage of 
 
 7. Exit Game:
     1. Click Power-Off icon in game-page.
-    2. Try to clcik the Power-off icon and verify it brings player back to homepage,(index.html).
+    2. Try to click the Power-off icon and verify it brings player back to homepage,(index.html).
 
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+8. Mini Game:
+    1. Gold amount updates concurrently throughout
+    2. Gold in Shop updates accordingly
+    3. Clicking attack button increases the amount of gold accordingly
+    4. On smaller sizes, it looks fine just in column view
 
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
+There were no major bugs except having to deal with the inventory item use/item deletion issues from the inventory array inside the javascript. However, even then everything else works smoothly.
+
+This website has been tested on the browsers listed below and are deemed appropriate and successful for use. No major issues have been found whilst testing on the different browsers.
 
 ### Main Web Browsers Tested On:
 * Microsoft Edge
@@ -385,41 +403,40 @@ You should also mention in this section any interesting bugs or problems you dis
 ### Content:
 
 ### Codes
-- https://www.youtube.com/watch?v=MBaw_6cPmAw&list=LL&index=3&ab_channel=WebDevSimplified (Modal Pop up Tutorial by Web Dev Simplified)
+- [Modal Pop up Tutorial by Web Dev Simplified](https://www.youtube.com/watch?v=MBaw_6cPmAw&list=LL&index=3&ab_channel=WebDevSimplified)
 
 ### Fonts
 - Google Fonts used are VT323 & Press Start 2P. Links are below.
-- VT323 (https://fonts.google.com/specimen/VT323?preview.text_type=custom)
-- Press Start 2P (https://fonts.google.com/specimen/Press+Start+2P?preview.text_type=custom)
+- [VT323](https://fonts.google.com/specimen/VT323?preview.text_type=custom)
+- [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P?preview.text_type=custom)
 
 ### Media:
 - The photos used in this site were obtained from GIPHY, DeviantArt & Gfycat. Links are below
-- GIPHY (https://giphy.com/)
-- DeviantArt (https://www.deviantart.com/)
-- gfycat (https://gfycat.com/)
+- [GIPHY](https://giphy.com/)
+- [DeviantArt](https://www.deviantart.com/)
+- [gfycat](https://gfycat.com/)
 
 ### Animated Pixel Background GIFs
-- https://www.deviantart.com/isohei/art/Pixel-Waterfall-BG-298403583?q=boost%3Apopular%20meta%3Aall%20max_age%3A8h&qo=2 (Pixel Waterfall BG by iSohei)
-- https://zegeekster.tumblr.com/image/628361687679008768 (Animated pixel forest background GIF by zegeekster on Tumblr)
-- https://pixeljeff.tumblr.com/ (Animated pixel cafe background by pixeljeff on Tumblr)
-- https://gifer.com/en/U9ho (Animated pixel Kitchen GIF on GIPHY)
-- https://gifer.com/en/3or4 (Autumn scenery sunset GIF Uploaded by MageBourne)
+- [Pixel Waterfall BG by iSohei](https://www.deviantart.com/isohei/art/Pixel-Waterfall-BG-298403583?q=boost%3Apopular%20meta%3Aall%20max_age%3A8h&qo=2)
+- [Animated pixel forest background GIF by zegeekster on Tumblr](https://zegeekster.tumblr.com/image/628361687679008768)
+- [Animated pixel cafe background by pixeljeff on Tumblr](https://pixeljeff.tumblr.com/)
+- [Animated pixel Kitchen GIF on GIPHY](https://gifer.com/en/U9ho)
+- [Autumn scenery sunset GIF Uploaded by MageBourne](https://gifer.com/en/3or4)
 
 ### Animal GIFs
-- https://www.pinterest.com/pin/502644008387052078/ (Animated pixel pug heart GIF)
-- https://novocom.top/view/3515bb-kawaii-dogs-gif/ (Animated pixel dogs running GIF)
-- https://1041uuu.tumblr.com/post/172307746313 (Animated pixel koi GIF by 1041uuu on Tumblr)
-- https://scratch.mit.edu/studios/1751058/comments/ (Cat GIF on Scratch)
-- https://shibatown.tumblr.com/post/169673497362/sleepy-shibe (Animated pixel shiba GIF sleeping by shibatown on Tumblr)
-- https://gifer.com/en/5AB5 (Animated pixel dogs GIF uploaded by Mightbearer on GIPHY)
+- [Animated pixel pug heart GIF](https://www.pinterest.com/pin/502644008387052078/) 
+- [Animated pixel dogs running](GIFhttps://novocom.top/view/3515bb-kawaii-dogs-gif/)
+- [Animated pixel koi GIF by 1041uuu on Tumblr](https://1041uuu.tumblr.com/post/172307746313)
+- [Cat GIF on Scratch](https://scratch.mit.edu/studios/1751058/comments/)
+- [Animated pixel shiba GIF sleeping by shibatown on Tumblr](https://shibatown.tumblr.com/post/169673497362/sleepy-shibe)
+- [Animated pixel dogs GIF uploaded by Mightbearer on GIPHY](https://gifer.com/en/5AB5)
 
 ### Food GIFs
-- https://giphy.com/stickers/pizza-l4FGGzDc4iDfgog2A (Animated pixel pizza GIF by Haydiroket (Mert Keskin)
-on GIPHER)
-- https://gfycat.com/stickers/search/pixel+food (Animated Pixel fruits on gfycat)
+- [Animated pixel pizza GIF by Haydiroket (Mert Keskin) on GIPHER](https://giphy.com/stickers/pizza-l4FGGzDc4iDfgog2A)
+- [Animated Pixel fruits on gfycat](https://gfycat.com/stickers/search/pixel+food)
 
 ### Other GIFs
-- https://wifflegif.com/tags/3234-leaves-gifs?page=6 (Leaves GIF)
-- https://giphy.com/stickers/pixelart-angelcervantes-manafinder-pHYexrE0yvhKikX6v8 (Animated pixel sword GIF made by LowResolutionBoy on GIPHY)
+- [Leaves GIF](https://wifflegif.com/tags/3234-leaves-gifs?page=6)
+- [Animated pixel sword GIF made by LowResolutionBoy on GIPHY](https://giphy.com/stickers/pixelart-angelcervantes-manafinder-pHYexrE0yvhKikX6v8)
 
 ### Acknowledgements:
